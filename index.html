@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4Travel Pro – Your Complete Travel Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --deep: #0d1f3c;
+    --gold: #c8a24a;
+    --gold-light: #e8c86a;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --muted: #8a9ab5;
+    --card-bg: rgba(255,255,255,0.04);
+    --card-border: rgba(200,162,74,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,162,74,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 110%, rgba(10,90,160,0.25) 0%, transparent 60%),
+      linear-gradient(160deg, #071020 0%, #0a1628 40%, #0d2040 100%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(200,162,74,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,162,74,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+  }
+
+  .floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    animation: drift 8s ease-in-out infinite alternate;
+  }
+  .orb1 { width: 500px; height: 500px; background: rgba(200,162,74,0.08); top: -150px; left: -100px; }
+  .orb2 { width: 400px; height: 400px; background: rgba(10,80,180,0.12); bottom: -100px; right: -100px; animation-delay: -4s; }
+
+  @keyframes drift {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(40px, 30px) scale(1.08); }
+  }
+
+  .lang-toggle {
+    position: absolute; top: 1.5rem; right: 2rem;
+    display: flex; gap: 0.5rem; z-index: 10;
+  }
+  .lang-select {
+    padding: 0.45rem 1rem;
+    border-radius: 99px;
+    border: 1px solid var(--card-border);
+    background: rgba(255,255,255,0.06);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    outline: none;
+    transition: all 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 1.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8a24a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.6rem center;
+  }
+  .lang-select:hover, .lang-select:focus { border-color: var(--gold); }
+  .lang-select option { background: #0d1f3c; color: var(--white); }
+
+  .nav-logo {
+    position: absolute; top: 1.5rem; left: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    z-index: 10;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .hero-content { position: relative; z-index: 1; max-width: 860px; }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid var(--card-border);
+    border-radius: 99px;
+    background: rgba(200,162,74,0.1);
+    color: var(--gold-light);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+
+  .btn-primary {
+    padding: 0.9rem 2.2rem;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    border-radius: 99px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,162,74,0.4); }
+
+  .btn-ghost {
+    padding: 0.9rem 2.2rem;
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 99px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em;
+    animation: fadeUp 1s 1s ease both;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(var(--gold), transparent);
+    animation: scrollDrop 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollDrop { 0%,100% { opacity: 0; transform: scaleY(0); transform-origin: top; } 50% { opacity: 1; transform: scaleY(1); } }
+
+  /* ===== SERVICES ===== */
+  .services {
+    padding: 8rem 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 4rem;
+    font-weight: 300;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+    display: block;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(200,162,74,0.08), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .service-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(200,162,74,0.3); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(200,162,74,0.2), rgba(200,162,74,0.05));
+    border: 1px solid rgba(200,162,74,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    transition: transform 0.3s;
+  }
+  .service-card:hover .service-icon { transform: scale(1.1) rotate(-3deg); }
+
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+  }
+  .service-desc {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+  .service-link {
+    color: var(--gold);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: gap 0.3s;
+  }
+  .service-card:hover .service-link { gap: 0.8rem; }
+
+  /* ===== STATS ===== */
+  .stats-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, rgba(200,162,74,0.06), rgba(200,162,74,0.02));
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+  }
+  .stats-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    gap: 3rem; text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900;
+    color: var(--gold); line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label { color: var(--muted); font-size: 0.88rem; font-weight: 400; }
+
+  /* ===== WHY ===== */
+  .why-section {
+    padding: 8rem 2rem;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  @media(max-width:768px) { .why-section { grid-template-columns: 1fr; gap: 3rem; } }
+
+  .why-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700; line-height: 1.2;
+    letter-spacing: -0.02em; margin-bottom: 1.5rem;
+  }
+  .why-text h2 span { color: var(--gold); font-style: italic; }
+  .why-text p { color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+
+  .features-list { display: flex; flex-direction: column; gap: 1rem; }
+  .feature-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    background: var(--card-bg);
+    transition: border-color 0.3s;
+  }
+  .feature-item:hover { border-color: var(--gold); }
+  .feature-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .feature-text strong { display: block; font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .feature-text span { color: var(--muted); font-size: 0.83rem; }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner {
+    margin: 0 2rem 6rem;
+    max-width: 1300px;
+    margin-left: auto; margin-right: auto;
+    background: linear-gradient(135deg, rgba(200,162,74,0.15) 0%, rgba(200,162,74,0.05) 100%);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    padding: 5rem 4rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(200,162,74,0.12), transparent 70%);
+    pointer-events: none;
+  }
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .cta-banner p { color: var(--muted); margin-bottom: 2.5rem; font-size: 1.05rem; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 1px solid var(--card-border);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  footer strong { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(40px); transition: all 0.7s cubic-bezier(0.23,1,0.32,1); }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal:nth-child(2) { transition-delay: 0.1s; }
+  .reveal:nth-child(3) { transition-delay: 0.2s; }
+  .reveal:nth-child(4) { transition-delay: 0.3s; }
+  .reveal:nth-child(5) { transition-delay: 0.4s; }
+  .reveal:nth-child(6) { transition-delay: 0.5s; }
+  .reveal:nth-child(7) { transition-delay: 0.6s; }
+  .reveal:nth-child(8) { transition-delay: 0.7s; }
+
+  @media(max-width:600px) {
+    .cta-banner { padding: 3rem 2rem; }
+    .services { padding: 5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-logo">4<span>Travel</span> Pro</div>
+<div class="lang-toggle">
+  <select class="lang-select" onchange="setLang(this.value)">
+    <option value="en">🌐 EN</option>
+    <option value="ro">🇷🇴 RO</option>
+    <option value="fr">🇫🇷 FR</option>
+    <option value="de">🇩🇪 DE</option>
+    <option value="es">🇪🇸 ES</option>
+    <option value="it">🇮🇹 IT</option>
+    <option value="hu">🇭🇺 HU</option>
+    <option value="tr">🇹🇷 TR</option>
+    <option value="ar">🇸🇦 AR</option>
+  </select>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="floating-orb orb1"></div>
+  <div class="floating-orb orb2"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge" data-key="badge">Your Complete Travel Partner</div>
+    <h1 data-key="h1">Travel the World <em>Effortlessly</em></h1>
+    <p class="hero-sub" data-key="heroSub">Everything you need for the perfect journey — flights, hotels, cruises, transfers, SIM cards, car rentals and insurance, all in one place.</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-primary" data-key="exploreBtn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'}); return false;">Explore Services</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-inner">
+    <div class="reveal">
+      <div class="stat-num">50K+</div>
+      <div class="stat-label" data-key="happyTravelers">Happy Travelers</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">120+</div>
+      <div class="stat-label" data-key="destinations">Destinations</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">7</div>
+      <div class="stat-label" data-key="premiumServices">Premium Services</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label" data-key="supportAvailable">Support Available</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label" data-key="whatWeOffer">WHAT WE OFFER</div>
+  <h2 class="section-title" data-key="sectionTitle">All Your Travel Needs, One Platform</h2>
+  <p class="section-sub" data-key="sectionSub">Book with confidence — every service carefully selected for quality and value.</p>
+
+  <div class="services-grid">
+
+    <a href="https://kiwi.tpm.lv/YpYGhgkX" target="_blank" class="service-card reveal">
+      <div class="service-icon">✈️</div>
+      <div class="service-title" data-key="flight">Flight Tickets</div>
+      <div class="service-desc" data-key="flightDesc">Compare hundreds of airlines and find the best fares for any destination worldwide.</div>
+      <div class="service-link" data-key="flightLink">Book a flight →</div>
+    </a>
+
+    <a href="https://trk.affiloralink.com/click?pid=158&offer_id=103" target="_blank" class="service-card reveal">
+      <div class="service-icon">🏨</div>
+      <div class="service-title" data-key="hotel">Hotels & Vacations</div>
+      <div class="service-desc" data-key="hotelDesc">From boutique hideaways to luxury resorts — handpicked accommodations for every taste and budget.</div>
+      <div class="service-link" data-key="hotelLink">Find a hotel →</div>
+    </a>
+
+    <a href="https://airhelp.tpm.lv/RDWLKUoK" target="_blank" class="service-card reveal">
+      <div class="service-icon">✈️💰</div>
+      <div class="service-title" data-key="airhelp">AirHelp – Get Compensation</div>
+      <div class="service-desc" data-key="airhelpDesc">Flight delayed or cancelled? Claim up to €600 compensation quickly and easily with AirHelp.</div>
+      <div class="service-link" data-key="airhelpLink">Claim now →</div>
+    </a>
+
+    <a href="https://gettransfer.tpm.lv/iuxFQT02" target="_blank" class="service-card reveal">
+      <div class="service-icon">🚗</div>
+      <div class="service-title" data-key="transfer">Airport Transfer</div>
+      <div class="service-desc" data-key="transferDesc">Stress-free, on-time transfers from airport to hotel. Private drivers available 24/7.</div>
+      <div class="service-link" data-key="transferLink">Book transfer →</div>
+    </a>
+
+    <a href="https://drimsim.tpm.lv/TOwhzovo" target="_blank" class="service-card reveal">
+      <div class="service-icon">📱</div>
+      <div class="service-title" data-key="sim">SIM Card</div>
+      <div class="service-desc" data-key="simDesc">Stay connected abroad with affordable international SIM cards. Data plans for 150+ countries.</div>
+      <div class="service-link" data-key="simLink">Get your SIM →</div>
+    </a>
+
+    <a href="https://localrent.tpm.lv/tOoD7aJV" target="_blank" class="service-card reveal">
+      <div class="service-icon">🔑</div>
+      <div class="service-title" data-key="car">Car Rentals</div>
+      <div class="service-desc" data-key="carDesc">Freedom on the road. Rent a car from premium local and international partners at unbeatable prices.</div>
+      <div class="service-link" data-key="carLink">Rent a car →</div>
+    </a>
+
+    <a href="https://ektatraveling.tpm.lv/DUlORGDd" target="_blank" class="service-card reveal">
+      <div class="service-icon">🛡️</div>
+      <div class="service-title" data-key="insurance">Travel Insurance</div>
+      <div class="service-desc" data-key="insuranceDesc">Travel with peace of mind. Comprehensive coverage for medical emergencies, trip cancellations, and lost luggage.</div>
+      <div class="service-link" data-key="insuranceLink">Get insured →</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section style="background: linear-gradient(to bottom, transparent, rgba(200,162,74,0.04), transparent); padding: 2rem 0;">
+<div class="why-section" id="contact">
+  <div class="why-text reveal">
+    <h2 data-key="whyTitle">Why <span>Thousands</span> Choose 4Travel Pro</h2>
+    <p data-key="whyDesc">We combine cutting-edge technology with genuine human care to make every journey seamless, memorable and worry-free.</p>
+  </div>
+  <div class="features-list reveal">
+    <div class="feature-item">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-text">
+        <strong data-key="feat1">Instant Booking</strong>
+        <span data-key="feat1d">Confirm your travel in seconds, with real-time availability.</span>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">💎</div>
+      <div class="feature-text">
+        <strong data-key="feat2">Best Price Guarantee</strong>
+        <span data-key="feat2d">Found it cheaper? We'll match it — no questions asked.</span>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🌍</div>
+      <div class="feature-text">
+        <strong data-key="feat3">Global Coverage</strong>
+        <span data-key="feat3d">Services in 120+ countries with local expertise everywhere.</span>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🤝</div>
+      <div class="feature-text">
+        <strong data-key="feat4">Dedicated Support</strong>
+        <span data-key="feat4d">Our travel experts are available 24/7 to assist you.</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner reveal" style="margin-bottom: 6rem;">
+  <h2 data-key="ctaTitle">Ready for Your Next Adventure?</h2>
+  <p data-key="ctaDesc">Join thousands of satisfied travelers who trust 4Travel Pro for every journey.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>4Travel Pro</strong>
+  <p style="margin-top:0.8rem;" data-key="footer">© 2025 4Travel Pro. All rights reserved. Your trusted travel partner worldwide.</p>
+</footer>
+
+<script>
+  // All translations
+  const translations = {
+    en: {
+      badge: "Your Complete Travel Partner",
+      h1: "Travel the World <em>Effortlessly</em>",
+      heroSub: "Everything you need for the perfect journey — flights, hotels, cruises, transfers, SIM cards, car rentals and insurance, all in one place.",
+      exploreBtn: "Explore Services",
+      happyTravelers: "Happy Travelers",
+      destinations: "Destinations",
+      premiumServices: "Premium Services",
+      supportAvailable: "Support Available",
+      whatWeOffer: "WHAT WE OFFER",
+      sectionTitle: "All Your Travel Needs, One Platform",
+      sectionSub: "Book with confidence — every service carefully selected for quality and value.",
+      flight: "Flight Tickets", flightDesc: "Compare hundreds of airlines and find the best fares for any destination worldwide.", flightLink: "Book a flight →",
+      hotel: "Hotels & Vacations", hotelDesc: "From boutique hideaways to luxury resorts — handpicked accommodations for every taste and budget.", hotelLink: "Find a hotel →",
+      airhelp: "AirHelp – Get Compensation", airhelpDesc: "Flight delayed or cancelled? Claim up to €600 compensation quickly and easily with AirHelp.", airhelpLink: "Claim now →",
+      transfer: "Airport Transfer", transferDesc: "Stress-free, on-time transfers from airport to hotel. Private drivers available 24/7.", transferLink: "Book transfer →",
+      sim: "SIM Card", simDesc: "Stay connected abroad with affordable international SIM cards. Data plans for 150+ countries.", simLink: "Get your SIM →",
+      car: "Car Rentals", carDesc: "Freedom on the road. Rent a car from premium local and international partners at unbeatable prices.", carLink: "Rent a car →",
+      insurance: "Travel Insurance", insuranceDesc: "Travel with peace of mind. Comprehensive coverage for medical emergencies, trip cancellations, and lost luggage.", insuranceLink: "Get insured →",
+      whyTitle: "Why <span>Thousands</span> Choose 4Travel Pro",
+      whyDesc: "We combine cutting-edge technology with genuine human care to make every journey seamless, memorable and worry-free.",
+      feat1: "Instant Booking", feat1d: "Confirm your travel in seconds, with real-time availability.",
+      feat2: "Best Price Guarantee", feat2d: "Found it cheaper? We'll match it — no questions asked.",
+      feat3: "Global Coverage", feat3d: "Services in 120+ countries with local expertise everywhere.",
+      feat4: "Dedicated Support", feat4d: "Our travel experts are available 24/7 to assist you.",
+      ctaTitle: "Ready for Your Next Adventure?",
+      ctaDesc: "Join thousands of satisfied travelers who trust 4Travel Pro for every journey.",
+      footer: "© 2025 4Travel Pro. All rights reserved. Your trusted travel partner worldwide.",
+      dir: "ltr"
+    },
+    ro: {
+      badge: "Partenerul Tău Complet de Călătorie",
+      h1: "Călătorește <em>Fără Griji</em>",
+      heroSub: "Tot ce ai nevoie pentru călătoria perfectă — bilete de avion, hoteluri, transferuri, SIM carduri, închirieri auto și asigurări, totul într-un singur loc.",
+      exploreBtn: "Explorează Serviciile",
+      happyTravelers: "Călători Mulțumiți",
+      destinations: "Destinații",
+      premiumServices: "Servicii Premium",
+      supportAvailable: "Suport Disponibil",
+      whatWeOffer: "CE OFERIM",
+      sectionTitle: "Toate Nevoile Tale de Călătorie, O Singură Platformă",
+      sectionSub: "Rezervă cu încredere — fiecare serviciu atent selectat pentru calitate și valoare.",
+      flight: "Bilete de Avion", flightDesc: "Compară sute de companii aeriene și găsește cele mai bune tarife pentru orice destinație.", flightLink: "Rezervă zbor →",
+      hotel: "Hoteluri & Vacanțe", hotelDesc: "De la pensiuni boutique la stațiuni de lux — cazări selecționate pentru orice gust și buget.", hotelLink: "Găsește hotel →",
+      airhelp: "AirHelp – Obține Compensație", airhelpDesc: "Zbor întârziat sau anulat? Revendică până la 600€ compensație rapid și ușor.", airhelpLink: "Revendică acum →",
+      transfer: "Transfer Aeroport", transferDesc: "Transferuri fără stres, la timp, de la aeroport la hotel. Șoferi privați disponibili 24/7.", transferLink: "Rezervă transfer →",
+      sim: "SIM Card", simDesc: "Rămâi conectat în străinătate cu SIM carduri internaționale accesibile. Planuri de date pentru 150+ țări.", simLink: "Obține SIM-ul tău →",
+      car: "Închirieri Auto", carDesc: "Libertate pe drum. Închiriază o mașină de la parteneri locali și internaționali premium.", carLink: "Închiriază mașină →",
+      insurance: "Asigurări de Călătorie", insuranceDesc: "Călătorește liniștit. Acoperire completă pentru urgențe medicale, anulări și bagaje pierdute.", insuranceLink: "Asigură-te →",
+      whyTitle: "De Ce <span>Mii</span> de Călători Aleg 4Travel Pro",
+      whyDesc: "Combinăm tehnologia de vârf cu grija autentică pentru a face fiecare călătorie memorabilă și fără griji.",
+      feat1: "Rezervare Instantanee", feat1d: "Confirmă călătoria în câteva secunde, cu disponibilitate în timp real.",
+      feat2: "Garanția Celui Mai Bun Preț", feat2d: "L-ai găsit mai ieftin? Îl egalăm — fără întrebări.",
+      feat3: "Acoperire Globală", feat3d: "Servicii în 120+ țări cu expertiză locală oriunde.",
+      feat4: "Suport Dedicat", feat4d: "Experții noștri de călătorie sunt disponibili 24/7.",
+      ctaTitle: "Pregătit pentru Următoarea Ta Aventură?",
+      ctaDesc: "Alătură-te miilor de călători mulțumiți care au încredere în 4Travel Pro.",
+      footer: "© 2025 4Travel Pro. Toate drepturile rezervate. Partenerul tău de încredere în călătorii.",
+      dir: "ltr"
+    },
+    fr: {
+      badge: "Votre Partenaire de Voyage Complet",
+      h1: "Voyagez <em>Sans Effort</em>",
+      heroSub: "Tout ce dont vous avez besoin pour le voyage parfait — vols, hôtels, transferts, cartes SIM, location de voitures et assurances, tout en un seul endroit.",
+      exploreBtn: "Découvrir nos Services",
+      happyTravelers: "Voyageurs Satisfaits",
+      destinations: "Destinations",
+      premiumServices: "Services Premium",
+      supportAvailable: "Support Disponible",
+      whatWeOffer: "NOS SERVICES",
+      sectionTitle: "Tous Vos Besoins de Voyage, Une Seule Plateforme",
+      sectionSub: "Réservez en toute confiance — chaque service soigneusement sélectionné pour la qualité.",
+      flight: "Billets d'Avion", flightDesc: "Comparez des centaines de compagnies et trouvez les meilleurs tarifs pour n'importe quelle destination.", flightLink: "Réserver un vol →",
+      hotel: "Hôtels & Vacances", hotelDesc: "Des refuges boutique aux complexes de luxe — hébergements sélectionnés pour chaque goût.", hotelLink: "Trouver un hôtel →",
+      airhelp: "AirHelp – Obtenez une Compensation", airhelpDesc: "Vol retardé ou annulé? Réclamez jusqu'à 600€ de compensation rapidement avec AirHelp.", airhelpLink: "Réclamer maintenant →",
+      transfer: "Transfert Aéroport", transferDesc: "Transferts sans stress, à l'heure, de l'aéroport à l'hôtel. Chauffeurs privés disponibles 24/7.", transferLink: "Réserver un transfert →",
+      sim: "Carte SIM", simDesc: "Restez connecté à l'étranger avec des cartes SIM internationales abordables. Forfaits dans 150+ pays.", simLink: "Obtenir votre SIM →",
+      car: "Location de Voitures", carDesc: "La liberté sur la route. Louez une voiture auprès de partenaires premium à des prix imbattables.", carLink: "Louer une voiture →",
+      insurance: "Assurance Voyage", insuranceDesc: "Voyagez l'esprit tranquille. Couverture complète pour urgences médicales, annulations et bagages perdus.", insuranceLink: "S'assurer →",
+      whyTitle: "Pourquoi <span>Des Milliers</span> Choisissent 4Travel Pro",
+      whyDesc: "Nous combinons technologie de pointe et soin humain pour rendre chaque voyage mémorable.",
+      feat1: "Réservation Instantanée", feat1d: "Confirmez votre voyage en quelques secondes avec disponibilité en temps réel.",
+      feat2: "Garantie Meilleur Prix", feat2d: "Vous l'avez trouvé moins cher? Nous alignons le prix — sans questions.",
+      feat3: "Couverture Mondiale", feat3d: "Services dans 120+ pays avec expertise locale partout.",
+      feat4: "Support Dédié", feat4d: "Nos experts voyage sont disponibles 24/7 pour vous aider.",
+      ctaTitle: "Prêt pour Votre Prochaine Aventure?",
+      ctaDesc: "Rejoignez des milliers de voyageurs satisfaits qui font confiance à 4Travel Pro.",
+      footer: "© 2025 4Travel Pro. Tous droits réservés. Votre partenaire de voyage de confiance.",
+      dir: "ltr"
+    },
+    de: {
+      badge: "Ihr Kompletter Reisepartner",
+      h1: "Reisen Sie <em>Mühelos</em>",
+      heroSub: "Alles, was Sie für die perfekte Reise brauchen — Flüge, Hotels, Transfers, SIM-Karten, Mietwagen und Versicherungen, alles an einem Ort.",
+      exploreBtn: "Dienste Entdecken",
+      happyTravelers: "Zufriedene Reisende",
+      destinations: "Reiseziele",
+      premiumServices: "Premium-Dienste",
+      supportAvailable: "Support Verfügbar",
+      whatWeOffer: "UNSER ANGEBOT",
+      sectionTitle: "Alle Ihre Reisebedürfnisse, Eine Plattform",
+      sectionSub: "Buchen Sie mit Vertrauen — jeder Dienst sorgfältig ausgewählt.",
+      flight: "Flugtickets", flightDesc: "Vergleichen Sie Hunderte von Airlines und finden Sie die besten Tarife für jedes Reiseziel.", flightLink: "Flug buchen →",
+      hotel: "Hotels & Urlaub", hotelDesc: "Von Boutique-Unterkünften bis hin zu Luxusresorts — handverlesene Unterkünfte für jeden Geschmack.", hotelLink: "Hotel finden →",
+      airhelp: "AirHelp – Entschädigung erhalten", airhelpDesc: "Flug verspätet oder gestrichen? Fordern Sie bis zu 600€ Entschädigung schnell mit AirHelp.", airhelpLink: "Jetzt anfordern →",
+      transfer: "Flughafentransfer", transferDesc: "Stressfreie, pünktliche Transfers vom Flughafen zum Hotel. Private Fahrer rund um die Uhr.", transferLink: "Transfer buchen →",
+      sim: "SIM-Karte", simDesc: "Bleiben Sie im Ausland verbunden mit erschwinglichen internationalen SIM-Karten. Datenpläne für 150+ Länder.", simLink: "SIM-Karte holen →",
+      car: "Mietwagen", carDesc: "Freiheit auf der Straße. Mieten Sie ein Auto von Premium-Partnern zu unschlagbaren Preisen.", carLink: "Auto mieten →",
+      insurance: "Reiseversicherung", insuranceDesc: "Reisen Sie mit Seelenfrieden. Umfassende Deckung für medizinische Notfälle, Stornierungen und verlorenes Gepäck.", insuranceLink: "Versichern →",
+      whyTitle: "Warum <span>Tausende</span> 4Travel Pro Wählen",
+      whyDesc: "Wir kombinieren modernste Technologie mit menschlicher Fürsorge für unvergessliche Reisen.",
+      feat1: "Sofortbuchung", feat1d: "Bestätigen Sie Ihre Reise in Sekunden mit Echtzeitverfügbarkeit.",
+      feat2: "Bestpreisgarantie", feat2d: "Günstiger gefunden? Wir gleichen den Preis an — keine Fragen gestellt.",
+      feat3: "Weltweite Abdeckung", feat3d: "Dienste in 120+ Ländern mit lokaler Expertise überall.",
+      feat4: "Dedizierter Support", feat4d: "Unsere Reiseexperten stehen Ihnen 24/7 zur Verfügung.",
+      ctaTitle: "Bereit für Ihr nächstes Abenteuer?",
+      ctaDesc: "Schließen Sie sich Tausenden zufriedener Reisender an, die 4Travel Pro vertrauen.",
+      footer: "© 2025 4Travel Pro. Alle Rechte vorbehalten. Ihr vertrauenswürdiger Reisepartner.",
+      dir: "ltr"
+    },
+    es: {
+      badge: "Su Compañero de Viaje Completo",
+      h1: "Viaja por el Mundo <em>Sin Esfuerzo</em>",
+      heroSub: "Todo lo que necesitas para el viaje perfecto — vuelos, hoteles, traslados, tarjetas SIM, alquiler de coches y seguros, todo en un solo lugar.",
+      exploreBtn: "Explorar Servicios",
+      happyTravelers: "Viajeros Satisfechos",
+      destinations: "Destinos",
+      premiumServices: "Servicios Premium",
+      supportAvailable: "Soporte Disponible",
+      whatWeOffer: "LO QUE OFRECEMOS",
+      sectionTitle: "Todas Sus Necesidades de Viaje, Una Plataforma",
+      sectionSub: "Reserve con confianza — cada servicio cuidadosamente seleccionado por calidad y valor.",
+      flight: "Billetes de Avión", flightDesc: "Compare cientos de aerolíneas y encuentre las mejores tarifas para cualquier destino.", flightLink: "Reservar vuelo →",
+      hotel: "Hoteles & Vacaciones", hotelDesc: "Desde retiros boutique hasta complejos de lujo — alojamientos seleccionados para cada gusto.", hotelLink: "Encontrar hotel →",
+      airhelp: "AirHelp – Obtener Compensación", airhelpDesc: "¿Vuelo retrasado o cancelado? Reclame hasta 600€ de compensación fácilmente con AirHelp.", airhelpLink: "Reclamar ahora →",
+      transfer: "Traslado Aeropuerto", transferDesc: "Traslados puntuales y sin estrés del aeropuerto al hotel. Chóferes privados disponibles 24/7.", transferLink: "Reservar traslado →",
+      sim: "Tarjeta SIM", simDesc: "Manténgase conectado en el extranjero con tarjetas SIM internacionales asequibles. Planes en 150+ países.", simLink: "Obtener SIM →",
+      car: "Alquiler de Coches", carDesc: "Libertad en la carretera. Alquile un coche de socios premium a precios inmejorables.", carLink: "Alquilar coche →",
+      insurance: "Seguro de Viaje", insuranceDesc: "Viaje con tranquilidad. Cobertura completa para emergencias médicas, cancelaciones y equipaje perdido.", insuranceLink: "Asegurarse →",
+      whyTitle: "Por Qué <span>Miles</span> Eligen 4Travel Pro",
+      whyDesc: "Combinamos tecnología de vanguardia con cuidado humano genuino para hacer cada viaje memorable.",
+      feat1: "Reserva Instantánea", feat1d: "Confirme su viaje en segundos con disponibilidad en tiempo real.",
+      feat2: "Garantía de Mejor Precio", feat2d: "¿Lo encontró más barato? Lo igualamos — sin preguntas.",
+      feat3: "Cobertura Global", feat3d: "Servicios en 120+ países con experiencia local en todas partes.",
+      feat4: "Soporte Dedicado", feat4d: "Nuestros expertos en viajes están disponibles 24/7 para ayudarle.",
+      ctaTitle: "¿Listo para su Próxima Aventura?",
+      ctaDesc: "Únase a miles de viajeros satisfechos que confían en 4Travel Pro para cada viaje.",
+      footer: "© 2025 4Travel Pro. Todos los derechos reservados. Su socio de viaje de confianza.",
+      dir: "ltr"
+    },
+    it: {
+      badge: "Il Tuo Partner di Viaggio Completo",
+      h1: "Viaggia nel Mondo <em>Senza Sforzo</em>",
+      heroSub: "Tutto ciò di cui hai bisogno per il viaggio perfetto — voli, hotel, trasferimenti, SIM card, noleggio auto e assicurazioni, tutto in un unico posto.",
+      exploreBtn: "Scopri i Servizi",
+      happyTravelers: "Viaggiatori Soddisfatti",
+      destinations: "Destinazioni",
+      premiumServices: "Servizi Premium",
+      supportAvailable: "Supporto Disponibile",
+      whatWeOffer: "COSA OFFRIAMO",
+      sectionTitle: "Tutte le Tue Esigenze di Viaggio, Una Piattaforma",
+      sectionSub: "Prenota con fiducia — ogni servizio selezionato per qualità e valore.",
+      flight: "Biglietti Aerei", flightDesc: "Confronta centinaia di compagnie aeree e trova le migliori tariffe per qualsiasi destinazione.", flightLink: "Prenota volo →",
+      hotel: "Hotel & Vacanze", hotelDesc: "Da boutique a resort di lusso — alloggi scelti per ogni gusto e budget.", hotelLink: "Trova hotel →",
+      airhelp: "AirHelp – Ottieni Risarcimento", airhelpDesc: "Volo in ritardo o cancellato? Richiedi fino a 600€ di risarcimento facilmente con AirHelp.", airhelpLink: "Richiedi ora →",
+      transfer: "Transfer Aeroporto", transferDesc: "Transfer puntuali e senza stress dall'aeroporto all'hotel. Autisti privati disponibili 24/7.", transferLink: "Prenota transfer →",
+      sim: "SIM Card", simDesc: "Rimani connesso all'estero con SIM card internazionali convenienti. Piani dati per 150+ paesi.", simLink: "Ottieni SIM →",
+      car: "Noleggio Auto", carDesc: "Libertà sulla strada. Noleggia un'auto da partner premium a prezzi imbattibili.", carLink: "Noleggia auto →",
+      insurance: "Assicurazione Viaggio", insuranceDesc: "Viaggia con tranquillità. Copertura completa per emergenze mediche, cancellazioni e bagagli smarriti.", insuranceLink: "Assicurati →",
+      whyTitle: "Perché <span>Migliaia</span> Scelgono 4Travel Pro",
+      whyDesc: "Combiniamo tecnologia all'avanguardia con cura umana autentica per rendere ogni viaggio memorabile.",
+      feat1: "Prenotazione Istantanea", feat1d: "Conferma il tuo viaggio in secondi con disponibilità in tempo reale.",
+      feat2: "Garanzia Miglior Prezzo", feat2d: "Lo hai trovato più economico? Lo pareggiamo — senza domande.",
+      feat3: "Copertura Globale", feat3d: "Servizi in 120+ paesi con competenza locale ovunque.",
+      feat4: "Supporto Dedicato", feat4d: "I nostri esperti di viaggio sono disponibili 24/7 per assisterti.",
+      ctaTitle: "Pronto per la Tua Prossima Avventura?",
+      ctaDesc: "Unisciti a migliaia di viaggiatori soddisfatti che si fidano di 4Travel Pro.",
+      footer: "© 2025 4Travel Pro. Tutti i diritti riservati. Il tuo partner di viaggio di fiducia.",
+      dir: "ltr"
+    },
+    hu: {
+      badge: "Teljes Utazási Partnerünk",
+      h1: "Utazzon a Világban <em>Könnyedén</em>",
+      heroSub: "Minden, ami a tökéletes utazáshoz kell — repülőjegyek, szállodák, transzferek, SIM kártyák, autóbérlés és biztosítás, mind egy helyen.",
+      exploreBtn: "Szolgáltatások Felfedezése",
+      happyTravelers: "Elégedett Utazók",
+      destinations: "Úticélok",
+      premiumServices: "Prémium Szolgáltatások",
+      supportAvailable: "Elérhető Támogatás",
+      whatWeOffer: "AMIT KÍNÁLUNK",
+      sectionTitle: "Minden Utazási Igénye, Egy Platform",
+      sectionSub: "Foglaljon bizalommal — minden szolgáltatás gondosan kiválasztva minőség és érték alapján.",
+      flight: "Repülőjegyek", flightDesc: "Hasonlítsa össze a légitársaságokat és találja meg a legjobb árakat bármely úticélra.", flightLink: "Repülő foglalása →",
+      hotel: "Szállodák & Nyaralás", hotelDesc: "Boutique szállóktól luxusüdülőkig — gondosan válogatott szállások minden ízléshez.", hotelLink: "Szálloda keresése →",
+      airhelp: "AirHelp – Kártérítés Igénylése", airhelpDesc: "Késett vagy törölték a repülőjét? Igényeljen akár 600€ kártérítést az AirHelp segítségével.", airhelpLink: "Igénylés most →",
+      transfer: "Repülőtéri Transzfer", transferDesc: "Stresszmentes, pontos transzfer a repülőtérről a szállodába. Magánsofőrök 24/7.", transferLink: "Transzfer foglalása →",
+      sim: "SIM Kártya", simDesc: "Maradjon kapcsolatban külföldön megfizethető nemzetközi SIM kártyákkal. 150+ ország.", simLink: "SIM kártya igénylése →",
+      car: "Autóbérlés", carDesc: "Szabadság az úton. Béreljen autót prémium partnerektől verhetetlen árakon.", carLink: "Autó bérlése →",
+      insurance: "Utasbiztosítás", insuranceDesc: "Utazzon nyugodtan. Átfogó fedezet orvosi vészhelyzetekre, lemondásokra és elveszett poggyászra.", insuranceLink: "Biztosítás →",
+      whyTitle: "Miért Választják <span>Ezrek</span> a 4Travel Pro-t",
+      whyDesc: "Csúcstechnológiát ötvözünk valódi emberi törődéssel, hogy minden utazás emlékezetes legyen.",
+      feat1: "Azonnali Foglalás", feat1d: "Erősítse meg utazását másodpercek alatt, valós idejű elérhetőséggel.",
+      feat2: "Legjobb Ár Garancia", feat2d: "Olcsóbban találta? Egyenlítjük az árat — kérdések nélkül.",
+      feat3: "Globális Lefedettség", feat3d: "Szolgáltatások 120+ országban helyi szakértelemmel.",
+      feat4: "Dedikált Támogatás", feat4d: "Utazási szakértőink 24/7 rendelkezésére állnak.",
+      ctaTitle: "Készen Áll a Következő Kalandjára?",
+      ctaDesc: "Csatlakozzon az elégedett utazók ezreihez, akik megbíznak a 4Travel Pro-ban.",
+      footer: "© 2025 4Travel Pro. Minden jog fenntartva. Megbízható utazási partnerünk.",
+      dir: "ltr"
+    },
+    tr: {
+      badge: "Eksiksiz Seyahat Ortağınız",
+      h1: "Dünyayı <em>Zahmetsizce</em> Keşfedin",
+      heroSub: "Mükemmel seyahat için ihtiyacınız olan her şey — uçuşlar, oteller, transferler, SIM kartlar, araç kiralama ve sigorta, hepsi tek bir yerde.",
+      exploreBtn: "Hizmetleri Keşfet",
+      happyTravelers: "Mutlu Gezgin",
+      destinations: "Destinasyon",
+      premiumServices: "Premium Hizmet",
+      supportAvailable: "Destek Mevcut",
+      whatWeOffer: "HİZMETLERİMİZ",
+      sectionTitle: "Tüm Seyahat İhtiyaçlarınız, Tek Platform",
+      sectionSub: "Güvenle rezervasyon yapın — her hizmet kalite ve değer için özenle seçilmiştir.",
+      flight: "Uçak Biletleri", flightDesc: "Yüzlerce havayolunu karşılaştırın ve dünyanın her yerine en iyi fiyatları bulun.", flightLink: "Uçuş rezervasyonu →",
+      hotel: "Oteller & Tatiller", hotelDesc: "Butik konaklardan lüks tatil köylerine — her zevke ve bütçeye uygun konaklama.", hotelLink: "Otel bul →",
+      airhelp: "AirHelp – Tazminat Alın", airhelpDesc: "Uçuşunuz gecikti veya iptal mi edildi? AirHelp ile kolayca 600€'ya kadar tazminat talep edin.", airhelpLink: "Şimdi talep et →",
+      transfer: "Havalimanı Transferi", transferDesc: "Stressiz, zamanında havalimanından otele transferler. 7/24 özel sürücüler.", transferLink: "Transfer rezervasyonu →",
+      sim: "SIM Kart", simDesc: "Yurt dışında uygun fiyatlı uluslararası SIM kartlarla bağlantıda kalın. 150+ ülke.", simLink: "SIM kartınızı alın →",
+      car: "Araç Kiralama", carDesc: "Yolda özgürlük. Premium ortaklardan rakipsiz fiyatlarla araç kiralayın.", carLink: "Araç kirala →",
+      insurance: "Seyahat Sigortası", insuranceDesc: "Gönül rahatlığıyla seyahat edin. Tıbbi acil durumlar, iptaller ve kayıp bagaj için kapsamlı teminat.", insuranceLink: "Sigortalanın →",
+      whyTitle: "Neden <span>Binlerce</span> Kişi 4Travel Pro'yu Seçiyor",
+      whyDesc: "Her seyahati unutulmaz kılmak için son teknoloji ile gerçek insan ilgisini bir araya getiriyoruz.",
+      feat1: "Anında Rezervasyon", feat1d: "Gerçek zamanlı müsaitlikle seyahatinizi saniyeler içinde onaylayın.",
+      feat2: "En İyi Fiyat Garantisi", feat2d: "Daha ucuz buldunuz mu? Eşleştiririz — soru sormadan.",
+      feat3: "Küresel Kapsam", feat3d: "120+ ülkede yerel uzmanlıkla hizmet.",
+      feat4: "Özel Destek", feat4d: "Seyahat uzmanlarımız 7/24 hizmetinizdedir.",
+      ctaTitle: "Bir Sonraki Maceranıza Hazır mısınız?",
+      ctaDesc: "Her seyahat için 4Travel Pro'ya güvenen binlerce memnun gezgine katılın.",
+      footer: "© 2025 4Travel Pro. Tüm hakları saklıdır. Güvenilir seyahat ortağınız.",
+      dir: "ltr"
+    },
+    ar: {
+      badge: "شريكك الكامل في السفر",
+      h1: "سافر حول العالم <em>بكل سهولة</em>",
+      heroSub: "كل ما تحتاجه لرحلة مثالية — تذاكر الطيران، الفنادق، النقل، شرائح SIM، تأجير السيارات والتأمين، كل شيء في مكان واحد.",
+      exploreBtn: "استكشف خدماتنا",
+      happyTravelers: "مسافر سعيد",
+      destinations: "وجهة",
+      premiumServices: "خدمة مميزة",
+      supportAvailable: "دعم متاح",
+      whatWeOffer: "ما نقدمه",
+      sectionTitle: "جميع احتياجات سفرك، منصة واحدة",
+      sectionSub: "احجز بثقة — كل خدمة مختارة بعناية للجودة والقيمة.",
+      flight: "تذاكر الطيران", flightDesc: "قارن مئات شركات الطيران وابحث عن أفضل الأسعار لأي وجهة في العالم.", flightLink: "احجز رحلة →",
+      hotel: "فنادق وعطلات", hotelDesc: "من المنتجعات الصغيرة إلى الفنادق الفاخرة — إقامات مختارة لكل ذوق وميزانية.", hotelLink: "ابحث عن فندق →",
+      airhelp: "AirHelp – احصل على تعويض", airhelpDesc: "هل تأخر رحلتك أو ألغيت؟ اطلب تعويضاً حتى 600 يورو بسهولة مع AirHelp.", airhelpLink: "اطلب الآن →",
+      transfer: "نقل المطار", transferDesc: "نقل مريح وفي الوقت المحدد من المطار إلى الفندق. سائقون خاصون متاحون 24/7.", transferLink: "احجز نقلاً →",
+      sim: "شريحة SIM", simDesc: "ابق على اتصال في الخارج بشرائح SIM الدولية بأسعار معقولة. خطط بيانات في 150+ دولة.", simLink: "احصل على شريحتك →",
+      car: "تأجير السيارات", carDesc: "الحرية على الطريق. استأجر سيارة من شركاء متميزين بأسعار لا تُقاوم.", carLink: "استأجر سيارة →",
+      insurance: "تأمين السفر", insuranceDesc: "سافر بأمان. تغطية شاملة للطوارئ الطبية وإلغاء الرحلات والأمتعة المفقودة.", insuranceLink: "تأمين الآن →",
+      whyTitle: "لماذا يختار <span>الآلاف</span> 4Travel Pro",
+      whyDesc: "نجمع بين التكنولوجيا المتطورة والاهتمام الإنساني الحقيقي لجعل كل رحلة لا تُنسى.",
+      feat1: "حجز فوري", feat1d: "أكد رحلتك في ثوانٍ مع توفر في الوقت الفعلي.",
+      feat2: "ضمان أفضل سعر", feat2d: "وجدته أرخص؟ سنطابق السعر — بدون أسئلة.",
+      feat3: "تغطية عالمية", feat3d: "خدمات في 120+ دولة مع خبرة محلية في كل مكان.",
+      feat4: "دعم مخصص", feat4d: "خبراء السفر لدينا متاحون 24/7 لمساعدتك.",
+      ctaTitle: "هل أنت مستعد لمغامرتك القادمة؟",
+      ctaDesc: "انضم إلى آلاف المسافرين الراضين الذين يثقون في 4Travel Pro.",
+      footer: "© 2025 4Travel Pro. جميع الحقوق محفوظة. شريكك الموثوق في السفر حول العالم.",
+      dir: "rtl"
+    }
+  };
+
+  const keys = {
+    badge: '[data-key="badge"]',
+    h1: '[data-key="h1"]',
+    heroSub: '[data-key="heroSub"]',
+    exploreBtn: '[data-key="exploreBtn"]',
+    happyTravelers: '[data-key="happyTravelers"]',
+    destinations: '[data-key="destinations"]',
+    premiumServices: '[data-key="premiumServices"]',
+    supportAvailable: '[data-key="supportAvailable"]',
+    whatWeOffer: '[data-key="whatWeOffer"]',
+    sectionTitle: '[data-key="sectionTitle"]',
+    sectionSub: '[data-key="sectionSub"]',
+    flight: '[data-key="flight"]', flightDesc: '[data-key="flightDesc"]', flightLink: '[data-key="flightLink"]',
+    hotel: '[data-key="hotel"]', hotelDesc: '[data-key="hotelDesc"]', hotelLink: '[data-key="hotelLink"]',
+    airhelp: '[data-key="airhelp"]', airhelpDesc: '[data-key="airhelpDesc"]', airhelpLink: '[data-key="airhelpLink"]',
+    transfer: '[data-key="transfer"]', transferDesc: '[data-key="transferDesc"]', transferLink: '[data-key="transferLink"]',
+    sim: '[data-key="sim"]', simDesc: '[data-key="simDesc"]', simLink: '[data-key="simLink"]',
+    car: '[data-key="car"]', carDesc: '[data-key="carDesc"]', carLink: '[data-key="carLink"]',
+    insurance: '[data-key="insurance"]', insuranceDesc: '[data-key="insuranceDesc"]', insuranceLink: '[data-key="insuranceLink"]',
+    whyTitle: '[data-key="whyTitle"]', whyDesc: '[data-key="whyDesc"]',
+    feat1: '[data-key="feat1"]', feat1d: '[data-key="feat1d"]',
+    feat2: '[data-key="feat2"]', feat2d: '[data-key="feat2d"]',
+    feat3: '[data-key="feat3"]', feat3d: '[data-key="feat3d"]',
+    feat4: '[data-key="feat4"]', feat4d: '[data-key="feat4d"]',
+    ctaTitle: '[data-key="ctaTitle"]', ctaDesc: '[data-key="ctaDesc"]',
+    footer: '[data-key="footer"]'
+  };
+
+  function setLang(lang) {
+    const t = translations[lang];
+    if (!t) return;
+    document.documentElement.setAttribute('dir', t.dir);
+    Object.keys(keys).forEach(k => {
+      const el = document.querySelector(keys[k]);
+      if (el && t[k] !== undefined) el.innerHTML = t[k];
+    });
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = 'https://emrldtp.com/NTAyOTYy.js?t=502962';
+      document.head.appendChild(script);
+  })();
+</script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 """Builds index.html for 4travel.pro (v2 design, Oct 22 2026). Run: python3 build_index.py"""
 import json
+from extra_i18n import EXTRA
 
 KEEP = json.load(open('/tmp/keep.json')) if __import__('os').path.exists('/tmp/keep.json') else json.load(open('i18n_keep.json'))
 json.dump(KEEP, open('i18n_keep.json', 'w'), ensure_ascii=False, indent=1)
@@ -93,12 +94,12 @@ T = {
 TR = {}
 for lang, vals in T.items():
     assert len(vals) == len(K), (lang, len(vals))
-    d = dict(zip(K, vals)); d.update(KEEP[lang]); TR[lang] = d
+    d = dict(zip(K, vals)); d.update(KEEP[lang]); d.update(EXTRA[lang]); TR[lang] = d
 en = TR["en"]
 def t(k): return f'<span data-key="{k}">{en[k]}</span>'
 
-ICONS = {"flights": "M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z", "hotels": "M3 21V7l9-4 9 4v14M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01", "transfer": "M5 17h14M6 17l1.5-6h9L18 17M7 17v2M17 17v2M9 7h6l1 4H8z", "cars": "M3 13l2-6h14l2 6v5H3zM7 18v2M17 18v2M6.5 14.5h.01M17.5 14.5h.01", "esim": "M7 3h7l5 5v13H7zM10 12h6v6h-6z", "tours": "M4 7h16v4a2 2 0 000 4v4H4v-4a2 2 0 000-4zM12 7v12", "comp": "M12 8v4l3 2M12 21a9 9 0 100-18 9 9 0 000 18z"}
-TABDEF = [('flights', 'tabFlights'), ('hotels', 'tabHotels'), ('transfer', 'tabTransfer'), ('cars', 'tabCars'), ('esim', 'tabEsim'), ('tours', 'tabTours'), ('comp', 'tabComp')]
+ICONS = {"bikes": "M5 18a3 3 0 100-6 3 3 0 000 6zM19 18a3 3 0 100-6 3 3 0 000 6zM5 15l4-7h5l3 7M9 8l3 7M14 5h3", "luggage": "M6 7h12v13H6zM9 7V4h6v3M10 11v5M14 11v5", "flights": "M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z", "hotels": "M3 21V7l9-4 9 4v14M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01", "transfer": "M5 17h14M6 17l1.5-6h9L18 17M7 17v2M17 17v2M9 7h6l1 4H8z", "cars": "M3 13l2-6h14l2 6v5H3zM7 18v2M17 18v2M6.5 14.5h.01M17.5 14.5h.01", "esim": "M7 3h7l5 5v13H7zM10 12h6v6h-6z", "tours": "M4 7h16v4a2 2 0 000 4v4H4v-4a2 2 0 000-4zM12 7v12", "comp": "M12 8v4l3 2M12 21a9 9 0 100-18 9 9 0 000 18z"}
+TABDEF = [('flights', 'tabFlights'), ('hotels', 'tabHotels'), ('transfer', 'tabTransfer'), ('cars', 'tabCars'), ('bikes', 'tabBikes'), ('esim', 'tabEsim'), ('tours', 'tabTours'), ('luggage', 'tabLuggage'), ('comp', 'tabComp')]
 DEST = [("barcelona","cBarcelona"),("london","cLondon"),("lisbon","cLisbon"),("paris","cParis"),("milan","cMilan"),("athens","cAthens")]
 IATA = {"barcelona":"BCN","london":"LON","lisbon":"LIS","paris":"PAR","milan":"MIL","athens":"ATH"}
 tabs = "".join(f'''<button type="button" class="svc" role="tab" data-svc="{k}" aria-selected="{'true' if k=='flights' else 'false'}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{ICONS[k]}"/></svg><span data-key="{lk}">{en[lk]}</span></button>''' for k,lk in TABDEF)
@@ -165,12 +166,15 @@ a{{color:inherit}}
 .svc:hover{{background:#E2E8F2}}
 .svc[aria-selected="true"]{{background:#F2711C;color:#fff}}
 [hidden]{{display:none!important}}
+.delay-btn{{display:inline-block;margin-top:1.1rem;border:2px solid #F2711C;color:#FFC9A3;font-weight:700;border-radius:12px;padding:.65rem 1.1rem;text-decoration:none}}
+.delay-btn:hover{{background:#F2711C;color:#fff}}
 .hotel-panel{{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;background:#EEF2F8;border-radius:16px;padding:1.4rem 1.6rem}}
 .hotel-panel p{{margin:0;font-size:1.05rem;font-weight:600;max-width:46ch}}
 .big-btn{{display:inline-block;background:#F2711C;color:#fff;font-weight:700;border-radius:12px;padding:.9rem 1.4rem;text-decoration:none}}
 .big-btn:hover{{background:#C2540A;color:#fff}}
 .alts{{margin:.7rem 0 0;font-size:.95rem;color:var(--soft)}}
 .alts a{{font-weight:700;color:#C2540A;margin-inline-end:.8rem}}
+.alts a.on{{text-decoration:none;background:#FDE7D7;border-radius:8px;padding:.1rem .45rem}}
 .trust{{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;font-size:.92rem;font-weight:600;color:var(--soft)}}
 .trust li{{display:flex;align-items:center;gap:.45rem}}
 .trust svg{{flex:none;color:var(--orange-ink)}}
@@ -236,6 +240,7 @@ footer p{{margin:0;max-width:70ch}}
     <div>
       <h1><span data-key="heroA">{en["heroA"]}</span> <em data-key="heroB">{en["heroB"]}</em></h1>
       <p data-key="heroSub">{en["heroSub"]}</p>
+      <a class="delay-btn" href="https://airhelp.tpm.lv/omacG3Bs" target="_blank" rel="sponsored noopener"><span data-key="ctaDelay">{en["ctaDelay"]}</span> →</a>
     </div>
     <img src="/img/hero.jpg" alt="" width="1600" height="1000" fetchpriority="high">
   </div>
@@ -247,6 +252,7 @@ footer p{{margin:0;max-width:70ch}}
       <div class="svcs" role="tablist">{tabs}</div>
       <div class="widget-slot" id="tp-slot"></div>
       <div class="hotel-panel" id="hotel-panel" hidden><p data-key="hotelText">{en["hotelText"]}</p><a class="big-btn" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fhotels%2F&amp;sid=4travel-hotels" target="_blank" rel="sponsored noopener" data-key="hotelBtn">{en["hotelBtn"]}</a></div>
+      <div class="hotel-panel" id="luggage-panel" hidden><p data-key="luggageText">{en["luggageText"]}</p><a class="big-btn" href="https://radicalstorage.tpm.lv/UYVbS50q" target="_blank" rel="sponsored noopener" data-key="luggageBtn">{en["luggageBtn"]}</a></div>
       <p class="alts" id="alts" hidden><span data-key="altLabel">{en["altLabel"]}</span> <span id="alt-links"></span></p>
       <ul class="trust">
         <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>{t("tr1")}</li>
@@ -264,6 +270,12 @@ footer p{{margin:0;max-width:70ch}}
     </ul>
   </section>
 
+
+  <section id="popular" class="wrap sec">
+    <h2 data-key="popTitle">{en["popTitle"]}</h2>
+    <p class="sec-sub" data-key="popSub">{en["popSub"]}</p>
+    <div class="map-card"><div id="tp-pop"></div></div>
+  </section>
 
   <section id="calendar" class="wrap sec">
     <h2 data-key="calTitle">{en["calTitle"]}</h2>
@@ -292,6 +304,7 @@ footer p{{margin:0;max-width:70ch}}
 <footer>
   <div class="wrap">
     <p><span data-key="disclosure">{en["disclosure"]}</span></p>
+    <p><span data-key="footCurio">{en["footCurio"]}</span> <a href="https://curioandcove.com/travel/">Curio &amp; Cove</a> · <a href="/wizz-air/" data-key="footWizz">{en["footWizz"]}</a></p>
     <p>&copy; <span id="year">2026</span> 4travel.pro · <span data-key="rights">{en["rights"]}</span> · <a href="/privacy.html" data-key="privacy">{en["privacy"]}</a></p>
   </div>
 </footer>
@@ -309,24 +322,37 @@ const SVC = {{
   tours: l => ({{currency: CUR_UP(l), trs:'502962', shmarker:'662933', language:'en', locale:'260932', layout:'horizontal', cards:'4', powered_by:'true', campaign_id:'89', promo_id:'3947'}}),
   comp: l => ({{trs:'502962', shmarker:'662933', lang:'en', powered_by:'true', campaign_id:'120', promo_id:'8679'}})
 }};
+SVC.bikes = l => ({{trs:'502962', shmarker:'662933', locale:'en', powered_by:'true', border_radius:'12', plain:'true', color_background:'#ffffff', color_button:'#F2711C', promo_id:'5472', campaign_id:'57'}});
+const W = {{
+  aviasales: null,
+  welcome: l => ({{trs:'502962', shmarker:'662933', locale:'en', show_header:'true', powered_by:'true', campaign_id:'627', promo_id:'8951'}}),
+  qeeq: l => ({{trs:'502962', shmarker:'662933', locale:'en', powered_by:'true', campaign_id:'172', promo_id:'4850'}}),
+  autoeurope: l => ({{trs:'502962', shmarker:'662933', locale:'en', powered_by:'true', border_radius:'12', plain:'true', show_logo:'true', promo_id:'4362', campaign_id:'143'}}),
+  getrentacar: l => ({{campaign_id:'222', promo_id:'8813', shmarker:'662933', trs:'502962', _host:'tp.media'}}),
+  compensair: l => ({{trs:'502962', shmarker:'662933', locale:'en', border_radius:'12', plain:'true', powered_by:'true', promo_id:'3408', campaign_id:'86'}})
+}};
 SVC.flights = l => ({{currency: CURRENCY[l] || 'eur', trs:'502962', shmarker:'662933', locale: WIDGET_LOCALES[l] || 'en', stops:'any', show_hotels:'true', powered_by:'true', border_radius:'12', plain:'true', color_button:'#F2711C', color_button_text:'#ffffff', promo_id:'3414', campaign_id:'111'}});
 const ALTS = {{
-  flights: [['Aviasales', null]],
-  transfer: [['GetTransfer', 'https://gettransfer.tpm.lv/QP09FoWM']],
-  cars: [['Localrent', 'https://localrent.tpm.lv/XbdoqmvO']],
-  esim: [['Drimsim', 'https://drimsim.tpm.lv/7m9Ga3CC']]
+  flights: [['Aviasales', 'w:aviasales']],
+  transfer: [['Welcome Pickups', 'w:welcome'], ['GetTransfer', 'https://gettransfer.tpm.lv/QP09FoWM']],
+  cars: [['QEEQ', 'w:qeeq'], ['AutoEurope', 'w:autoeurope'], ['GetRentacar', 'w:getrentacar'], ['Localrent', 'https://localrent.tpm.lv/XbdoqmvO']],
+  esim: [['Yesim', 'https://yesim.tpm.lv/39GFBAoB'], ['Drimsim', 'https://drimsim.tpm.lv/7m9Ga3CC']],
+  tours: [['Go City', 'https://gocity.tpm.lv/awdVlMRF']],
+  comp: [['Compensair', 'w:compensair'], ['AirHelp', 'https://airhelp.tpm.lv/omacG3Bs']]
 }};
 function loadSvc(lang){{
   document.querySelectorAll('.svc').forEach(b => b.setAttribute('aria-selected', String(b.dataset.svc === svc)));
-  const slot = document.getElementById('tp-slot'), hp = document.getElementById('hotel-panel');
-  hp.hidden = svc !== 'hotels'; slot.hidden = svc === 'hotels';
+  const slot = document.getElementById('tp-slot'), hp = document.getElementById('hotel-panel'), lp = document.getElementById('luggage-panel');
+  hp.hidden = svc !== 'hotels'; lp.hidden = svc !== 'luggage'; slot.hidden = svc === 'hotels' || svc === 'luggage';
   const alts = ALTS[svc] || [], box = document.getElementById('alt-links');
   document.getElementById('alts').hidden = !alts.length; box.innerHTML = '';
   alts.forEach(([n, u]) => {{ const a = document.createElement('a'); a.textContent = n + ' →';
-    if (u) {{ a.href = u; a.target = '_blank'; a.rel = 'sponsored noopener'; }}
-    else {{ a.href = '#'; a.addEventListener('click', e => {{ e.preventDefault(); loadWidget(document.documentElement.lang); document.getElementById('alts').hidden = true; }}); }}
+    if (!u.startsWith('w:')) {{ a.href = u; a.target = '_blank'; a.rel = 'sponsored noopener'; }}
+    else {{ a.href = '#search'; a.addEventListener('click', e => {{ e.preventDefault(); const k = u.slice(2), lang = document.documentElement.lang;
+      box.querySelectorAll('a').forEach(x => x.classList.remove('on')); a.classList.add('on');
+      if (k === 'aviasales') loadWidget(lang); else tpScript(slot, W[k](lang)); }}); }}
     box.appendChild(a); }});
-  if (svc === 'hotels') {{ slot.innerHTML = ''; return; }}
+  if (svc === 'hotels' || svc === 'luggage') {{ slot.innerHTML = ''; return; }}
   tpScript(slot, SVC[svc](lang));
 }}
 document.querySelectorAll('.svc').forEach(b => b.addEventListener('click', () => {{ svc = b.dataset.svc; loadSvc(document.documentElement.lang); }}));
@@ -349,7 +375,8 @@ const ORIGINS = {{en:['LON',51.5074,-0.1278],ro:['BUH',44.4268,26.1025],fr:['PAR
 function tpScript(slot, params){{
   slot.innerHTML = '';
   const s = document.createElement('script'); s.async = true; s.charset = 'utf-8';
-  s.src = 'https://tpwidg.com/content?' + new URLSearchParams(params).toString();
+  const host = params._host || 'tpwidg.com'; delete params._host;
+  s.src = 'https://' + host + '/content?' + new URLSearchParams(params).toString();
   slot.appendChild(s);
 }}
 function lazy(slot, fn){{
@@ -389,6 +416,8 @@ function setLang(lang){{
   loadSvc(lang);
   loadRoutes(lang);
   loadCal(lang);
+  const pop = document.getElementById('tp-pop');
+  lazy(pop, () => tpScript(pop, {{currency: CURRENCY[lang] || 'eur', trs:'502962', shmarker:'662933', locale: WIDGET_LOCALES[lang] || 'en', powered_by:'true', limit:'6', primary_color:'F2711C', results_background_color:'FFFFFF', form_background_color:'FFFFFF', promo_id:'4563', campaign_id:'111'}}));
 }}
 document.getElementById('lang').addEventListener('change', e => setLang(e.target.value));
 document.getElementById('year').textContent = new Date().getFullYear();

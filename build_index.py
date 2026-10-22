@@ -6,7 +6,7 @@ json.dump(KEEP, open('i18n_keep.json', 'w'), ensure_ascii=False, indent=1)
 
 K = ["navFlights","navHolidays","navIdeas","heroA","heroB","heroSub","tr1","tr2","tr3","destTitle","destCta",
      "cBarcelona","cLondon","cRome","cParis","cMilan","cAthens","holTitle","hol1","hol1d","hol2","hol2d","hol3","hol3d",
-     "holCta","howTitle","h1","h1d","h2","h2d","h3","h3d","langLabel","mapTitle","mapSub","destSub","calTitle","calSub"]
+     "holCta","howTitle","h1","h1d","h2","h2d","h3","h3d","langLabel","mapTitle","mapSub","destSub","calTitle","calSub","tabFlights","tabHotels","tabTransfer","tabCars","tabEsim","tabTours","tabComp","hotelHint"]
 T = {
 "en": ["Flights","Holidays","Weekend ideas","Cheap flights and holidays,","in one search",
  "We compare hundreds of airlines and travel agencies. You pick the best price and book directly with them.",
@@ -16,7 +16,7 @@ T = {
  "Christmas and New Year","The busiest dates of the year: compare early.","Sun and sea","Beach holidays for every budget.",
  "Search flight + hotel →","How it works","Search once","Hundreds of airlines and agencies in one list.",
  "Compare the real price","See times, stops and baggage before you choose.","Book directly",
- "You pay the airline or agency you pick. 4travel.pro adds no fees.","Language","Cheap flights on the map","Prices from your city to destinations around the world. Drag and zoom the map, then tap a city.","The lowest fares found to each city, from different departure airports. Tap a price to see the flights.","When is it cheapest to fly?","Pick a destination and see the lowest price for every month of the year."],
+ "You pay the airline or agency you pick. 4travel.pro adds no fees.","Language","Cheap flights on the map","Prices from your city to destinations around the world. Drag and zoom the map, then tap a city.","The lowest fares found to each city, from different departure airports. Tap a price to see the flights.","When is it cheapest to fly?","Pick a destination and see the lowest price for every month of the year.","Flights","Hotels","Airport transfer","Car rental","eSIM","Tours & tickets","Flight delayed?","In the form, switch to the Hotels tab to search accommodation."],
 "ro": ["Zboruri","Vacanțe","Idei de weekend","Zboruri ieftine și vacanțe,","într-o singură căutare",
  "Comparăm sute de companii aeriene și agenții de turism. Tu alegi cel mai bun preț și rezervi direct la ele.",
  "Sute de companii aeriene și agenții","Fără taxe în plus de la noi","Rezervi direct la vânzător",
@@ -25,7 +25,7 @@ T = {
  "Crăciun și Revelion","Cele mai aglomerate date din an: compară din timp.","Soare și mare","Vacanțe la plajă pentru orice buget.",
  "Caută zbor + hotel →","Cum funcționează","Cauți o dată","Sute de companii aeriene și agenții, într-o singură listă.",
  "Compari prețul real","Vezi orele, escalele și bagajul înainte să alegi.","Rezervi direct",
- "Plătești compania sau agenția aleasă. 4travel.pro nu adaugă taxe.","Limba","Zboruri ieftine pe hartă","Prețuri din orașul tău spre destinații din toată lumea. Mișcă harta, mărește și apasă pe un oraș.","Cele mai mici prețuri găsite spre fiecare oraș, din mai multe aeroporturi de plecare. Apasă pe un preț ca să vezi zborurile.","Când e cel mai ieftin să zbori?","Alege o destinație și vezi cel mai mic preț pentru fiecare lună din an."],
+ "Plătești compania sau agenția aleasă. 4travel.pro nu adaugă taxe.","Limba","Zboruri ieftine pe hartă","Prețuri din orașul tău spre destinații din toată lumea. Mișcă harta, mărește și apasă pe un oraș.","Cele mai mici prețuri găsite spre fiecare oraș, din mai multe aeroporturi de plecare. Apasă pe un preț ca să vezi zborurile.","Când e cel mai ieftin să zbori?","Alege o destinație și vezi cel mai mic preț pentru fiecare lună din an.","Zboruri","Cazări","Transfer aeroport","Închirieri auto","eSIM","Tururi și bilete","Zbor întârziat?","În formular, alege fila Hoteluri ca să cauți cazare."],
 "fr": ["Vols","Séjours","Idées week-end","Vols pas chers et séjours,","en une seule recherche",
  "Nous comparons des centaines de compagnies aériennes et d'agences. Vous choisissez le meilleur prix et réservez directement chez elles.",
  "Des centaines de compagnies et d'agences","Aucuns frais de notre part","Vous réservez directement auprès du vendeur",
@@ -34,7 +34,7 @@ T = {
  "Noël et Nouvel An","Les dates les plus demandées de l'année : comparez tôt.","Soleil et mer","Vacances à la plage pour tous les budgets.",
  "Chercher vol + hôtel →","Comment ça marche","Une seule recherche","Des centaines de compagnies et d'agences dans une seule liste.",
  "Le vrai prix","Horaires, escales et bagages visibles avant de choisir.","Réservation directe",
- "Vous payez la compagnie ou l'agence choisie. 4travel.pro n'ajoute aucuns frais.","Langue","Vols pas chers sur la carte","Les prix depuis votre ville vers le monde entier. Déplacez et zoomez la carte, puis touchez une ville.","Les prix les plus bas trouvés vers chaque ville, depuis plusieurs aéroports de départ. Touchez un prix pour voir les vols.","Quand est-ce le moins cher ?","Choisissez une destination et voyez le prix le plus bas pour chaque mois de l'année."],
+ "Vous payez la compagnie ou l'agence choisie. 4travel.pro n'ajoute aucuns frais.","Langue","Vols pas chers sur la carte","Les prix depuis votre ville vers le monde entier. Déplacez et zoomez la carte, puis touchez une ville.","Les prix les plus bas trouvés vers chaque ville, depuis plusieurs aéroports de départ. Touchez un prix pour voir les vols.","Quand est-ce le moins cher ?","Choisissez une destination et voyez le prix le plus bas pour chaque mois de l'année.","Vols","Hôtels","Transfert aéroport","Location de voiture","eSIM","Visites et billets","Vol retardé ?","Dans le formulaire, choisissez l'onglet Hôtels pour chercher un logement."],
 "de": ["Flüge","Urlaub","Wochenend-Ideen","Günstige Flüge und Urlaub,","in einer Suche",
  "Wir vergleichen Hunderte Airlines und Reiseanbieter. Du wählst den besten Preis und buchst direkt bei ihnen.",
  "Hunderte Airlines und Anbieter","Keine Zusatzgebühren von uns","Du buchst direkt beim Verkäufer",
@@ -43,7 +43,7 @@ T = {
  "Weihnachten und Silvester","Die gefragtesten Termine des Jahres: früh vergleichen.","Sonne und Meer","Strandurlaub für jedes Budget.",
  "Flug + Hotel suchen →","So funktioniert es","Einmal suchen","Hunderte Airlines und Anbieter in einer Liste.",
  "Echten Preis vergleichen","Zeiten, Umstiege und Gepäck sehen, bevor du wählst.","Direkt buchen",
- "Du zahlst die gewählte Airline oder den Anbieter. 4travel.pro erhebt keine Gebühren.","Sprache","Günstige Flüge auf der Karte","Preise von deiner Stadt zu Zielen weltweit. Karte verschieben und zoomen, dann eine Stadt antippen.","Die günstigsten gefundenen Preise in jede Stadt, von verschiedenen Abflughäfen. Tippe auf einen Preis, um die Flüge zu sehen.","Wann ist Fliegen am günstigsten?","Wähle ein Ziel und sieh den niedrigsten Preis für jeden Monat des Jahres."],
+ "Du zahlst die gewählte Airline oder den Anbieter. 4travel.pro erhebt keine Gebühren.","Sprache","Günstige Flüge auf der Karte","Preise von deiner Stadt zu Zielen weltweit. Karte verschieben und zoomen, dann eine Stadt antippen.","Die günstigsten gefundenen Preise in jede Stadt, von verschiedenen Abflughäfen. Tippe auf einen Preis, um die Flüge zu sehen.","Wann ist Fliegen am günstigsten?","Wähle ein Ziel und sieh den niedrigsten Preis für jeden Monat des Jahres.","Flüge","Hotels","Flughafentransfer","Mietwagen","eSIM","Touren & Tickets","Flug verspätet?","Wechsle im Formular zum Tab Hotels, um eine Unterkunft zu suchen."],
 "es": ["Vuelos","Vacaciones","Ideas de fin de semana","Vuelos baratos y vacaciones,","en una sola búsqueda",
  "Comparamos cientos de aerolíneas y agencias. Tú eliges el mejor precio y reservas directamente con ellas.",
  "Cientos de aerolíneas y agencias","Sin comisiones nuestras","Reservas directamente con el vendedor",
@@ -52,7 +52,7 @@ T = {
  "Navidad y Año Nuevo","Las fechas más buscadas del año: compara con tiempo.","Sol y playa","Vacaciones de playa para cualquier presupuesto.",
  "Buscar vuelo + hotel →","Cómo funciona","Buscas una vez","Cientos de aerolíneas y agencias en una sola lista.",
  "Comparas el precio real","Horarios, escalas y equipaje antes de elegir.","Reservas directamente",
- "Pagas a la aerolínea o agencia elegida. 4travel.pro no añade comisiones.","Idioma","Vuelos baratos en el mapa","Precios desde tu ciudad a destinos de todo el mundo. Mueve y amplía el mapa y toca una ciudad.","Los precios más bajos encontrados a cada ciudad, desde varios aeropuertos de salida. Toca un precio para ver los vuelos.","¿Cuándo es más barato volar?","Elige un destino y mira el precio más bajo de cada mes del año."],
+ "Pagas a la aerolínea o agencia elegida. 4travel.pro no añade comisiones.","Idioma","Vuelos baratos en el mapa","Precios desde tu ciudad a destinos de todo el mundo. Mueve y amplía el mapa y toca una ciudad.","Los precios más bajos encontrados a cada ciudad, desde varios aeropuertos de salida. Toca un precio para ver los vuelos.","¿Cuándo es más barato volar?","Elige un destino y mira el precio más bajo de cada mes del año.","Vuelos","Hoteles","Traslado aeropuerto","Alquiler de coche","eSIM","Tours y entradas","¿Vuelo retrasado?","En el formulario, elige la pestaña Hoteles para buscar alojamiento."],
 "it": ["Voli","Vacanze","Idee per il weekend","Voli economici e vacanze,","in un'unica ricerca",
  "Confrontiamo centinaia di compagnie aeree e agenzie. Scegli il prezzo migliore e prenoti direttamente con loro.",
  "Centinaia di compagnie e agenzie","Nessun costo aggiuntivo da parte nostra","Prenoti direttamente con il venditore",
@@ -61,7 +61,7 @@ T = {
  "Natale e Capodanno","Le date più richieste dell'anno: confronta presto.","Sole e mare","Vacanze al mare per ogni budget.",
  "Cerca volo + hotel →","Come funziona","Cerchi una volta","Centinaia di compagnie e agenzie in un'unica lista.",
  "Confronti il prezzo reale","Orari, scali e bagaglio prima di scegliere.","Prenoti direttamente",
- "Paghi la compagnia o l'agenzia scelta. 4travel.pro non aggiunge costi.","Lingua","Voli economici sulla mappa","Prezzi dalla tua città verso destinazioni in tutto il mondo. Sposta e ingrandisci la mappa, poi tocca una città.","I prezzi più bassi trovati verso ogni città, da diversi aeroporti di partenza. Tocca un prezzo per vedere i voli.","Quando conviene volare?","Scegli una destinazione e vedi il prezzo più basso per ogni mese dell'anno."],
+ "Paghi la compagnia o l'agenzia scelta. 4travel.pro non aggiunge costi.","Lingua","Voli economici sulla mappa","Prezzi dalla tua città verso destinazioni in tutto il mondo. Sposta e ingrandisci la mappa, poi tocca una città.","I prezzi più bassi trovati verso ogni città, da diversi aeroporti di partenza. Tocca un prezzo per vedere i voli.","Quando conviene volare?","Scegli una destinazione e vedi il prezzo più basso per ogni mese dell'anno.","Voli","Hotel","Transfer aeroporto","Noleggio auto","eSIM","Tour e biglietti","Volo in ritardo?","Nel modulo scegli la scheda Hotel per cercare un alloggio."],
 "hu": ["Repülőjegyek","Nyaralás","Hétvégi ötletek","Olcsó repülőjegyek és nyaralások,","egyetlen kereséssel",
  "Több száz légitársaságot és utazási irodát hasonlítunk össze. Te választod ki a legjobb árat, és közvetlenül náluk foglalsz.",
  "Több száz légitársaság és iroda","Tőlünk nincs extra díj","Közvetlenül az eladónál foglalsz",
@@ -70,7 +70,7 @@ T = {
  "Karácsony és szilveszter","Az év legkeresettebb időpontjai: hasonlíts korán.","Nap és tenger","Tengerparti nyaralás minden pénztárcához.",
  "Repülő + szálloda keresése →","Hogyan működik","Egyszer keresel","Több száz légitársaság és iroda egy listában.",
  "A valódi árat látod","Időpontok, átszállások és poggyász a választás előtt.","Közvetlenül foglalsz",
- "A választott légitársaságnak vagy irodának fizetsz. A 4travel.pro nem számít fel díjat.","Nyelv","Olcsó járatok a térképen","Árak a városodból úti célokba szerte a világon. Mozgasd és nagyítsd a térképet, majd koppints egy városra.","A talált legolcsóbb árak minden városba, több indulási repülőtérről. Koppints egy árra a járatokért.","Mikor a legolcsóbb repülni?","Válassz úti célt, és nézd meg a legalacsonyabb árat az év minden hónapjára."],
+ "A választott légitársaságnak vagy irodának fizetsz. A 4travel.pro nem számít fel díjat.","Nyelv","Olcsó járatok a térképen","Árak a városodból úti célokba szerte a világon. Mozgasd és nagyítsd a térképet, majd koppints egy városra.","A talált legolcsóbb árak minden városba, több indulási repülőtérről. Koppints egy árra a járatokért.","Mikor a legolcsóbb repülni?","Válassz úti célt, és nézd meg a legalacsonyabb árat az év minden hónapjára.","Repülőjegyek","Szállás","Reptéri transzfer","Autóbérlés","eSIM","Túrák és jegyek","Késett a járat?","Az űrlapon válaszd a Szállodák fület a szálláskereséshez."],
 "tr": ["Uçuşlar","Tatiller","Hafta sonu fikirleri","Ucuz uçuşlar ve tatiller,","tek aramada",
  "Yüzlerce havayolunu ve acenteyi karşılaştırıyoruz. En iyi fiyatı sen seçer, doğrudan onlardan rezervasyon yaparsın.",
  "Yüzlerce havayolu ve acente","Bizden ek ücret yok","Doğrudan satıcıdan alırsın",
@@ -79,7 +79,7 @@ T = {
  "Yılbaşı ve Noel","Yılın en yoğun tarihleri: erkenden karşılaştır.","Güneş ve deniz","Her bütçeye plaj tatili.",
  "Uçuş + otel ara →","Nasıl çalışır","Bir kez ara","Yüzlerce havayolu ve acente tek listede.",
  "Gerçek fiyatı karşılaştır","Saatleri, aktarmaları ve bagajı seçmeden önce gör.","Doğrudan rezervasyon",
- "Seçtiğin havayoluna veya acenteye ödersin. 4travel.pro ücret eklemez.","Dil","Haritada ucuz uçuşlar","Şehrinden dünyanın dört bir yanına fiyatlar. Haritayı kaydır, yakınlaştır ve bir şehre dokun.","Her şehre farklı kalkış havalimanlarından bulunan en düşük fiyatlar. Uçuşları görmek için bir fiyata dokun.","Ne zaman uçmak en ucuz?","Bir yer seç ve yılın her ayı için en düşük fiyatı gör."],
+ "Seçtiğin havayoluna veya acenteye ödersin. 4travel.pro ücret eklemez.","Dil","Haritada ucuz uçuşlar","Şehrinden dünyanın dört bir yanına fiyatlar. Haritayı kaydır, yakınlaştır ve bir şehre dokun.","Her şehre farklı kalkış havalimanlarından bulunan en düşük fiyatlar. Uçuşları görmek için bir fiyata dokun.","Ne zaman uçmak en ucuz?","Bir yer seç ve yılın her ayı için en düşük fiyatı gör.","Uçuşlar","Oteller","Havalimanı transferi","Araç kiralama","eSIM","Turlar ve biletler","Uçuş gecikti mi?","Konaklama aramak için formda Oteller sekmesini seç."],
 "ar": ["رحلات الطيران","العطلات","أفكار لعطلة نهاية الأسبوع","رحلات طيران رخيصة وعطلات،","في بحث واحد",
  "نقارن مئات شركات الطيران ووكالات السفر. أنت تختار أفضل سعر وتحجز مباشرة لديهم.",
  "مئات شركات الطيران والوكالات","لا رسوم إضافية منّا","تحجز مباشرة لدى البائع",
@@ -88,7 +88,7 @@ T = {
  "عيد الميلاد ورأس السنة","أكثر مواعيد السنة طلبًا: قارن مبكرًا.","شمس وبحر","عطلات شاطئية لكل الميزانيات.",
  "ابحث عن طيران + فندق ←","كيف يعمل","ابحث مرة واحدة","مئات شركات الطيران والوكالات في قائمة واحدة.",
  "قارن السعر الحقيقي","اطّلع على المواعيد والتوقفات والأمتعة قبل الاختيار.","احجز مباشرة",
- "تدفع لشركة الطيران أو الوكالة التي تختارها. لا يضيف 4travel.pro أي رسوم.","اللغة","رحلات رخيصة على الخريطة","الأسعار من مدينتك إلى وجهات حول العالم. حرّك الخريطة وكبّرها ثم اضغط على مدينة.","أقل الأسعار التي وجدناها إلى كل مدينة من مطارات مغادرة مختلفة. اضغط على سعر لرؤية الرحلات.","متى يكون الطيران أرخص؟","اختر وجهة وشاهد أقل سعر لكل شهر من السنة."],
+ "تدفع لشركة الطيران أو الوكالة التي تختارها. لا يضيف 4travel.pro أي رسوم.","اللغة","رحلات رخيصة على الخريطة","الأسعار من مدينتك إلى وجهات حول العالم. حرّك الخريطة وكبّرها ثم اضغط على مدينة.","أقل الأسعار التي وجدناها إلى كل مدينة من مطارات مغادرة مختلفة. اضغط على سعر لرؤية الرحلات.","متى يكون الطيران أرخص؟","اختر وجهة وشاهد أقل سعر لكل شهر من السنة.","رحلات الطيران","الفنادق","التوصيل من المطار","تأجير السيارات","شريحة eSIM","جولات وتذاكر","تأخرت رحلتك؟","في النموذج اختر تبويب الفنادق للبحث عن إقامة."],
 }
 TR = {}
 for lang, vals in T.items():
@@ -97,8 +97,11 @@ for lang, vals in T.items():
 en = TR["en"]
 def t(k): return f'<span data-key="{k}">{en[k]}</span>'
 
+ICONS = {"flights": "M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z", "hotels": "M3 21V7l9-4 9 4v14M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01", "transfer": "M5 17h14M6 17l1.5-6h9L18 17M7 17v2M17 17v2M9 7h6l1 4H8z", "cars": "M3 13l2-6h14l2 6v5H3zM7 18v2M17 18v2M6.5 14.5h.01M17.5 14.5h.01", "esim": "M7 3h7l5 5v13H7zM10 12h6v6h-6z", "tours": "M4 7h16v4a2 2 0 000 4v4H4v-4a2 2 0 000-4zM12 7v12", "comp": "M12 8v4l3 2M12 21a9 9 0 100-18 9 9 0 000 18z"}
+TABDEF = [('flights', 'tabFlights'), ('hotels', 'tabHotels'), ('transfer', 'tabTransfer'), ('cars', 'tabCars'), ('esim', 'tabEsim'), ('tours', 'tabTours'), ('comp', 'tabComp')]
 DEST = [("barcelona","cBarcelona"),("london","cLondon"),("rome","cRome"),("paris","cParis"),("milan","cMilan"),("athens","cAthens")]
 IATA = {"barcelona":"BCN","london":"LON","rome":"ROM","paris":"PAR","milan":"MIL","athens":"ATH"}
+tabs = "".join(f'''<button type="button" class="svc" role="tab" data-svc="{k}" aria-selected="{'true' if k=='flights' else 'false'}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{ICONS[k]}"/></svg><span data-key="{lk}">{en[lk]}</span></button>''' for k,lk in TABDEF)
 dest = "\n".join(f'''      <li class="w-card"><div class="tp-route" data-dest="{IATA[f]}"></div></li>''' for f,k in DEST)
 chips = "".join(f'''<button type="button" class="chip" data-dest="{IATA[f]}"><img src="/img/{f}.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="{k}">{en[k]}</span></button>''' for f,k in DEST)
 HOL = [("citybreak","hol1","hol1d"),("winter","hol2","hol2d"),("beach","hol3","hol3d")]
@@ -157,6 +160,11 @@ a{{color:inherit}}
 .search{{margin-top:-5.5rem;position:relative;z-index:2}}
 .search-card{{background:var(--card);border-radius:22px;padding:clamp(.8rem,2.5vw,1.6rem);box-shadow:0 22px 50px rgba(14,30,58,.18)}}
 .widget-slot{{min-height:190px}}
+.svcs{{display:flex;gap:.4rem;overflow-x:auto;margin:0 0 1rem;padding-bottom:.3rem;scrollbar-width:thin}}
+.svc{{flex:0 0 auto;display:flex;align-items:center;gap:.45rem;border:0;background:#EEF2F8;color:var(--navy);border-radius:999px;padding:.6rem 1rem;font:600 .95rem inherit;font-family:inherit;cursor:pointer;white-space:nowrap}}
+.svc:hover{{background:#E2E8F2}}
+.svc[aria-selected="true"]{{background:#F2711C;color:#fff}}
+.hint{{margin:-.4rem 0 .8rem;color:var(--soft);font-size:.92rem}}
 .trust{{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;font-size:.92rem;font-weight:600;color:var(--soft)}}
 .trust li{{display:flex;align-items:center;gap:.45rem}}
 .trust svg{{flex:none;color:var(--orange-ink)}}
@@ -230,6 +238,8 @@ footer p{{margin:0;max-width:70ch}}
 <main>
   <section id="search" class="wrap search" aria-label="Search flights">
     <div class="search-card">
+      <div class="svcs" role="tablist">{tabs}</div>
+      <p class="hint" id="hotel-hint" hidden data-key="hotelHint">{en["hotelHint"]}</p>
       <div class="widget-slot" id="tp-slot"></div>
       <ul class="trust">
         <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>{t("tr1")}</li>
@@ -247,11 +257,6 @@ footer p{{margin:0;max-width:70ch}}
     </ul>
   </section>
 
-  <section id="map" class="wrap sec">
-    <h2 data-key="mapTitle">{en["mapTitle"]}</h2>
-    <p class="sec-sub" data-key="mapSub">{en["mapSub"]}</p>
-    <div class="map-card"><div id="tp-map"></div></div>
-  </section>
 
   <section id="calendar" class="wrap sec">
     <h2 data-key="calTitle">{en["calTitle"]}</h2>
@@ -288,6 +293,22 @@ footer p{{margin:0;max-width:70ch}}
 const translations = {json.dumps(TR, ensure_ascii=False)};
 const WIDGET_LOCALES = {{en:'en',fr:'fr',de:'de',es:'es',it:'it',tr:'tr'}};
 const CURRENCY = {{tr:'try',ar:'usd',hu:'eur',ro:'eur'}};
+let svc = 'flights';
+const CUR_UP = l => (CURRENCY[l] || 'eur').toUpperCase();
+const SVC = {{
+  transfer: l => ({{currency: CUR_UP(l), trs:'502962', shmarker:'662933', locale:'en', from:'', to:'', country:'', powered_by:'true', height:'', wtype:'true', transfers_limit:'10', button_color:'#F2711C', button_hover_color:'#C2540A', campaign_id:'1', promo_id:'2949'}}),
+  cars: l => ({{trs:'502962', shmarker:'662933', locale:'en', powered_by:'true', border_radius:'12', plain:'true', show_logo:'true', promo_id:'4480', campaign_id:'10'}}),
+  esim: l => ({{trs:'502962', shmarker:'662933', locale:'en', powered_by:'true', secondary:'#FFFFFF', dark:'#0E1E3A', light:'#FFFFFF', special:'#C4C4C4', border_radius:'12', plain:'false', no_labels:'true', promo_id:'8588', campaign_id:'541'}}),
+  tours: l => ({{currency: CUR_UP(l), trs:'502962', shmarker:'662933', language:'en', locale:'260932', layout:'horizontal', cards:'4', powered_by:'true', campaign_id:'89', promo_id:'3947'}}),
+  comp: l => ({{trs:'502962', shmarker:'662933', lang:'en', powered_by:'true', campaign_id:'120', promo_id:'8679'}})
+}};
+function loadSvc(lang){{
+  document.querySelectorAll('.svc').forEach(b => b.setAttribute('aria-selected', String(b.dataset.svc === svc)));
+  document.getElementById('hotel-hint').hidden = svc !== 'hotels';
+  if (svc === 'flights' || svc === 'hotels') return loadWidget(lang);
+  tpScript(document.getElementById('tp-slot'), SVC[svc](lang));
+}}
+document.querySelectorAll('.svc').forEach(b => b.addEventListener('click', () => {{ svc = b.dataset.svc; loadSvc(document.documentElement.lang); }}));
 function loadWidget(lang){{
   const slot = document.getElementById('tp-slot');
   slot.innerHTML = '';
@@ -360,8 +381,7 @@ function setLang(lang){{
   document.querySelectorAll('[data-key]').forEach(el => {{ const v = t[el.dataset.key]; if (v !== undefined) el.textContent = v; }});
   document.getElementById('lang').value = lang;
   try {{ localStorage.setItem('lang', lang); }} catch (e) {{}}
-  loadWidget(lang);
-  loadMap(lang);
+  loadSvc(lang);
   loadRoutes(lang);
   loadCal(lang);
 }}

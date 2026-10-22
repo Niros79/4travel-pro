@@ -105,7 +105,7 @@ tabs = "".join(f'''<button type="button" class="svc" role="tab" data-svc="{k}" a
 dest = "\n".join(f'''      <li class="w-card"><div class="tp-route" data-dest="{IATA[f]}"></div></li>''' for f,k in DEST)
 chips = "".join(f'''<button type="button" class="chip" data-dest="{IATA[f]}"><img src="/img/{f}.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="{k}">{en[k]}</span></button>''' for f,k in DEST)
 HOL = [("citybreak","hol1","hol1d"),("winter","hol2","hol2d"),("beach","hol3","hol3d")]
-hol = "\n".join(f'''      <li><a class="hol" href="#search"><img src="/img/{f}.jpg" alt="" width="900" height="600" loading="lazy"><span class="hol-body"><span class="hol-title" data-key="{a}">{en[a]}</span><span class="hol-desc" data-key="{b}">{en[b]}</span><span class="hol-cta" data-key="holCta">{en["holCta"]}</span></span></a></li>''' for f,a,b in HOL)
+hol = "\n".join(f'''      <li><a class="hol" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fpackages%2F&amp;sid=4travel-{f}" target="_blank" rel="sponsored noopener"><img src="/img/{f}.jpg" alt="" width="900" height="600" loading="lazy"><span class="hol-body"><span class="hol-title" data-key="{a}">{en[a]}</span><span class="hol-desc" data-key="{b}">{en[b]}</span><span class="hol-cta" data-key="holCta">{en["holCta"]}</span></span></a></li>''' for f,a,b in HOL)
 
 LANGS = [("en","English"),("ro","Română"),("fr","Français"),("de","Deutsch"),("es","Español"),("it","Italiano"),("hu","Magyar"),("tr","Türkçe"),("ar","العربية")]
 opts = "".join(f'<option value="{c}">{n}</option>' for c,n in LANGS)

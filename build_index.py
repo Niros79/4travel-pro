@@ -161,7 +161,8 @@ a{{color:inherit}}
 .search{{margin-top:-5.5rem;position:relative;z-index:2}}
 .search-card{{background:var(--card);border-radius:22px;padding:clamp(.8rem,2.5vw,1.6rem);box-shadow:0 22px 50px rgba(14,30,58,.18)}}
 .widget-slot{{min-height:190px}}
-.svcs{{display:flex;gap:.4rem;overflow-x:auto;margin:0 0 1rem;padding-bottom:.3rem;scrollbar-width:thin}}
+.svcs{{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1rem}}
+@media (max-width:640px){{.svcs{{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.3rem;scrollbar-width:thin}}}}
 .svc{{flex:0 0 auto;display:flex;align-items:center;gap:.45rem;border:0;background:#EEF2F8;color:var(--navy);border-radius:999px;padding:.6rem 1rem;font:600 .95rem inherit;font-family:inherit;cursor:pointer;white-space:nowrap}}
 .svc:hover{{background:#E2E8F2}}
 .svc[aria-selected="true"]{{background:#F2711C;color:#fff}}

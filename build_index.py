@@ -5,13 +5,13 @@ KEEP = json.load(open('/tmp/keep.json')) if __import__('os').path.exists('/tmp/k
 json.dump(KEEP, open('i18n_keep.json', 'w'), ensure_ascii=False, indent=1)
 
 K = ["navFlights","navHolidays","navIdeas","heroA","heroB","heroSub","tr1","tr2","tr3","destTitle","destCta",
-     "cBarcelona","cLondon","cRome","cParis","cMilan","cAthens","holTitle","hol1","hol1d","hol2","hol2d","hol3","hol3d",
+     "cBarcelona","cLondon","cLisbon","cParis","cMilan","cAthens","holTitle","hol1","hol1d","hol2","hol2d","hol3","hol3d",
      "holCta","howTitle","h1","h1d","h2","h2d","h3","h3d","langLabel","mapTitle","mapSub","destSub","calTitle","calSub","tabFlights","tabHotels","tabTransfer","tabCars","tabEsim","tabTours","tabComp","hotelHint"]
 T = {
 "en": ["Flights","Holidays","Weekend ideas","Cheap flights and holidays,","in one search",
  "We compare hundreds of airlines and travel agencies. You pick the best price and book directly with them.",
  "Hundreds of airlines and agencies","No extra fees from us","You book directly with the seller",
- "Where to this weekend?","Search flights →","Barcelona","London","Rome","Paris","Milan","Athens",
+ "Where to this weekend?","Search flights →","Barcelona","London","Lisbon","Paris","Milan","Athens",
  "Holidays with flight + hotel","3-day city break","Flight and a central hotel, booked together.",
  "Christmas and New Year","The busiest dates of the year: compare early.","Sun and sea","Beach holidays for every budget.",
  "Search flight + hotel →","How it works","Search once","Hundreds of airlines and agencies in one list.",
@@ -20,7 +20,7 @@ T = {
 "ro": ["Zboruri","Vacanțe","Idei de weekend","Zboruri ieftine și vacanțe,","într-o singură căutare",
  "Comparăm sute de companii aeriene și agenții de turism. Tu alegi cel mai bun preț și rezervi direct la ele.",
  "Sute de companii aeriene și agenții","Fără taxe în plus de la noi","Rezervi direct la vânzător",
- "Unde zbori în weekend?","Caută zboruri →","Barcelona","Londra","Roma","Paris","Milano","Atena",
+ "Unde zbori în weekend?","Caută zboruri →","Barcelona","Londra","Lisabona","Paris","Milano","Atena",
  "Vacanțe cu zbor + hotel","City break de 3 zile","Zbor și hotel central, rezervate împreună.",
  "Crăciun și Revelion","Cele mai aglomerate date din an: compară din timp.","Soare și mare","Vacanțe la plajă pentru orice buget.",
  "Caută zbor + hotel →","Cum funcționează","Cauți o dată","Sute de companii aeriene și agenții, într-o singură listă.",
@@ -29,7 +29,7 @@ T = {
 "fr": ["Vols","Séjours","Idées week-end","Vols pas chers et séjours,","en une seule recherche",
  "Nous comparons des centaines de compagnies aériennes et d'agences. Vous choisissez le meilleur prix et réservez directement chez elles.",
  "Des centaines de compagnies et d'agences","Aucuns frais de notre part","Vous réservez directement auprès du vendeur",
- "Où partir ce week-end ?","Chercher un vol →","Barcelone","Londres","Rome","Paris","Milan","Athènes",
+ "Où partir ce week-end ?","Chercher un vol →","Barcelone","Londres","Lisbonne","Paris","Milan","Athènes",
  "Séjours vol + hôtel","City break de 3 jours","Vol et hôtel central, réservés ensemble.",
  "Noël et Nouvel An","Les dates les plus demandées de l'année : comparez tôt.","Soleil et mer","Vacances à la plage pour tous les budgets.",
  "Chercher vol + hôtel →","Comment ça marche","Une seule recherche","Des centaines de compagnies et d'agences dans une seule liste.",
@@ -38,7 +38,7 @@ T = {
 "de": ["Flüge","Urlaub","Wochenend-Ideen","Günstige Flüge und Urlaub,","in einer Suche",
  "Wir vergleichen Hunderte Airlines und Reiseanbieter. Du wählst den besten Preis und buchst direkt bei ihnen.",
  "Hunderte Airlines und Anbieter","Keine Zusatzgebühren von uns","Du buchst direkt beim Verkäufer",
- "Wohin am Wochenende?","Flüge suchen →","Barcelona","London","Rom","Paris","Mailand","Athen",
+ "Wohin am Wochenende?","Flüge suchen →","Barcelona","London","Lissabon","Paris","Mailand","Athen",
  "Urlaub mit Flug + Hotel","3 Tage Städtereise","Flug und zentrales Hotel, zusammen gebucht.",
  "Weihnachten und Silvester","Die gefragtesten Termine des Jahres: früh vergleichen.","Sonne und Meer","Strandurlaub für jedes Budget.",
  "Flug + Hotel suchen →","So funktioniert es","Einmal suchen","Hunderte Airlines und Anbieter in einer Liste.",
@@ -47,7 +47,7 @@ T = {
 "es": ["Vuelos","Vacaciones","Ideas de fin de semana","Vuelos baratos y vacaciones,","en una sola búsqueda",
  "Comparamos cientos de aerolíneas y agencias. Tú eliges el mejor precio y reservas directamente con ellas.",
  "Cientos de aerolíneas y agencias","Sin comisiones nuestras","Reservas directamente con el vendedor",
- "¿A dónde este fin de semana?","Buscar vuelos →","Barcelona","Londres","Roma","París","Milán","Atenas",
+ "¿A dónde este fin de semana?","Buscar vuelos →","Barcelona","Londres","Lisboa","París","Milán","Atenas",
  "Vacaciones con vuelo + hotel","Escapada de 3 días","Vuelo y hotel céntrico, reservados juntos.",
  "Navidad y Año Nuevo","Las fechas más buscadas del año: compara con tiempo.","Sol y playa","Vacaciones de playa para cualquier presupuesto.",
  "Buscar vuelo + hotel →","Cómo funciona","Buscas una vez","Cientos de aerolíneas y agencias en una sola lista.",
@@ -56,7 +56,7 @@ T = {
 "it": ["Voli","Vacanze","Idee per il weekend","Voli economici e vacanze,","in un'unica ricerca",
  "Confrontiamo centinaia di compagnie aeree e agenzie. Scegli il prezzo migliore e prenoti direttamente con loro.",
  "Centinaia di compagnie e agenzie","Nessun costo aggiuntivo da parte nostra","Prenoti direttamente con il venditore",
- "Dove andare questo weekend?","Cerca voli →","Barcellona","Londra","Roma","Parigi","Milano","Atene",
+ "Dove andare questo weekend?","Cerca voli →","Barcellona","Londra","Lisbona","Parigi","Milano","Atene",
  "Vacanze volo + hotel","City break di 3 giorni","Volo e hotel in centro, prenotati insieme.",
  "Natale e Capodanno","Le date più richieste dell'anno: confronta presto.","Sole e mare","Vacanze al mare per ogni budget.",
  "Cerca volo + hotel →","Come funziona","Cerchi una volta","Centinaia di compagnie e agenzie in un'unica lista.",
@@ -65,7 +65,7 @@ T = {
 "hu": ["Repülőjegyek","Nyaralás","Hétvégi ötletek","Olcsó repülőjegyek és nyaralások,","egyetlen kereséssel",
  "Több száz légitársaságot és utazási irodát hasonlítunk össze. Te választod ki a legjobb árat, és közvetlenül náluk foglalsz.",
  "Több száz légitársaság és iroda","Tőlünk nincs extra díj","Közvetlenül az eladónál foglalsz",
- "Hová utazz a hétvégén?","Járatok keresése →","Barcelona","London","Róma","Párizs","Milánó","Athén",
+ "Hová utazz a hétvégén?","Járatok keresése →","Barcelona","London","Lisszabon","Párizs","Milánó","Athén",
  "Nyaralás repülővel + szállással","3 napos városlátogatás","Repülőjegy és belvárosi szálloda együtt foglalva.",
  "Karácsony és szilveszter","Az év legkeresettebb időpontjai: hasonlíts korán.","Nap és tenger","Tengerparti nyaralás minden pénztárcához.",
  "Repülő + szálloda keresése →","Hogyan működik","Egyszer keresel","Több száz légitársaság és iroda egy listában.",
@@ -74,7 +74,7 @@ T = {
 "tr": ["Uçuşlar","Tatiller","Hafta sonu fikirleri","Ucuz uçuşlar ve tatiller,","tek aramada",
  "Yüzlerce havayolunu ve acenteyi karşılaştırıyoruz. En iyi fiyatı sen seçer, doğrudan onlardan rezervasyon yaparsın.",
  "Yüzlerce havayolu ve acente","Bizden ek ücret yok","Doğrudan satıcıdan alırsın",
- "Bu hafta sonu nereye?","Uçuş ara →","Barselona","Londra","Roma","Paris","Milano","Atina",
+ "Bu hafta sonu nereye?","Uçuş ara →","Barselona","Londra","Lizbon","Paris","Milano","Atina",
  "Uçuş + otel tatilleri","3 günlük şehir turu","Uçuş ve merkezi otel birlikte.",
  "Yılbaşı ve Noel","Yılın en yoğun tarihleri: erkenden karşılaştır.","Güneş ve deniz","Her bütçeye plaj tatili.",
  "Uçuş + otel ara →","Nasıl çalışır","Bir kez ara","Yüzlerce havayolu ve acente tek listede.",
@@ -83,7 +83,7 @@ T = {
 "ar": ["رحلات الطيران","العطلات","أفكار لعطلة نهاية الأسبوع","رحلات طيران رخيصة وعطلات،","في بحث واحد",
  "نقارن مئات شركات الطيران ووكالات السفر. أنت تختار أفضل سعر وتحجز مباشرة لديهم.",
  "مئات شركات الطيران والوكالات","لا رسوم إضافية منّا","تحجز مباشرة لدى البائع",
- "إلى أين في عطلة نهاية الأسبوع؟","ابحث عن رحلات ←","برشلونة","لندن","روما","باريس","ميلانو","أثينا",
+ "إلى أين في عطلة نهاية الأسبوع؟","ابحث عن رحلات ←","برشلونة","لندن","لشبونة","باريس","ميلانو","أثينا",
  "عطلات مع الطيران + الفندق","عطلة مدينة لمدة 3 أيام","رحلة طيران وفندق في المركز، محجوزان معًا.",
  "عيد الميلاد ورأس السنة","أكثر مواعيد السنة طلبًا: قارن مبكرًا.","شمس وبحر","عطلات شاطئية لكل الميزانيات.",
  "ابحث عن طيران + فندق ←","كيف يعمل","ابحث مرة واحدة","مئات شركات الطيران والوكالات في قائمة واحدة.",
@@ -99,8 +99,8 @@ def t(k): return f'<span data-key="{k}">{en[k]}</span>'
 
 ICONS = {"flights": "M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z", "hotels": "M3 21V7l9-4 9 4v14M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01", "transfer": "M5 17h14M6 17l1.5-6h9L18 17M7 17v2M17 17v2M9 7h6l1 4H8z", "cars": "M3 13l2-6h14l2 6v5H3zM7 18v2M17 18v2M6.5 14.5h.01M17.5 14.5h.01", "esim": "M7 3h7l5 5v13H7zM10 12h6v6h-6z", "tours": "M4 7h16v4a2 2 0 000 4v4H4v-4a2 2 0 000-4zM12 7v12", "comp": "M12 8v4l3 2M12 21a9 9 0 100-18 9 9 0 000 18z"}
 TABDEF = [('flights', 'tabFlights'), ('hotels', 'tabHotels'), ('transfer', 'tabTransfer'), ('cars', 'tabCars'), ('esim', 'tabEsim'), ('tours', 'tabTours'), ('comp', 'tabComp')]
-DEST = [("barcelona","cBarcelona"),("london","cLondon"),("rome","cRome"),("paris","cParis"),("milan","cMilan"),("athens","cAthens")]
-IATA = {"barcelona":"BCN","london":"LON","rome":"ROM","paris":"PAR","milan":"MIL","athens":"ATH"}
+DEST = [("barcelona","cBarcelona"),("london","cLondon"),("lisbon","cLisbon"),("paris","cParis"),("milan","cMilan"),("athens","cAthens")]
+IATA = {"barcelona":"BCN","london":"LON","lisbon":"LIS","paris":"PAR","milan":"MIL","athens":"ATH"}
 tabs = "".join(f'''<button type="button" class="svc" role="tab" data-svc="{k}" aria-selected="{'true' if k=='flights' else 'false'}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{ICONS[k]}"/></svg><span data-key="{lk}">{en[lk]}</span></button>''' for k,lk in TABDEF)
 dest = "\n".join(f'''      <li class="w-card"><div class="tp-route" data-dest="{IATA[f]}"></div></li>''' for f,k in DEST)
 chips = "".join(f'''<button type="button" class="chip" data-dest="{IATA[f]}"><img src="/img/{f}.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="{k}">{en[k]}</span></button>''' for f,k in DEST)

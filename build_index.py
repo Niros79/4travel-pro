@@ -312,9 +312,9 @@ const SVC = {{
 SVC.flights = l => ({{currency: CURRENCY[l] || 'eur', trs:'502962', shmarker:'662933', locale: WIDGET_LOCALES[l] || 'en', stops:'any', show_hotels:'true', powered_by:'true', border_radius:'12', plain:'true', color_button:'#F2711C', color_button_text:'#ffffff', promo_id:'3414', campaign_id:'111'}});
 const ALTS = {{
   flights: [['Aviasales', null]],
-  transfer: [['GetTransfer', 'https://gettransfer.tpm.lv/iuxFQT02']],
-  cars: [['Localrent', 'https://localrent.tpm.lv/tOoD7aJV']],
-  esim: [['Drimsim', 'https://drimsim.tpm.lv/TOwhzovo']]
+  transfer: [['GetTransfer', 'https://gettransfer.tpm.lv/QP09FoWM']],
+  cars: [['Localrent', 'https://localrent.tpm.lv/XbdoqmvO']],
+  esim: [['Drimsim', 'https://drimsim.tpm.lv/7m9Ga3CC']]
 }};
 function loadSvc(lang){{
   document.querySelectorAll('.svc').forEach(b => b.setAttribute('aria-selected', String(b.dataset.svc === svc)));
@@ -346,22 +346,6 @@ function loadWidget(lang){{
   slot.appendChild(s);
 }}
 const ORIGINS = {{en:['LON',51.5074,-0.1278],ro:['BUH',44.4268,26.1025],fr:['PAR',48.8566,2.3522],de:['BER',52.52,13.405],es:['MAD',40.4168,-3.7038],it:['ROM',41.9028,12.4964],hu:['BUD',47.4979,19.0402],tr:['IST',41.0082,28.9784],ar:['DXB',25.2048,55.2708]}};
-function loadMap(lang){{
-  const slot = document.getElementById('tp-map'); slot.innerHTML = '';
-  const o = ORIGINS[lang] || ORIGINS.en;
-  const w = Math.max(300, Math.round(slot.clientWidth || 1100));
-  const h = w < 600 ? 420 : 520;
-  const p = new URLSearchParams({{
-    currency: CURRENCY[lang] || 'eur', trs: '502962', shmarker: '662933', lat: String(o[1]), lng: String(o[2]),
-    powered_by: 'true', search_host: 'www.aviasales.com/search', locale: WIDGET_LOCALES[lang] || 'en', origin: o[0],
-    value_min: '0', value_max: '1000000', round_trip: 'true', only_direct: 'false', radius: '1', draggable: 'true',
-    disable_zoom: 'false', show_logo: 'false', scrollwheel: 'false', primary: '#F2711C', secondary: '#0E1E3A', light: '#ffffff',
-    width: String(w), height: String(h), zoom: '3', promo_id: '4054', campaign_id: '100'
-  }});
-  const s = document.createElement('script'); s.async = true; s.charset = 'utf-8';
-  s.src = 'https://tpwidg.com/content?' + p.toString();
-  slot.appendChild(s);
-}}
 function tpScript(slot, params){{
   slot.innerHTML = '';
   const s = document.createElement('script'); s.async = true; s.charset = 'utf-8';

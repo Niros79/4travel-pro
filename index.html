@@ -3,409 +3,332 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>4Travel Pro – Flights, stays, travel SIM & transfers in one place</title>
-<meta name="description" content="Flights, stays, travel SIMs, airport transfers and car rentals from trusted providers, plus free help claiming compensation for delayed flights.">
+<title>4travel.pro – Cheap flights and holidays in one search</title>
+<meta name="description" content="Compare cheap flights and flight + hotel holidays from hundreds of airlines and travel agencies, then book directly with them. Free, no extra fees.">
 <link rel="canonical" href="https://www.4travel.pro/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.4travel.pro/">
-<meta property="og:title" content="4Travel Pro – Everything your trip needs, in one place">
-<meta property="og:description" content="Flights, stays, travel SIMs, transfers and car rentals from trusted providers, plus help if your flight goes wrong.">
-<meta name="theme-color" content="#0F2440">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230F2440'/%3E%3Cpath transform='translate(3.2 3.2) scale(.73)' fill='%23F28C28' d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/%3E%3C/svg%3E">
+<meta property="og:title" content="4travel.pro – Cheap flights and holidays in one search">
+<meta property="og:description" content="Compare hundreds of airlines and agencies, then book directly. Free, no extra fees.">
+<meta property="og:image" content="https://www.4travel.pro/img/hero.jpg">
+<meta name="theme-color" content="#0E1E3A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230E1E3A'/%3E%3Cpath transform='translate(3.2 3.2) scale(.73)' fill='%23F2711C' d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Overpass:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --sky: #E8F1F6;
-    --sky-2: #D6E7F0;
-    --ink: #0F2440;
-    --ink-2: #44566F;
-    --line: #B9CCDA;
-    --signal: #F28C28;
-    --white: #FFFFFF;
-    --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
-    --body: "Overpass", "Segoe UI", system-ui, sans-serif;
-    --wrap: 1160px;
-  }
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0; background: var(--sky); color: var(--ink);
-    font: 400 1.0625rem/1.6 var(--body);
-    -webkit-font-smoothing: antialiased;
-  }
-  html[dir="rtl"] body { --display: "Noto Sans Arabic", system-ui, sans-serif; --body: "Noto Sans Arabic", system-ui, sans-serif; }
-  a { color: inherit; }
-  :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 6px; }
-  .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 2.5rem); }
-
-  /* header */
-  .top { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding-block: 1.4rem; }
-  .logo { font: 900 1.9rem/1 var(--display); letter-spacing: .01em; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; }
-  .logo svg { width: 1.6rem; height: 1.6rem; fill: var(--signal); stroke: var(--ink); stroke-width: 1.2; }
-  .lang { font: 600 .95rem var(--body); color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: .45rem .7rem; cursor: pointer; }
-
-  /* hero */
-  .hero { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--sky-2) 0%, var(--sky) 78%); }
-  .route-art { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-  html[dir="rtl"] .route-art { transform: scaleX(-1); }
-  .hero-body { position: relative; z-index: 1; padding-block: clamp(3.5rem, 9vw, 7.5rem) clamp(4rem, 9vw, 7rem); }
-  .hero h1 {
-    font: 900 clamp(3.2rem, 8.6vw, 6.8rem)/.92 var(--display);
-    letter-spacing: -.005em; margin: 0 0 1.6rem; max-width: 11.5ch;
-  }
-  html[dir="rtl"] .hero h1 { font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 1.2; max-width: 14ch; }
-  .hero p.lead { font-size: clamp(1.1rem, 1.8vw, 1.3rem); color: var(--ink-2); max-width: 44ch; margin: 0 0 2.2rem; }
-  .actions { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
-  .btn { display: inline-flex; align-items: center; gap: .55rem; font: 700 1.05rem/1 var(--body); text-decoration: none; padding: 1rem 1.4rem .9rem; border-radius: 10px; border: 2px solid var(--ink); }
-  .btn svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .btn-main { background: var(--ink); color: var(--white); }
-  .btn-main:hover { background: #1b3659; }
-  .btn-alt { background: var(--signal); border-color: var(--signal); color: var(--ink); }
-  .btn-alt:hover { background: #ff9a3a; }
-  .note { margin: 1.3rem 0 0; font-size: .95rem; color: var(--ink-2); }
-
-  /* route */
-  .route { padding-block: clamp(3.5rem, 7vw, 6rem); }
-  .route > h2, .how > h2 { font: 800 clamp(2.2rem, 4.5vw, 3.2rem)/1 var(--display); margin: 0 0 2.5rem; }
-  html[dir="rtl"] .route > h2, html[dir="rtl"] .how > h2 { line-height: 1.3; }
-  .stages { list-style: none; margin: 0; padding: 0; }
-  .stage {
-    position: relative; display: grid; grid-template-columns: minmax(200px, 280px) 1fr; gap: 1.5rem 2.5rem;
-    margin-inline-start: 1.05rem; padding-inline-start: 2.6rem; padding-block-end: 3.2rem;
-    border-inline-start: 2px dashed var(--line);
-  }
-  .stage:last-child { border-inline-start-color: transparent; padding-block-end: 0; }
-  .stop {
-    position: absolute; inset-inline-start: -1.1rem; top: -.1rem; width: 2.2rem; height: 2.2rem; border-radius: 50%;
-    display: grid; place-items: center; background: var(--ink); color: var(--white); font: 800 1.15rem/1 var(--display);
-    box-shadow: 0 0 0 5px var(--sky);
-  }
-  .stage--alert .stop { background: var(--signal); color: var(--ink); }
-  .stage h3.stage-title { font: 800 1.7rem/1.05 var(--display); margin: .1rem 0 .5rem; }
-  html[dir="rtl"] .stage h3.stage-title { line-height: 1.35; font-size: 1.45rem; }
-  .stage p.stage-sub { margin: 0; color: var(--ink-2); max-width: 32ch; }
-  .tickets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-  .tickets--single { grid-template-columns: 1fr; }
-
-  .ticket {
-    display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line);
-    border-radius: 14px; text-decoration: none; overflow: hidden; transition: border-color .15s, transform .15s;
-  }
-  .ticket:hover { border-color: var(--ink); transform: translateY(-2px); }
-  .ticket-main { display: grid; grid-template-columns: 2.9rem 1fr; gap: 1rem; padding: 1.35rem 1.4rem 1.15rem; }
-  .ticket-icon { width: 2.9rem; height: 2.9rem; border-radius: 50%; background: var(--sky); display: grid; place-items: center; }
-  .ticket-icon svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-  .ticket h3 { font: 700 1.15rem/1.3 var(--body); margin: .15rem 0 .3rem; }
-  .ticket p { margin: 0; color: var(--ink-2); font-size: .97rem; line-height: 1.55; }
-  .ticket-stub {
-    position: relative; margin-top: auto; border-top: 2px dashed var(--line);
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 1.4rem .8rem; font-size: .9rem;
-  }
-  .ticket-stub::before, .ticket-stub::after {
-    content: ""; position: absolute; top: -9px; width: 16px; height: 16px; border-radius: 50%;
-    background: var(--sky); border: 1px solid var(--line);
-  }
-  .ticket-stub::before { left: -9px; }
-  .ticket-stub::after { right: -9px; }
-  .prov { color: var(--ink-2); }
-  .go { font-weight: 700; text-decoration: underline; text-decoration-color: var(--signal); text-decoration-thickness: 2px; text-underline-offset: 5px; white-space: nowrap; }
-  .ticket:hover .go { text-decoration-thickness: 4px; }
-
-  .ticket--alert { background: var(--ink); border-color: var(--ink); color: var(--white); }
-  .ticket--alert .ticket-main { padding-block: 1.7rem 1.4rem; }
-  .ticket--alert .ticket-icon { background: var(--signal); }
-  .ticket--alert h3 { font-size: 1.35rem; }
-  .ticket--alert p { color: #C9D6E6; max-width: 62ch; }
-  .ticket--alert .ticket-stub { border-top-color: rgba(255,255,255,.28); }
-  .ticket--alert .ticket-stub::before, .ticket--alert .ticket-stub::after { border-color: var(--ink); }
-  .ticket--alert .prov { color: #C9D6E6; }
-  .ticket--alert .go { background: var(--signal); color: var(--ink); text-decoration: none; padding: .6rem 1rem .5rem; border-radius: 8px; }
-  .ticket--alert:hover .go { background: #ff9a3a; }
-
-  /* how it works */
-  .how { padding-block: 0 clamp(4rem, 8vw, 6.5rem); }
-  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
-  .facts > div { border-top: 3px solid var(--ink); padding-top: 1.1rem; }
-  .facts h3 { font: 700 1.15rem/1.3 var(--body); margin: 0 0 .4rem; }
-  .facts p { margin: 0; color: var(--ink-2); }
-
-  /* footer */
-  footer { background: var(--ink); color: #C9D6E6; padding-block: 2.8rem; font-size: .92rem; }
-  footer .wrap { display: grid; gap: 1rem; }
-  footer .logo { color: var(--white); font-size: 1.6rem; }
-  footer p { margin: 0; max-width: 70ch; }
-  footer a { color: var(--white); text-underline-offset: 4px; }
-
-
-  /* illustrated landscape */
-  .hero { background: linear-gradient(180deg, #CFE3EF 0%, #E3EDF3 50%, #FBE7D4 100%); }
-  .land { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: clamp(170px, 24vw, 330px); pointer-events: none; }
-  .hero-body { padding-bottom: clamp(11rem, 25vw, 20rem); }
-
-  /* quick-access bar */
-  .quick { position: sticky; top: 0; z-index: 20; background: rgba(232,241,246,.93); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  .quick-row { display: flex; gap: .55rem; overflow-x: auto; padding-block: .75rem; scrollbar-width: none; }
-  .quick-row::-webkit-scrollbar { display: none; }
-  .chip { flex: 0 0 auto; display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .95rem .45rem; border-radius: 999px; background: var(--white); border: 1px solid var(--line); font: 600 .95rem/1 var(--body); text-decoration: none; white-space: nowrap; transition: background .15s, border-color .15s; }
-  .chip svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; margin-top: -2px; }
-  .chip:hover { border-color: var(--ink); }
-  .chip.is-active { background: var(--ink); border-color: var(--ink); color: var(--white); }
-  .chip--alert { background: var(--signal); border-color: var(--signal); margin-inline-start: auto; }
-  .chip--alert:hover { background: #ff9a3a; border-color: #ff9a3a; }
-  .chip--alert.is-active { background: var(--ink); border-color: var(--ink); }
-  .ticket { scroll-margin-top: 5.5rem; }
-  .ticket:target { outline: 3px solid var(--signal); outline-offset: 4px; }
-  @media (max-width: 860px) { .chip--alert { margin-inline-start: 0; } }
-
-  @media (max-width: 860px) {
-    .stage { grid-template-columns: 1fr; padding-inline-start: 2rem; }
-    .facts { grid-template-columns: 1fr; gap: 1.6rem; }
-  }
-  @media (max-width: 600px) {
-    .tickets { grid-template-columns: 1fr; }
-    .btn { width: 100%; justify-content: center; }
-    .ticket-stub { flex-wrap: wrap; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .ticket { transition: none; }
-    .ticket:hover { transform: none; }
-  }
+:root{--navy:#0E1E3A;--navy-2:#16294B;--sky:#F3F6FA;--card:#FFFFFF;--line:#D3DBE8;--ink:#0E1E3A;--soft:#4A5A78;--orange:#F2711C;--orange-ink:#B4500A;--peach:#FFE7D6;
+--display:"Archivo",system-ui,sans-serif;--body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--wrap:1200px}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--sky);color:var(--ink);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+html[dir="rtl"] body{--display:"Noto Sans Arabic",system-ui,sans-serif;--body:"Noto Sans Arabic",system-ui,sans-serif}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:6px}
+.sr,.skip{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.skip:focus{width:auto;height:auto;clip:auto;top:1rem;inset-inline-start:1rem;background:#fff;color:var(--navy);padding:.5rem 1rem;z-index:30}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(1rem,4vw,1.5rem)}
+/* top */
+.top{background:var(--navy);color:#fff;padding-bottom:7rem}
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.8rem;padding-top:1.1rem;padding-bottom:1.1rem}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.55rem;letter-spacing:-.01em}
+.logo b{color:var(--orange);font-weight:800}
+.nav{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.4rem;font-weight:500;font-size:.95rem}
+.nav a{text-decoration:none;color:#fff;opacity:.92}.nav a:hover{opacity:1;color:var(--orange)}
+.nav select{height:42px;border-radius:10px;border:1px solid #3A4C6E;background:var(--navy-2);color:#fff;padding:0 .6rem;font:inherit;font-size:.9rem}
+@media (max-width:640px){.nav a{display:none}}
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:2rem;align-items:center;padding-top:2.2rem}
+.hero h1{margin:0 0 .9rem;font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,5.6vw,3.9rem);line-height:1.02;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--orange);display:block}
+.hero p{margin:0;font-size:1.15rem;color:#C9D3E6;max-width:46ch}
+.hero img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px}
+@media (max-width:860px){.hero{grid-template-columns:1fr}.hero img{display:none}.top{padding-bottom:6rem}}
+/* search */
+.search{margin-top:-5.5rem;position:relative;z-index:2}
+.search-card{background:var(--card);border-radius:22px;padding:clamp(.8rem,2.5vw,1.6rem);box-shadow:0 22px 50px rgba(14,30,58,.18)}
+.widget-slot{min-height:190px}
+.svcs{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1rem}
+@media (max-width:640px){.svcs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.3rem;scrollbar-width:thin}}
+.svc{flex:0 0 auto;display:flex;align-items:center;gap:.45rem;border:0;background:#EEF2F8;color:var(--navy);border-radius:999px;padding:.6rem 1rem;font:600 .95rem inherit;font-family:inherit;cursor:pointer;white-space:nowrap}
+.svc:hover{background:#E2E8F2}
+.svc[aria-selected="true"]{background:#F2711C;color:#fff}
+[hidden]{display:none!important}
+.delay-btn{display:inline-block;margin-top:1.1rem;border:2px solid #F2711C;color:#FFC9A3;font-weight:700;border-radius:12px;padding:.65rem 1.1rem;text-decoration:none}
+.delay-btn:hover{background:#F2711C;color:#fff}
+.hotel-panel{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;background:#EEF2F8;border-radius:16px;padding:1.4rem 1.6rem}
+.hotel-panel p{margin:0;font-size:1.05rem;font-weight:600;max-width:46ch}
+.big-btn{display:inline-block;background:#F2711C;color:#fff;font-weight:700;border-radius:12px;padding:.9rem 1.4rem;text-decoration:none}
+.big-btn:hover{background:#C2540A;color:#fff}
+.alts{margin:.7rem 0 0;font-size:.95rem;color:var(--soft)}
+.alts a{font-weight:700;color:#C2540A;margin-inline-end:.8rem}
+.alts a.on{text-decoration:none;background:#FDE7D7;border-radius:8px;padding:.1rem .45rem}
+.trust{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;font-size:.92rem;font-weight:600;color:var(--soft)}
+.trust li{display:flex;align-items:center;gap:.45rem}
+.trust svg{flex:none;color:var(--orange-ink)}
+/* sections */
+.sec{padding-top:3rem}
+.sec h2{margin:0 0 1.2rem;font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,3.2vw,2.3rem);letter-spacing:-.01em}
+.grid{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.dests{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media (max-width:1100px){.dests{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.dests{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dest{position:relative;display:block;height:240px;border-radius:20px;overflow:hidden;text-decoration:none;color:#fff}
+.dest img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.dest:hover img{transform:scale(1.05)}
+.dest-label{position:absolute;left:.6rem;right:.6rem;bottom:.6rem;background:rgba(14,30,58,.86);border-radius:14px;padding:.6rem .8rem;display:flex;flex-direction:column}
+.dest-name{font-family:var(--display);font-weight:800;font-size:1.3rem;line-height:1.15}
+.dest-cta{font-size:.82rem;font-weight:600;color:#FFC9A3}
+.hols{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.3rem}
+@media (max-width:860px){.hols{grid-template-columns:1fr}}
+.hol{display:flex;flex-direction:column;height:100%;background:var(--card);border-radius:22px;overflow:hidden;text-decoration:none;box-shadow:0 2px 8px rgba(14,30,58,.06)}
+.hol img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.hol-body{display:flex;flex-direction:column;gap:.35rem;padding:1.1rem 1.3rem 1.4rem}
+.hol-title{font-family:var(--display);font-weight:800;font-size:1.35rem}
+.hol-desc{color:var(--soft);font-size:.97rem}
+.hol-cta{color:var(--orange-ink);font-weight:700;font-size:.95rem;margin-top:.2rem}
+.hol:hover .hol-title{color:var(--orange-ink)}
+.routes{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}
+@media (max-width:760px){.routes{grid-template-columns:1fr}}
+.w-card{background:var(--card);border-radius:20px;overflow:hidden;padding:.5rem;box-shadow:0 2px 8px rgba(14,30,58,.06);min-height:320px}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1rem}
+.chip{display:flex;align-items:center;gap:.55rem;border:2px solid transparent;background:var(--card);border-radius:999px;padding:.3rem 1rem .3rem .3rem;font:600 .97rem var(--body,inherit);color:var(--navy);cursor:pointer;box-shadow:0 1px 4px rgba(14,30,58,.08)}
+.chip img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.chip[aria-selected="true"]{border-color:#F2711C;color:#C2540A}
+.cal-card{min-height:420px}
+.sec-sub{margin:-.6rem 0 1.2rem;color:var(--soft);max-width:60ch}
+.map-card{background:var(--card);border-radius:24px;overflow:hidden;padding:.6rem;box-shadow:0 2px 8px rgba(14,30,58,.06);min-height:300px}
+#tp-map{border-radius:18px;overflow:hidden}
+.how{background:var(--card);border-radius:24px;padding:clamp(1.4rem,4vw,2.4rem);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem;list-style:none;margin:0}
+@media (max-width:760px){.how{grid-template-columns:1fr}}
+.how li{display:flex;flex-direction:column;gap:.35rem}
+.num{width:44px;height:44px;border-radius:12px;background:var(--peach);color:var(--orange-ink);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:1.25rem}
+.how strong{font-family:var(--display);font-weight:800;font-size:1.25rem}
+.how span{color:var(--soft);font-size:.97rem}
+footer{margin-top:3.5rem;background:var(--navy);color:#C9D3E6;font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem 2rem;padding-top:1.8rem;padding-bottom:2.2rem}
+footer a{color:#fff}
+footer p{margin:0;max-width:70ch}
 </style>
 </head>
 <body>
-
-<header class="hero">
-  <svg class="route-art" viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <mask id="reveal">
-        <path id="arc-mask" d="M-40 700 C 330 660, 560 260, 985 165" fill="none" stroke="#fff" stroke-width="12" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1">
-          <animate attributeName="stroke-dashoffset" from="1" to="0" dur="2.6s" begin="0s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines=".45 0 .25 1"/>
-        </path>
-      </mask>
-    </defs>
-    <circle cx="985" cy="165" r="70" fill="none" stroke="#B9CCDA" stroke-width="1.5" stroke-dasharray="3 7"/>
-    <circle cx="985" cy="165" r="140" fill="none" stroke="#B9CCDA" stroke-width="1" stroke-dasharray="3 9" opacity=".7"/>
-    <path id="arc" d="M-40 700 C 330 660, 560 260, 985 165" fill="none" stroke="#0F2440" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" stroke-dasharray="0.1 14" mask="url(#reveal)"/>
-    <circle cx="985" cy="165" r="7" fill="#F28C28"/>
-    <g id="plane">
-      <g transform="rotate(45) scale(1.9) translate(-12 -12)">
-        <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" fill="#F28C28" stroke="#0F2440" stroke-width="1.1" stroke-linejoin="round"/>
-      </g>
-      <animateMotion dur="2.6s" begin="0s" fill="freeze" rotate="auto" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .25 1">
-        <mpath href="#arc"/>
-      </animateMotion>
-    </g>
-  </svg>
-
-
-  <svg class="land" viewBox="0 0 1440 340" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <defs>
-      <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8DB3CF"/><stop offset="1" stop-color="#5E8DB3"/></linearGradient>
-      <radialGradient id="glow"><stop offset="0" stop-color="#FFD9A8"/><stop offset="1" stop-color="#FFD9A8" stop-opacity="0"/></radialGradient>
-    </defs>
-    <circle cx="1130" cy="200" r="190" fill="url(#glow)"/>
-    <circle cx="1130" cy="205" r="64" fill="#FBB86F"/>
-    <path fill="#C7D8E6" d="M0 225 L90 180 L170 205 L290 140 L400 200 L500 165 L610 215 L720 170 L830 150 L930 205 L1040 175 L1160 215 L1270 160 L1380 200 L1440 185 V340 H0Z"/>
-    <path fill="#B7CADC" d="M210 250 V192 h34 V166 h22 V196 h8.0 V180 h24.0 V196 h8.0 V140 h26 V186 h30 V174 h8.8 V158 h26.4 V174 h8.8 V120 h9.0 v-26 l3 -14 l3 14 v26 h9.0 V174 h36 V152 h28 V190 h40 V180 h6.0 V164 h18.0 V180 h6.0 V184 h26 V250 H210Z"/>
-    <path fill="#94AFC8" d="M180 250 V216 h30 V198 h26 V210 h44 V176 h20 V204 q28.0 -42.0 56 0 V190 h26 V178 h6.800000000000001 V162 h20.4 V178 h6.800000000000001 V192 h22 V206 h40 V150 h6.0 v-26 l3 -14 l3 14 v26 h6.0 V184 h36 V202 h30 V212 h48 V180 h26 V200 h34 V250 H180Z"/>
-    <rect x="0" y="248" width="1440" height="92" fill="url(#sea)"/>
-    <g stroke="#FFE3C2" stroke-width="3" stroke-linecap="round" opacity=".85">
-      <path d="M1080 266 h100"/><path d="M1096 282 h68"/><path d="M1110 298 h40"/>
-    </g>
-    <g fill="#0F2440">
-      <path d="M905 276 h58 l-8 10 h-44z"/>
-      <path d="M931 274 V230 l24 40z" fill="#fff"/>
-      <path d="M929 274 V238 l-16 34z" fill="#F28C28"/>
-    </g>
-    <path fill="#E8F1F6" d="M0 300 C 220 282 420 318 700 304 S 1180 282 1440 300 V340 H0Z"/>
-    <g fill="#0F2440">
-      <path d="M121 312 C 128 270 126 232 112 196 l10 -3 C 138 232 140 272 133 312z"/>
-      <path d="M116 197 c-34 -22 -74 -14 -96 12 c10 -2 20 -6 30 -6 c-6 4 -10 8 -12 14 c22 -18 50 -22 78 -18z"/>
-      <path d="M116 196 c-18 -34 -56 -46 -86 -34 c10 2 18 4 26 10 c-8 0 -14 2 -20 6 c30 -4 58 6 80 20z"/>
-      <path d="M118 195 c10 -38 46 -56 80 -50 c-10 4 -18 8 -24 14 c8 0 14 2 20 6 c-32 0 -58 12 -76 32z"/>
-      <path d="M118 197 c36 -16 72 -4 90 22 c-10 -4 -20 -6 -30 -6 c6 6 8 12 10 18 c-20 -18 -44 -26 -70 -32z"/>
-      <path d="M116 198 c-6 -26 6 -52 24 -66 c-2 10 -2 18 0 26 c-6 12 -12 24 -24 40z"/>
-      <circle cx="112" cy="202" r="6"/><circle cx="123" cy="203" r="5"/>
-    </g>
-  </svg>
-
-  <div class="wrap top">
-    <a class="logo" href="/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>4Travel Pro</a>
-    <select class="lang" id="lang" aria-label="Language">
-      <option value="en">English</option>
-      <option value="ro">Română</option>
-      <option value="fr">Français</option>
-      <option value="de">Deutsch</option>
-      <option value="es">Español</option>
-      <option value="it">Italiano</option>
-      <option value="hu">Magyar</option>
-      <option value="tr">Türkçe</option>
-      <option value="ar">العربية</option>
-    </select>
+<a class="skip" href="#search">Skip to search</a>
+<div class="top">
+  <div class="wrap bar">
+    <a class="logo" href="/"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2711C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg><span>4travel<b>.pro</b></span></a>
+    <nav class="nav" aria-label="Menu">
+      <a href="#search"><span data-key="navFlights">Flights</span></a>
+      <a href="#holidays"><span data-key="navHolidays">Holidays</span></a>
+      <a href="#ideas"><span data-key="navIdeas">Weekend ideas</span></a>
+      <label for="lang" class="sr" data-key="langLabel">Language</label>
+      <select id="lang"><option value="en">English</option><option value="ro">Română</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="es">Español</option><option value="it">Italiano</option><option value="hu">Magyar</option><option value="tr">Türkçe</option><option value="ar">العربية</option></select>
+    </nav>
   </div>
-
-  <div class="wrap hero-body">
-    <h1 data-key="heroTitle">Everything your trip needs, in one place</h1>
-    <p class="lead" data-key="heroSub">Flights, stays, travel SIMs, transfers and car rentals from trusted providers, plus help if your flight goes wrong.</p>
-    <div class="actions">
-      <a class="btn btn-main" href="#trip" data-key="ctaPlan">Plan my trip</a>
-      <a class="btn btn-alt" href="https://airhelp.tpm.lv/RDWLKUoK" target="_blank" rel="sponsored noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-key="ctaDelay">My flight was delayed</span></a>
+  <div class="wrap hero">
+    <div>
+      <h1><span data-key="heroA">Cheap flights and holidays,</span> <em data-key="heroB">in one search</em></h1>
+      <p data-key="heroSub">We compare hundreds of airlines and travel agencies. You pick the best price and book directly with them.</p>
+      <a class="delay-btn" href="https://airhelp.tpm.lv/omacG3Bs" target="_blank" rel="sponsored noopener"><span data-key="ctaDelay">My flight was delayed</span> →</a>
     </div>
-    <p class="note" data-key="note">Free to use. You book directly with each provider.</p>
+    <img src="/img/hero.jpg" alt="" width="1600" height="1000" fetchpriority="high">
   </div>
-</header>
-
-<nav class="quick" aria-label="Jump to a service" data-aria-key="qNav">
-  <div class="wrap quick-row">
-<a class="chip" href="#go-flight"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg><span data-key="qFlight">Flights</span></a>
-<a class="chip" href="#go-hotel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M12 4v6"/><path d="M2 18h20"/></svg><span data-key="qHotel">Stays</span></a>
-<a class="chip" href="#go-sim"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 14h6v4H9z"/><path d="M12 6h.01"/></svg><span data-key="qSim">SIM & data</span></a>
-<a class="chip" href="#go-transfer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><span data-key="qTransfer">Transfers</span></a>
-<a class="chip" href="#go-car"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg><span data-key="qCar">Car rental</span></a>
-<a class="chip chip--alert" href="#go-airhelp"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-key="qDelay">Flight delayed?</span></a>
-  </div>
-</nav>
+</div>
 
 <main>
-  <section class="wrap route" id="trip">
-    <h2 data-key="routeTitle">Your trip, step by step</h2>
-    <ol class="stages">
-      <li class="stage">
-        <span class="stop" aria-hidden="true">1</span>
-        <div><h3 class="stage-title" data-key="s1">Before you go</h3><p class="stage-sub" data-key="s1d">Book the essentials a few weeks ahead.</p></div>
-        <div class="tickets">
-      <a class="ticket" id="go-flight" href="https://www.kiwi.com/deep?affilid=travelpayoutsdeeplink_4travel_97f8a6036fba47d7aa1303b8a-662933&amp;lang=en&amp;pageName=simpleLanding&amp;sub1=97f8a6036fba47d7aa1303b8a-662933" target="_blank" rel="sponsored noopener">
-        <div class="ticket-main">
-          <span class="ticket-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></span>
-          <div><h3 data-key="flight">Flights</h3><p data-key="flightDesc">Compare fares across hundreds of airlines, including route combinations other sites miss.</p></div>
-        </div>
-        <div class="ticket-stub"><span class="prov"><span data-key="provider">Provider</span>: Kiwi.com</span><span class="go" data-key="flightLink">Search flights</span></div>
-      </a>
-      <a class="ticket" id="go-hotel" href="https://trl.cldtraflink.com/click?pid=6094&amp;offer_id=1766" target="_blank" rel="sponsored noopener">
-        <div class="ticket-main">
-          <span class="ticket-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M12 4v6"/><path d="M2 18h20"/></svg></span>
-          <div><h3 data-key="hotel">Stays</h3><p data-key="hotelDesc">Hotels, apartments and resorts for every budget.</p></div>
-        </div>
-        <div class="ticket-stub"><span class="prov"></span><span class="go" data-key="hotelLink">Find a stay</span></div>
-      </a>
-      <a class="ticket" id="go-sim" href="https://drimsim.tpm.lv/TOwhzovo" target="_blank" rel="sponsored noopener">
-        <div class="ticket-main">
-          <span class="ticket-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 14h6v4H9z"/><path d="M12 6h.01"/></svg></span>
-          <div><h3 data-key="sim">Travel SIM & data</h3><p data-key="simDesc">One SIM for mobile data in 150+ countries, without roaming charges.</p></div>
-        </div>
-        <div class="ticket-stub"><span class="prov"><span data-key="provider">Provider</span>: Drimsim</span><span class="go" data-key="simLink">Choose a plan</span></div>
-      </a>
-        </div>
-      </li>
-      <li class="stage">
-        <span class="stop" aria-hidden="true">2</span>
-        <div><h3 class="stage-title" data-key="s2">When you land</h3><p class="stage-sub" data-key="s2d">Get from the airport to your door, and around.</p></div>
-        <div class="tickets">
-      <a class="ticket" id="go-transfer" href="https://gettransfer.tpm.lv/iuxFQT02" target="_blank" rel="sponsored noopener">
-        <div class="ticket-main">
-          <span class="ticket-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span>
-          <div><h3 data-key="transfer">Airport transfers</h3><p data-key="transferDesc">A private driver waiting at arrivals, at a fixed price agreed in advance.</p></div>
-        </div>
-        <div class="ticket-stub"><span class="prov"><span data-key="provider">Provider</span>: GetTransfer</span><span class="go" data-key="transferLink">Book a transfer</span></div>
-      </a>
-      <a class="ticket" id="go-car" href="https://localrent.tpm.lv/tOoD7aJV" target="_blank" rel="sponsored noopener">
-        <div class="ticket-main">
-          <span class="ticket-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg></span>
-          <div><h3 data-key="car">Car rental</h3><p data-key="carDesc">Rent from local companies, often with no deposit needed.</p></div>
-        </div>
-        <div class="ticket-stub"><span class="prov"><span data-key="provider">Provider</span>: Localrent</span><span class="go" data-key="carLink">Compare cars</span></div>
-      </a>
-        </div>
-      </li>
-      <li class="stage stage--alert" id="delayed">
-        <span class="stop" aria-hidden="true">3</span>
-        <div><h3 class="stage-title" data-key="s3">If your flight goes wrong</h3><p class="stage-sub" data-key="s3d">Delayed, cancelled or overbooked? You may be owed money.</p></div>
-        <div class="tickets tickets--single">
-      <a class="ticket ticket--alert" id="go-airhelp" href="https://airhelp.tpm.lv/RDWLKUoK" target="_blank" rel="sponsored noopener">
-        <div class="ticket-main">
-          <span class="ticket-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-          <div><h3 data-key="airhelp">Flight compensation</h3><p data-key="airhelpDesc">Under EU rules, a delay of 3+ hours, a cancellation or overbooking can mean up to €600 per passenger. AirHelp checks your flight for free and only charges a fee if your claim succeeds.</p></div>
-        </div>
-        <div class="ticket-stub"><span class="prov"><span data-key="provider">Provider</span>: AirHelp</span><span class="go" data-key="airhelpLink">Check my flight</span></div>
-      </a>
-        </div>
-      </li>
-    </ol>
+  <section id="search" class="wrap search" aria-label="Search flights">
+    <div class="search-card">
+      <div class="svcs" role="tablist"><button type="button" class="svc" role="tab" data-svc="flights" aria-selected="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg><span data-key="tabFlights">Flights</span></button><button type="button" class="svc" role="tab" data-svc="hotels" aria-selected="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V7l9-4 9 4v14M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01"/></svg><span data-key="tabHotels">Hotels</span></button><button type="button" class="svc" role="tab" data-svc="packages" aria-selected="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M12 3v18M5 5l14 14"/></svg><span data-key="tabPackages">Holidays</span></button><button type="button" class="svc" role="tab" data-svc="transfer" aria-selected="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14M6 17l1.5-6h9L18 17M7 17v2M17 17v2M9 7h6l1 4H8z"/></svg><span data-key="tabTransfer">Airport transfer</span></button><button type="button" class="svc" role="tab" data-svc="cars" aria-selected="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13l2-6h14l2 6v5H3zM7 18v2M17 18v2M6.5 14.5h.01M17.5 14.5h.01"/></svg><span data-key="tabCars">Car rental</span></button><button type="button" class="svc" role="tab" data-svc="bikes" aria-selected="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 18a3 3 0 100-6 3 3 0 000 6zM19 18a3 3 0 100-6 3 3 0 000 6zM5 15l4-7h5l3 7M9 8l3 7M14 5h3"/></svg><span data-key="tabBikes">Bikes & scooters</span></button><button type="button" class="svc" role="tab" data-svc="esim" aria-selected="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7zM10 12h6v6h-6z"/></svg><span data-key="tabEsim">eSIM</span></button><button type="button" class="svc" role="tab" data-svc="tours" aria-selected="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16v4a2 2 0 000 4v4H4v-4a2 2 0 000-4zM12 7v12"/></svg><span data-key="tabTours">Tours & tickets</span></button><button type="button" class="svc" role="tab" data-svc="luggage" aria-selected="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12v13H6zM9 7V4h6v3M10 11v5M14 11v5"/></svg><span data-key="tabLuggage">Luggage storage</span></button><button type="button" class="svc" role="tab" data-svc="comp" aria-selected="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8v4l3 2M12 21a9 9 0 100-18 9 9 0 000 18z"/></svg><span data-key="tabComp">Flight delayed?</span></button></div>
+      <div class="widget-slot" id="tp-slot"></div>
+      <div class="hotel-panel" id="hotel-panel" hidden><p data-key="hotelText">Hotels, apartments and resorts for every budget, on Trip.com.</p><a class="big-btn" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fhotels%2F&amp;sid=4travel-hotels" target="_blank" rel="sponsored noopener" data-key="hotelBtn">Search hotels on Trip.com →</a></div>
+      <div class="hotel-panel" id="packages-panel" hidden><p data-key="packagesText">Flight + hotel packages for city breaks, beach holidays and winter trips, on Trip.com.</p><a class="big-btn" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fpackages%2F&amp;sid=4travel-packages" target="_blank" rel="sponsored noopener" data-key="packagesBtn">Search holidays on Trip.com →</a></div>
+      <div class="hotel-panel" id="luggage-panel" hidden><p data-key="luggageText">Leave your bags in a safe spot near you and explore hands-free.</p><a class="big-btn" href="https://radicalstorage.tpm.lv/UYVbS50q" target="_blank" rel="sponsored noopener" data-key="luggageBtn">Find luggage storage →</a></div>
+      <p class="alts" id="alts" hidden><span data-key="altLabel">Also try:</span> <span id="alt-links"></span></p>
+      <ul class="trust">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-key="tr1">Hundreds of airlines and agencies</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-key="tr2">No extra fees from us</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-key="tr3">You book directly with the seller</span></li>
+      </ul>
+    </div>
   </section>
 
-  <section class="wrap how">
-    <h2 data-key="howTitle">How 4Travel Pro works</h2>
-    <div class="facts">
-      <div><h3 data-key="t1">Chosen providers</h3><p data-key="t1d">One established provider for each part of your trip, so you don't have to compare ten sites.</p></div>
-      <div><h3 data-key="t2">You book with them</h3><p data-key="t2d">Payment, tickets and customer support come directly from the provider.</p></div>
-      <div><h3 data-key="t3">Free for you</h3><p data-key="t3d">4Travel Pro costs nothing to use. We may earn a small commission when you book.</p></div>
-    </div>
+  <section id="ideas" class="wrap sec">
+    <h2 data-key="destTitle">Where to this weekend?</h2>
+    <p class="sec-sub" data-key="destSub">The lowest fares found to each city, from different departure airports. Tap a price to see the flights.</p>
+    <ul class="grid routes">
+      <li class="w-card"><div class="tp-route" data-dest="BCN"></div></li>
+      <li class="w-card"><div class="tp-route" data-dest="LON"></div></li>
+      <li class="w-card"><div class="tp-route" data-dest="LIS"></div></li>
+      <li class="w-card"><div class="tp-route" data-dest="PAR"></div></li>
+      <li class="w-card"><div class="tp-route" data-dest="MIL"></div></li>
+      <li class="w-card"><div class="tp-route" data-dest="ATH"></div></li>
+    </ul>
+  </section>
+
+
+  <section id="popular" class="wrap sec">
+    <h2 data-key="popTitle">Popular destinations</h2>
+    <p class="sec-sub" data-key="popSub">Where travellers are flying right now, with the lowest fares found on Kiwi.com.</p>
+    <div class="map-card"><div id="tp-pop"></div></div>
+  </section>
+
+  <section id="calendar" class="wrap sec">
+    <h2 data-key="calTitle">When is it cheapest to fly?</h2>
+    <p class="sec-sub" data-key="calSub">Pick a destination and see the lowest price for every month of the year.</p>
+    <div class="chips" role="tablist"><button type="button" class="chip" data-dest="BCN"><img src="/img/barcelona.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="cBarcelona">Barcelona</span></button><button type="button" class="chip" data-dest="LON"><img src="/img/london.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="cLondon">London</span></button><button type="button" class="chip" data-dest="LIS"><img src="/img/lisbon.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="cLisbon">Lisbon</span></button><button type="button" class="chip" data-dest="PAR"><img src="/img/paris.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="cParis">Paris</span></button><button type="button" class="chip" data-dest="MIL"><img src="/img/milan.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="cMilan">Milan</span></button><button type="button" class="chip" data-dest="ATH"><img src="/img/athens.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="cAthens">Athens</span></button></div>
+    <div class="map-card cal-card"><div id="tp-cal"></div></div>
+  </section>
+
+  <section id="holidays" class="wrap sec">
+    <h2 data-key="holTitle">Holidays with flight + hotel</h2>
+    <ul class="grid hols">
+      <li><a class="hol" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fpackages%2F&amp;sid=4travel-citybreak" target="_blank" rel="sponsored noopener"><img src="/img/citybreak.jpg" alt="" width="900" height="600" loading="lazy"><span class="hol-body"><span class="hol-title" data-key="hol1">3-day city break</span><span class="hol-desc" data-key="hol1d">Flight and a central hotel, booked together.</span><span class="hol-cta" data-key="holCta">Search flight + hotel →</span></span></a></li>
+      <li><a class="hol" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fpackages%2F&amp;sid=4travel-winter" target="_blank" rel="sponsored noopener"><img src="/img/winter.jpg" alt="" width="900" height="600" loading="lazy"><span class="hol-body"><span class="hol-title" data-key="hol2">Christmas and New Year</span><span class="hol-desc" data-key="hol2d">The busiest dates of the year: compare early.</span><span class="hol-cta" data-key="holCta">Search flight + hotel →</span></span></a></li>
+      <li><a class="hol" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fpackages%2F&amp;sid=4travel-beach" target="_blank" rel="sponsored noopener"><img src="/img/beach.jpg" alt="" width="900" height="600" loading="lazy"><span class="hol-body"><span class="hol-title" data-key="hol3">Sun and sea</span><span class="hol-desc" data-key="hol3d">Beach holidays for every budget.</span><span class="hol-cta" data-key="holCta">Search flight + hotel →</span></span></a></li>
+    </ul>
+  </section>
+
+  <section class="wrap sec">
+    <h2 data-key="howTitle">How it works</h2>
+    <ol class="how">
+      <li><span class="num">1</span><strong data-key="h1">Search once</strong><span data-key="h1d">Hundreds of airlines and agencies in one list.</span></li>
+      <li><span class="num">2</span><strong data-key="h2">Compare the real price</strong><span data-key="h2d">See times, stops and baggage before you choose.</span></li>
+      <li><span class="num">3</span><strong data-key="h3">Book directly</strong><span data-key="h3d">You pay the airline or agency you pick. 4travel.pro adds no fees.</span></li>
+    </ol>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span class="logo">4Travel Pro</span>
-    <p data-key="disclosure">Some links on this page are affiliate links. If you book through them, we may earn a commission at no extra cost to you.</p>
-    <p><a href="/privacy.html" data-key="privacy">Privacy policy</a></p>
-    <p>Travel guides &amp; tips: <a href="https://curioandcove.com/travel/">Curio &amp; Cove</a> · Zbor Wizz Air întârziat? <a href="/wizz-air/">Compensație până la 600 €</a></p>
-    <p>© <span id="year">2026</span> 4Travel Pro. <span data-key="rights">All rights reserved.</span></p>
+    <p><span data-key="disclosure">Some links on this page are affiliate links. If you book through them, we may earn a commission at no extra cost to you.</span></p>
+    <p><span data-key="footCurio">Travel guides & tips:</span> <a href="https://curioandcove.com/travel/">Curio &amp; Cove</a> · <a href="/wizz-air/" data-key="footWizz">Wizz Air flight delayed? Up to €600 compensation</a></p>
+    <p>&copy; <span id="year">2026</span> 4travel.pro · <span data-key="rights">All rights reserved.</span> · <a href="/privacy.html" data-key="privacy">Privacy policy</a></p>
   </div>
 </footer>
 
 <script>
-  const translations = {"en": {"qNav": "Jump to a service", "qFlight": "Flights", "qHotel": "Stays", "qIns": "Insurance", "qSim": "SIM & data", "qTransfer": "Transfers", "qCar": "Car rental", "qDelay": "Flight delayed?", "dir": "ltr", "title": "4Travel Pro – Flights, stays, travel SIM & transfers in one place", "heroTitle": "Everything your trip needs, in one place", "heroSub": "Flights, stays, travel SIMs, transfers and car rentals from trusted providers, plus help if your flight goes wrong.", "ctaPlan": "Plan my trip", "ctaDelay": "My flight was delayed", "note": "Free to use. You book directly with each provider.", "routeTitle": "Your trip, step by step", "s1": "Before you go", "s1d": "Book the essentials a few weeks ahead.", "s2": "When you land", "s2d": "Get from the airport to your door, and around.", "s3": "If your flight goes wrong", "s3d": "Delayed, cancelled or overbooked? You may be owed money.", "flight": "Flights", "flightDesc": "Compare fares across hundreds of airlines, including route combinations other sites miss.", "flightLink": "Search flights", "hotel": "Stays", "hotelDesc": "Hotels, apartments and resorts for every budget.", "hotelLink": "Find a stay", "insurance": "Travel insurance", "insuranceDesc": "Cover for medical emergencies, cancellations and lost luggage.", "insuranceLink": "Get a quote", "sim": "Travel SIM & data", "simDesc": "One SIM for mobile data in 150+ countries, without roaming charges.", "simLink": "Choose a plan", "transfer": "Airport transfers", "transferDesc": "A private driver waiting at arrivals, at a fixed price agreed in advance.", "transferLink": "Book a transfer", "car": "Car rental", "carDesc": "Rent from local companies, often with no deposit needed.", "carLink": "Compare cars", "airhelp": "Flight compensation", "airhelpDesc": "Under EU rules, a delay of 3+ hours, a cancellation or overbooking can mean up to €600 per passenger. AirHelp checks your flight for free and only charges a fee if your claim succeeds.", "airhelpLink": "Check my flight", "provider": "Provider", "howTitle": "How 4Travel Pro works", "t1": "Chosen providers", "t1d": "One established provider for each part of your trip, so you don't have to compare ten sites.", "t2": "You book with them", "t2d": "Payment, tickets and customer support come directly from the provider.", "t3": "Free for you", "t3d": "4Travel Pro costs nothing to use. We may earn a small commission when you book.", "disclosure": "Some links on this page are affiliate links. If you book through them, we may earn a commission at no extra cost to you.", "privacy": "Privacy policy", "rights": "All rights reserved."}, "ro": {"qNav": "Mergi la un serviciu", "qFlight": "Zboruri", "qHotel": "Cazare", "qIns": "Asigurare", "qSim": "SIM și date", "qTransfer": "Transfer", "qCar": "Mașini", "qDelay": "Zbor întârziat?", "dir": "ltr", "title": "4Travel Pro – Zboruri, cazare, SIM de călătorie și transferuri într-un singur loc", "heroTitle": "Tot ce îți trebuie pentru călătorie, într-un singur loc", "heroSub": "Zboruri, cazare, SIM de date, transferuri și mașini de închiriat de la furnizori de încredere, plus ajutor dacă zborul tău are probleme.", "ctaPlan": "Planifică-mi călătoria", "ctaDelay": "Zborul meu a întârziat", "note": "Gratuit. Rezervi direct la fiecare furnizor.", "routeTitle": "Călătoria ta, pas cu pas", "s1": "Înainte de plecare", "s1d": "Rezervă ce e esențial cu câteva săptămâni înainte.", "s2": "La aterizare", "s2d": "De la aeroport până la ușa ta, și mai departe.", "s3": "Dacă zborul are probleme", "s3d": "Întârziat, anulat sau suprarezervat? S-ar putea să ți se cuvină bani.", "flight": "Zboruri", "flightDesc": "Compară tarifele a sute de companii aeriene, inclusiv combinații de rute pe care alte site-uri nu le găsesc.", "flightLink": "Caută zboruri", "hotel": "Cazare", "hotelDesc": "Hoteluri, apartamente și resorturi pentru orice buget.", "hotelLink": "Găsește cazare", "insurance": "Asigurare de călătorie", "insuranceDesc": "Acoperire pentru urgențe medicale, anulări și bagaje pierdute.", "insuranceLink": "Cere o ofertă", "sim": "SIM de călătorie și date", "simDesc": "Un singur SIM pentru date mobile în peste 150 de țări, fără costuri de roaming.", "simLink": "Alege un plan", "transfer": "Transfer de la aeroport", "transferDesc": "Un șofer privat te așteaptă la sosiri, la un preț fix stabilit dinainte.", "transferLink": "Rezervă transferul", "car": "Mașini de închiriat", "carDesc": "Închiriezi de la companii locale, de multe ori fără garanție.", "carLink": "Compară mașini", "airhelp": "Compensație pentru zbor", "airhelpDesc": "Conform regulilor UE, o întârziere de peste 3 ore, o anulare sau o suprarezervare pot însemna până la 600 € de pasager. AirHelp îți verifică zborul gratuit și percepe un comision doar dacă cererea are succes.", "airhelpLink": "Verifică-mi zborul", "provider": "Furnizor", "howTitle": "Cum funcționează 4Travel Pro", "t1": "Furnizori aleși", "t1d": "Câte un furnizor consacrat pentru fiecare parte a călătoriei, ca să nu compari zece site-uri.", "t2": "Rezervi direct la ei", "t2d": "Plata, biletele și asistența vin direct de la furnizor.", "t3": "Gratuit pentru tine", "t3d": "4Travel Pro nu te costă nimic. Putem primi un mic comision când rezervi.", "disclosure": "Unele linkuri de pe această pagină sunt linkuri de afiliat. Dacă rezervi prin ele, putem primi un comision, fără niciun cost suplimentar pentru tine.", "privacy": "Politica de confidențialitate", "rights": "Toate drepturile rezervate."}, "fr": {"qNav": "Aller à un service", "qFlight": "Vols", "qHotel": "Hébergement", "qIns": "Assurance", "qSim": "SIM et données", "qTransfer": "Transferts", "qCar": "Voitures", "qDelay": "Vol retardé ?", "dir": "ltr", "title": "4Travel Pro – Vols, hébergements, SIM de voyage et transferts au même endroit", "heroTitle": "Tout ce qu'il faut pour votre voyage, au même endroit", "heroSub": "Vols, hébergements, SIM de voyage, transferts et location de voiture auprès de prestataires fiables, et de l'aide si votre vol tourne mal.", "ctaPlan": "Préparer mon voyage", "ctaDelay": "Mon vol a été retardé", "note": "Gratuit. Vous réservez directement auprès de chaque prestataire.", "routeTitle": "Votre voyage, étape par étape", "s1": "Avant le départ", "s1d": "Réservez l'essentiel quelques semaines à l'avance.", "s2": "À l'arrivée", "s2d": "De l'aéroport jusqu'à votre porte, et au-delà.", "s3": "Si votre vol tourne mal", "s3d": "Retardé, annulé ou surréservé ? On vous doit peut-être de l'argent.", "flight": "Vols", "flightDesc": "Comparez les tarifs de centaines de compagnies, y compris des combinaisons d'itinéraires que d'autres sites ne proposent pas.", "flightLink": "Chercher un vol", "hotel": "Hébergements", "hotelDesc": "Hôtels, appartements et resorts pour tous les budgets.", "hotelLink": "Trouver un logement", "insurance": "Assurance voyage", "insuranceDesc": "Couverture des urgences médicales, annulations et bagages perdus.", "insuranceLink": "Obtenir un devis", "sim": "SIM de voyage et données", "simDesc": "Une seule SIM pour les données mobiles dans plus de 150 pays, sans frais d'itinérance.", "simLink": "Choisir un forfait", "transfer": "Transferts aéroport", "transferDesc": "Un chauffeur privé vous attend à l'arrivée, à un prix fixe convenu à l'avance.", "transferLink": "Réserver un transfert", "car": "Location de voiture", "carDesc": "Louez auprès d'agences locales, souvent sans caution.", "carLink": "Comparer les voitures", "airhelp": "Indemnisation de vol", "airhelpDesc": "Selon les règles de l'UE, un retard de plus de 3 heures, une annulation ou une surréservation peuvent donner droit à jusqu'à 600 € par passager. AirHelp vérifie votre vol gratuitement et ne prend des frais que si votre demande aboutit.", "airhelpLink": "Vérifier mon vol", "provider": "Prestataire", "howTitle": "Comment fonctionne 4Travel Pro", "t1": "Des prestataires choisis", "t1d": "Un prestataire reconnu pour chaque étape du voyage, pour ne pas comparer dix sites.", "t2": "Vous réservez chez eux", "t2d": "Paiement, billets et service client viennent directement du prestataire.", "t3": "Gratuit pour vous", "t3d": "4Travel Pro ne vous coûte rien. Nous pouvons toucher une petite commission quand vous réservez.", "disclosure": "Certains liens de cette page sont des liens d'affiliation. Si vous réservez par leur intermédiaire, nous pouvons percevoir une commission, sans coût supplémentaire pour vous.", "privacy": "Politique de confidentialité", "rights": "Tous droits réservés."}, "de": {"qNav": "Zu einem Service springen", "qFlight": "Flüge", "qHotel": "Unterkünfte", "qIns": "Versicherung", "qSim": "SIM & Daten", "qTransfer": "Transfers", "qCar": "Mietwagen", "qDelay": "Flug verspätet?", "dir": "ltr", "title": "4Travel Pro – Flüge, Unterkünfte, Reise-SIM und Transfers an einem Ort", "heroTitle": "Alles für deine Reise an einem Ort", "heroSub": "Flüge, Unterkünfte, Reise-SIM, Transfers und Mietwagen von verlässlichen Anbietern – und Hilfe, wenn dein Flug schiefgeht.", "ctaPlan": "Reise planen", "ctaDelay": "Mein Flug war verspätet", "note": "Kostenlos. Du buchst direkt beim jeweiligen Anbieter.", "routeTitle": "Deine Reise, Schritt für Schritt", "s1": "Vor der Abreise", "s1d": "Buche das Wichtigste ein paar Wochen im Voraus.", "s2": "Nach der Landung", "s2d": "Vom Flughafen bis vor die Tür – und weiter.", "s3": "Wenn dein Flug schiefgeht", "s3d": "Verspätet, annulliert oder überbucht? Vielleicht steht dir Geld zu.", "flight": "Flüge", "flightDesc": "Vergleiche Preise von Hunderten Airlines, inklusive Routenkombinationen, die andere Seiten nicht finden.", "flightLink": "Flüge suchen", "hotel": "Unterkünfte", "hotelDesc": "Hotels, Apartments und Resorts für jedes Budget.", "hotelLink": "Unterkunft finden", "insurance": "Reiseversicherung", "insuranceDesc": "Schutz bei medizinischen Notfällen, Stornierungen und verlorenem Gepäck.", "insuranceLink": "Angebot einholen", "sim": "Reise-SIM & Daten", "simDesc": "Eine SIM für mobile Daten in über 150 Ländern, ohne Roaminggebühren.", "simLink": "Tarif wählen", "transfer": "Flughafentransfer", "transferDesc": "Ein privater Fahrer wartet in der Ankunftshalle, zum vorab vereinbarten Festpreis.", "transferLink": "Transfer buchen", "car": "Mietwagen", "carDesc": "Miete bei lokalen Anbietern, oft ohne Kaution.", "carLink": "Autos vergleichen", "airhelp": "Entschädigung bei Flugproblemen", "airhelpDesc": "Nach EU-Recht können eine Verspätung von über 3 Stunden, eine Annullierung oder Überbuchung bis zu 600 € pro Person bedeuten. AirHelp prüft deinen Flug kostenlos und berechnet nur bei Erfolg eine Gebühr.", "airhelpLink": "Flug prüfen", "provider": "Anbieter", "howTitle": "So funktioniert 4Travel Pro", "t1": "Ausgewählte Anbieter", "t1d": "Ein etablierter Anbieter für jeden Teil der Reise – statt zehn Seiten zu vergleichen.", "t2": "Du buchst direkt", "t2d": "Zahlung, Tickets und Kundenservice kommen direkt vom Anbieter.", "t3": "Kostenlos für dich", "t3d": "4Travel Pro kostet dich nichts. Wir erhalten eventuell eine kleine Provision, wenn du buchst.", "disclosure": "Einige Links auf dieser Seite sind Affiliate-Links. Wenn du darüber buchst, erhalten wir eventuell eine Provision – ohne Mehrkosten für dich.", "privacy": "Datenschutzerklärung", "rights": "Alle Rechte vorbehalten."}, "es": {"qNav": "Ir a un servicio", "qFlight": "Vuelos", "qHotel": "Alojamiento", "qIns": "Seguro", "qSim": "SIM y datos", "qTransfer": "Traslados", "qCar": "Coches", "qDelay": "¿Vuelo retrasado?", "dir": "ltr", "title": "4Travel Pro – Vuelos, alojamiento, SIM de viaje y traslados en un solo lugar", "heroTitle": "Todo lo que tu viaje necesita, en un solo lugar", "heroSub": "Vuelos, alojamiento, SIM de viaje, traslados y alquiler de coches con proveedores de confianza, y ayuda si tu vuelo sale mal.", "ctaPlan": "Planificar mi viaje", "ctaDelay": "Mi vuelo se retrasó", "note": "Gratis. Reservas directamente con cada proveedor.", "routeTitle": "Tu viaje, paso a paso", "s1": "Antes de salir", "s1d": "Reserva lo esencial con unas semanas de antelación.", "s2": "Al aterrizar", "s2d": "Del aeropuerto hasta tu puerta, y más allá.", "s3": "Si tu vuelo sale mal", "s3d": "¿Retrasado, cancelado o con overbooking? Puede que te deban dinero.", "flight": "Vuelos", "flightDesc": "Compara tarifas de cientos de aerolíneas, incluidas combinaciones de rutas que otras webs no encuentran.", "flightLink": "Buscar vuelos", "hotel": "Alojamiento", "hotelDesc": "Hoteles, apartamentos y resorts para cualquier presupuesto.", "hotelLink": "Buscar alojamiento", "insurance": "Seguro de viaje", "insuranceDesc": "Cobertura para urgencias médicas, cancelaciones y equipaje perdido.", "insuranceLink": "Pedir presupuesto", "sim": "SIM de viaje y datos", "simDesc": "Una sola SIM para datos móviles en más de 150 países, sin roaming.", "simLink": "Elegir un plan", "transfer": "Traslados al aeropuerto", "transferDesc": "Un conductor privado te espera en llegadas, a un precio fijo acordado de antemano.", "transferLink": "Reservar traslado", "car": "Alquiler de coches", "carDesc": "Alquila con empresas locales, a menudo sin fianza.", "carLink": "Comparar coches", "airhelp": "Compensación por vuelo", "airhelpDesc": "Según las normas de la UE, un retraso de más de 3 horas, una cancelación o un overbooking pueden suponer hasta 600 € por pasajero. AirHelp revisa tu vuelo gratis y solo cobra una comisión si tu reclamación prospera.", "airhelpLink": "Revisar mi vuelo", "provider": "Proveedor", "howTitle": "Cómo funciona 4Travel Pro", "t1": "Proveedores elegidos", "t1d": "Un proveedor consolidado para cada parte del viaje, para que no compares diez webs.", "t2": "Reservas con ellos", "t2d": "El pago, los billetes y la atención al cliente vienen directamente del proveedor.", "t3": "Gratis para ti", "t3d": "Usar 4Travel Pro no cuesta nada. Podemos recibir una pequeña comisión cuando reservas.", "disclosure": "Algunos enlaces de esta página son de afiliado. Si reservas a través de ellos, podemos recibir una comisión sin coste adicional para ti.", "privacy": "Política de privacidad", "rights": "Todos los derechos reservados."}, "it": {"qNav": "Vai a un servizio", "qFlight": "Voli", "qHotel": "Alloggi", "qIns": "Assicurazione", "qSim": "SIM e dati", "qTransfer": "Transfer", "qCar": "Auto", "qDelay": "Volo in ritardo?", "dir": "ltr", "title": "4Travel Pro – Voli, alloggi, SIM da viaggio e transfer in un unico posto", "heroTitle": "Tutto ciò che serve al tuo viaggio, in un unico posto", "heroSub": "Voli, alloggi, SIM da viaggio, transfer e noleggio auto da fornitori affidabili, più un aiuto se il tuo volo va storto.", "ctaPlan": "Pianifica il mio viaggio", "ctaDelay": "Il mio volo era in ritardo", "note": "Gratis. Prenoti direttamente con ogni fornitore.", "routeTitle": "Il tuo viaggio, passo dopo passo", "s1": "Prima di partire", "s1d": "Prenota l'essenziale qualche settimana prima.", "s2": "All'arrivo", "s2d": "Dall'aeroporto fino alla porta, e oltre.", "s3": "Se il volo va storto", "s3d": "In ritardo, cancellato o in overbooking? Potrebbero spettarti dei soldi.", "flight": "Voli", "flightDesc": "Confronta le tariffe di centinaia di compagnie, comprese combinazioni di rotte che altri siti non trovano.", "flightLink": "Cerca voli", "hotel": "Alloggi", "hotelDesc": "Hotel, appartamenti e resort per ogni budget.", "hotelLink": "Trova un alloggio", "insurance": "Assicurazione di viaggio", "insuranceDesc": "Copertura per emergenze mediche, cancellazioni e bagagli smarriti.", "insuranceLink": "Richiedi un preventivo", "sim": "SIM da viaggio e dati", "simDesc": "Una sola SIM per i dati mobili in oltre 150 paesi, senza costi di roaming.", "simLink": "Scegli un piano", "transfer": "Transfer aeroportuali", "transferDesc": "Un autista privato ti aspetta agli arrivi, a un prezzo fisso concordato in anticipo.", "transferLink": "Prenota il transfer", "car": "Noleggio auto", "carDesc": "Noleggia da aziende locali, spesso senza deposito.", "carLink": "Confronta le auto", "airhelp": "Risarcimento volo", "airhelpDesc": "Secondo le norme UE, un ritardo di oltre 3 ore, una cancellazione o un overbooking possono valere fino a 600 € a passeggero. AirHelp controlla il tuo volo gratis e trattiene una commissione solo se la richiesta va a buon fine.", "airhelpLink": "Controlla il mio volo", "provider": "Fornitore", "howTitle": "Come funziona 4Travel Pro", "t1": "Fornitori scelti", "t1d": "Un fornitore affermato per ogni parte del viaggio, così non devi confrontare dieci siti.", "t2": "Prenoti con loro", "t2d": "Pagamento, biglietti e assistenza arrivano direttamente dal fornitore.", "t3": "Gratis per te", "t3d": "4Travel Pro non ti costa nulla. Potremmo ricevere una piccola commissione quando prenoti.", "disclosure": "Alcuni link di questa pagina sono link di affiliazione. Se prenoti tramite essi, potremmo ricevere una commissione senza costi aggiuntivi per te.", "privacy": "Informativa sulla privacy", "rights": "Tutti i diritti riservati."}, "hu": {"qNav": "Ugrás egy szolgáltatáshoz", "qFlight": "Repülőjegy", "qHotel": "Szállás", "qIns": "Biztosítás", "qSim": "SIM és adat", "qTransfer": "Transzfer", "qCar": "Autóbérlés", "qDelay": "Késett a járat?", "dir": "ltr", "title": "4Travel Pro – Repülőjegy, szállás, utazási SIM és transzfer egy helyen", "heroTitle": "Minden, ami az utazásodhoz kell, egy helyen", "heroSub": "Repülőjegy, szállás, utazási SIM, transzfer és autóbérlés megbízható szolgáltatóktól, és segítség, ha gond van a járatoddal.", "ctaPlan": "Utazás megtervezése", "ctaDelay": "Késett a járatom", "note": "Ingyenes. Közvetlenül az egyes szolgáltatóknál foglalsz.", "routeTitle": "Az utazásod lépésről lépésre", "s1": "Indulás előtt", "s1d": "Foglald le a legfontosabbakat néhány héttel előre.", "s2": "Érkezéskor", "s2d": "A reptérről egészen az ajtóig, és tovább.", "s3": "Ha gond van a járattal", "s3d": "Késett, törölték vagy túlfoglalták? Lehet, hogy pénz jár neked.", "flight": "Repülőjegyek", "flightDesc": "Hasonlítsd össze több száz légitársaság árait, olyan útvonal-kombinációkkal is, amelyeket más oldalak nem találnak.", "flightLink": "Járatok keresése", "hotel": "Szállás", "hotelDesc": "Szállodák, apartmanok és üdülők minden pénztárcához.", "hotelLink": "Szállás keresése", "insurance": "Utasbiztosítás", "insuranceDesc": "Fedezet orvosi vészhelyzetre, lemondásra és elveszett poggyászra.", "insuranceLink": "Ajánlatkérés", "sim": "Utazási SIM és adat", "simDesc": "Egy SIM mobiladathoz több mint 150 országban, roamingdíj nélkül.", "simLink": "Csomag választása", "transfer": "Reptéri transzfer", "transferDesc": "Magánsofőr vár az érkezési csarnokban, előre egyeztetett fix áron.", "transferLink": "Transzfer foglalása", "car": "Autóbérlés", "carDesc": "Bérelj helyi cégektől, gyakran kaució nélkül.", "carLink": "Autók összehasonlítása", "airhelp": "Kártérítés járatproblémánál", "airhelpDesc": "Az uniós szabályok szerint a 3 óránál hosszabb késés, a törlés vagy a túlfoglalás utasonként akár 600 € kártérítést jelenthet. Az AirHelp ingyen ellenőrzi a járatodat, és csak sikeres igény esetén számít fel díjat.", "airhelpLink": "Járatom ellenőrzése", "provider": "Szolgáltató", "howTitle": "Így működik a 4Travel Pro", "t1": "Kiválasztott szolgáltatók", "t1d": "Az utazás minden részéhez egy bevált szolgáltató, hogy ne kelljen tíz oldalt összehasonlítanod.", "t2": "Náluk foglalsz", "t2d": "A fizetés, a jegyek és az ügyfélszolgálat közvetlenül a szolgáltatótól jön.", "t3": "Neked ingyenes", "t3d": "A 4Travel Pro használata semmibe sem kerül. Foglaláskor kis jutalékot kaphatunk.", "disclosure": "Az oldalon található linkek egy része partnerlink. Ha ezeken keresztül foglalsz, jutalékot kaphatunk, számodra többletköltség nélkül.", "privacy": "Adatvédelmi tájékoztató", "rights": "Minden jog fenntartva."}, "tr": {"qNav": "Bir hizmete git", "qFlight": "Uçuşlar", "qHotel": "Konaklama", "qIns": "Sigorta", "qSim": "SIM ve veri", "qTransfer": "Transfer", "qCar": "Araç kiralama", "qDelay": "Uçuş rötarlı mı?", "dir": "ltr", "title": "4Travel Pro – Uçuş, konaklama, seyahat SIM'i ve transfer tek yerde", "heroTitle": "Seyahatin için gereken her şey tek bir yerde", "heroSub": "Güvenilir sağlayıcılardan uçuş, konaklama, seyahat SIM'i, transfer ve araç kiralama; uçuşun ters giderse de yardım.", "ctaPlan": "Seyahatimi planla", "ctaDelay": "Uçuşum rötar yaptı", "note": "Ücretsiz. Rezervasyonu doğrudan her sağlayıcıdan yaparsın.", "routeTitle": "Seyahatin, adım adım", "s1": "Yola çıkmadan önce", "s1d": "Temel ihtiyaçları birkaç hafta önceden ayırt.", "s2": "İndiğinde", "s2d": "Havalimanından kapına kadar, ve ötesi.", "s3": "Uçuşun ters giderse", "s3d": "Rötar, iptal ya da fazla satış mı? Sana tazminat ödenmesi gerekebilir.", "flight": "Uçuşlar", "flightDesc": "Yüzlerce havayolunun fiyatlarını karşılaştır; diğer sitelerin bulamadığı rota kombinasyonları dahil.", "flightLink": "Uçuş ara", "hotel": "Konaklama", "hotelDesc": "Her bütçeye uygun oteller, daireler ve tatil köyleri.", "hotelLink": "Konaklama bul", "insurance": "Seyahat sigortası", "insuranceDesc": "Acil tıbbi durumlar, iptaller ve kayıp bagaj için güvence.", "insuranceLink": "Teklif al", "sim": "Seyahat SIM'i ve veri", "simDesc": "150'den fazla ülkede mobil veri için tek SIM, dolaşım ücreti olmadan.", "simLink": "Paket seç", "transfer": "Havalimanı transferi", "transferDesc": "Önceden anlaşılan sabit fiyatla, varış salonunda seni bekleyen özel şoför.", "transferLink": "Transfer ayırt", "car": "Araç kiralama", "carDesc": "Yerel şirketlerden kirala, çoğu zaman depozitosuz.", "carLink": "Araçları karşılaştır", "airhelp": "Uçuş tazminatı", "airhelpDesc": "AB kurallarına göre 3 saati aşan rötar, iptal veya fazla satış yolcu başına 600 €'ya kadar tazminat anlamına gelebilir. AirHelp uçuşunu ücretsiz kontrol eder ve yalnızca talebin başarılı olursa ücret alır.", "airhelpLink": "Uçuşumu kontrol et", "provider": "Sağlayıcı", "howTitle": "4Travel Pro nasıl çalışır", "t1": "Seçilmiş sağlayıcılar", "t1d": "Seyahatin her aşaması için köklü bir sağlayıcı; on siteyi karşılaştırmana gerek yok.", "t2": "Onlardan rezervasyon yaparsın", "t2d": "Ödeme, biletler ve müşteri desteği doğrudan sağlayıcıdan gelir.", "t3": "Senin için ücretsiz", "t3d": "4Travel Pro'yu kullanmak ücretsizdir. Rezervasyon yaptığında küçük bir komisyon kazanabiliriz.", "disclosure": "Bu sayfadaki bazı bağlantılar ortaklık bağlantılarıdır. Bunlar üzerinden rezervasyon yaparsan, sana ek maliyet olmadan komisyon kazanabiliriz.", "privacy": "Gizlilik politikası", "rights": "Tüm hakları saklıdır."}, "ar": {"qNav": "انتقل إلى خدمة", "qFlight": "الطيران", "qHotel": "الإقامة", "qIns": "التأمين", "qSim": "الشريحة والبيانات", "qTransfer": "التوصيل", "qCar": "السيارات", "qDelay": "تأخرت رحلتك؟", "dir": "rtl", "title": "4Travel Pro – رحلات طيران وإقامة وشريحة سفر وتوصيل في مكان واحد", "heroTitle": "كل ما تحتاجه رحلتك في مكان واحد", "heroSub": "رحلات طيران وإقامة وشريحة سفر وتوصيل من المطار وتأجير سيارات من مزوّدين موثوقين، ومساعدة إذا واجهت رحلتك مشكلة.", "ctaPlan": "خطّط لرحلتي", "ctaDelay": "تأخرت رحلتي", "note": "مجاني. تحجز مباشرة لدى كل مزوّد.", "routeTitle": "رحلتك خطوة بخطوة", "s1": "قبل السفر", "s1d": "احجز الأساسيات قبل بضعة أسابيع.", "s2": "عند الوصول", "s2d": "من المطار حتى باب وجهتك، وما بعد ذلك.", "s3": "إذا واجهت رحلتك مشكلة", "s3d": "تأخير أو إلغاء أو حجز زائد؟ قد يحق لك تعويض مالي.", "flight": "رحلات الطيران", "flightDesc": "قارن أسعار مئات شركات الطيران، بما فيها تركيبات مسارات لا تجدها مواقع أخرى.", "flightLink": "ابحث عن رحلات", "hotel": "الإقامة", "hotelDesc": "فنادق وشقق ومنتجعات لكل الميزانيات.", "hotelLink": "ابحث عن إقامة", "insurance": "تأمين السفر", "insuranceDesc": "تغطية للطوارئ الطبية والإلغاء وفقدان الأمتعة.", "insuranceLink": "احصل على عرض سعر", "sim": "شريحة سفر وبيانات", "simDesc": "شريحة واحدة لبيانات الجوال في أكثر من 150 دولة، دون رسوم تجوال.", "simLink": "اختر باقة", "transfer": "التوصيل من المطار", "transferDesc": "سائق خاص ينتظرك في صالة الوصول، بسعر ثابت متفق عليه مسبقًا.", "transferLink": "احجز التوصيل", "car": "تأجير السيارات", "carDesc": "استأجر من شركات محلية، وغالبًا دون تأمين نقدي.", "carLink": "قارن السيارات", "airhelp": "تعويض الرحلات", "airhelpDesc": "وفق قواعد الاتحاد الأوروبي، قد يعني التأخير لأكثر من 3 ساعات أو الإلغاء أو الحجز الزائد تعويضًا يصل إلى 600 يورو لكل راكب. تتحقق AirHelp من رحلتك مجانًا ولا تتقاضى رسومًا إلا إذا نجحت مطالبتك.", "airhelpLink": "تحقق من رحلتي", "provider": "المزوّد", "howTitle": "كيف يعمل 4Travel Pro", "t1": "مزوّدون مختارون", "t1d": "مزوّد معروف لكل جزء من رحلتك، فلا تحتاج إلى مقارنة عشرة مواقع.", "t2": "تحجز لديهم مباشرة", "t2d": "الدفع والتذاكر وخدمة العملاء تأتي مباشرة من المزوّد.", "t3": "مجاني لك", "t3d": "استخدام 4Travel Pro مجاني. قد نحصل على عمولة صغيرة عند الحجز.", "disclosure": "بعض الروابط في هذه الصفحة روابط تسويق بالعمولة. إذا حجزت من خلالها، قد نحصل على عمولة دون أي تكلفة إضافية عليك.", "privacy": "سياسة الخصوصية", "rights": "جميع الحقوق محفوظة."}};
-
-  function setLang(lang) {
-    const t = translations[lang];
-    if (!t) return;
-    document.documentElement.lang = lang;
-    document.documentElement.dir = t.dir;
-    document.title = t.title;
-    document.querySelectorAll('[data-key]').forEach(el => {
-      const v = t[el.dataset.key];
-      if (v !== undefined) el.textContent = v;
-    });
-    document.getElementById('lang').value = lang;
-    try { localStorage.setItem('lang', lang); } catch (e) {}
-  }
-
-  document.getElementById('lang').addEventListener('change', e => setLang(e.target.value));
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  (function initLang() {
-    let lang = null;
-    const q = new URLSearchParams(location.search).get('lang');
-    if (q && translations[q]) lang = q;
-    if (!lang) { try { lang = localStorage.getItem('lang'); } catch (e) {} }
-    if (!lang || !translations[lang]) {
-      const nav = (navigator.languages || [navigator.language || 'en']).map(l => l.slice(0, 2).toLowerCase());
-      lang = nav.find(l => translations[l]) || 'en';
-    }
-    if (lang !== 'en') { setLang(lang); setAria(translations[lang]); }
-  })();
-
-
-  // aria labels follow the language
-  function setAria(t){ document.querySelectorAll('[data-aria-key]').forEach(el => { const v = t[el.dataset.ariaKey]; if (v) el.setAttribute('aria-label', v); }); }
-  document.getElementById('lang').addEventListener('change', e => setAria(translations[e.target.value]));
-
-  // highlight the chip for the service currently on screen
+const translations = {"en": {"navFlights": "Flights", "navHolidays": "Holidays", "navIdeas": "Weekend ideas", "heroA": "Cheap flights and holidays,", "heroB": "in one search", "heroSub": "We compare hundreds of airlines and travel agencies. You pick the best price and book directly with them.", "tr1": "Hundreds of airlines and agencies", "tr2": "No extra fees from us", "tr3": "You book directly with the seller", "destTitle": "Where to this weekend?", "destCta": "Search flights →", "cBarcelona": "Barcelona", "cLondon": "London", "cLisbon": "Lisbon", "cParis": "Paris", "cMilan": "Milan", "cAthens": "Athens", "holTitle": "Holidays with flight + hotel", "hol1": "3-day city break", "hol1d": "Flight and a central hotel, booked together.", "hol2": "Christmas and New Year", "hol2d": "The busiest dates of the year: compare early.", "hol3": "Sun and sea", "hol3d": "Beach holidays for every budget.", "holCta": "Search flight + hotel →", "howTitle": "How it works", "h1": "Search once", "h1d": "Hundreds of airlines and agencies in one list.", "h2": "Compare the real price", "h2d": "See times, stops and baggage before you choose.", "h3": "Book directly", "h3d": "You pay the airline or agency you pick. 4travel.pro adds no fees.", "langLabel": "Language", "mapTitle": "Cheap flights on the map", "mapSub": "Prices from your city to destinations around the world. Drag and zoom the map, then tap a city.", "destSub": "The lowest fares found to each city, from different departure airports. Tap a price to see the flights.", "calTitle": "When is it cheapest to fly?", "calSub": "Pick a destination and see the lowest price for every month of the year.", "tabFlights": "Flights", "tabHotels": "Hotels", "tabTransfer": "Airport transfer", "tabCars": "Car rental", "tabEsim": "eSIM", "tabTours": "Tours & tickets", "tabComp": "Flight delayed?", "hotelText": "Hotels, apartments and resorts for every budget, on Trip.com.", "hotelBtn": "Search hotels on Trip.com →", "altLabel": "Also try:", "disclosure": "Some links on this page are affiliate links. If you book through them, we may earn a commission at no extra cost to you.", "privacy": "Privacy policy", "rights": "All rights reserved.", "dir": "ltr", "tabPackages": "Holidays", "packagesText": "Flight + hotel packages for city breaks, beach holidays and winter trips, on Trip.com.", "packagesBtn": "Search holidays on Trip.com →", "tabBikes": "Bikes & scooters", "tabLuggage": "Luggage storage", "luggageText": "Leave your bags in a safe spot near you and explore hands-free.", "luggageBtn": "Find luggage storage →", "ctaDelay": "My flight was delayed", "footCurio": "Travel guides & tips:", "footWizz": "Wizz Air flight delayed? Up to €600 compensation", "popTitle": "Popular destinations", "popSub": "Where travellers are flying right now, with the lowest fares found on Kiwi.com."}, "ro": {"navFlights": "Zboruri", "navHolidays": "Vacanțe", "navIdeas": "Idei de weekend", "heroA": "Zboruri ieftine și vacanțe,", "heroB": "într-o singură căutare", "heroSub": "Comparăm sute de companii aeriene și agenții de turism. Tu alegi cel mai bun preț și rezervi direct la ele.", "tr1": "Sute de companii aeriene și agenții", "tr2": "Fără taxe în plus de la noi", "tr3": "Rezervi direct la vânzător", "destTitle": "Unde zbori în weekend?", "destCta": "Caută zboruri →", "cBarcelona": "Barcelona", "cLondon": "Londra", "cLisbon": "Lisabona", "cParis": "Paris", "cMilan": "Milano", "cAthens": "Atena", "holTitle": "Vacanțe cu zbor + hotel", "hol1": "City break de 3 zile", "hol1d": "Zbor și hotel central, rezervate împreună.", "hol2": "Crăciun și Revelion", "hol2d": "Cele mai aglomerate date din an: compară din timp.", "hol3": "Soare și mare", "hol3d": "Vacanțe la plajă pentru orice buget.", "holCta": "Caută zbor + hotel →", "howTitle": "Cum funcționează", "h1": "Cauți o dată", "h1d": "Sute de companii aeriene și agenții, într-o singură listă.", "h2": "Compari prețul real", "h2d": "Vezi orele, escalele și bagajul înainte să alegi.", "h3": "Rezervi direct", "h3d": "Plătești compania sau agenția aleasă. 4travel.pro nu adaugă taxe.", "langLabel": "Limba", "mapTitle": "Zboruri ieftine pe hartă", "mapSub": "Prețuri din orașul tău spre destinații din toată lumea. Mișcă harta, mărește și apasă pe un oraș.", "destSub": "Cele mai mici prețuri găsite spre fiecare oraș, din mai multe aeroporturi de plecare. Apasă pe un preț ca să vezi zborurile.", "calTitle": "Când e cel mai ieftin să zbori?", "calSub": "Alege o destinație și vezi cel mai mic preț pentru fiecare lună din an.", "tabFlights": "Zboruri", "tabHotels": "Cazări", "tabTransfer": "Transfer aeroport", "tabCars": "Închirieri auto", "tabEsim": "eSIM", "tabTours": "Tururi și bilete", "tabComp": "Zbor întârziat?", "hotelText": "Hoteluri, apartamente și resorturi pentru orice buget, pe Trip.com.", "hotelBtn": "Caută hotel pe Trip.com →", "altLabel": "Mai poți încerca:", "disclosure": "Unele linkuri de pe această pagină sunt linkuri de afiliat. Dacă rezervi prin ele, putem primi un comision, fără niciun cost suplimentar pentru tine.", "privacy": "Politica de confidențialitate", "rights": "Toate drepturile rezervate.", "dir": "ltr", "tabPackages": "Sejururi", "packagesText": "Pachete zbor + hotel pentru city break, vacanțe la mare și la iarnă, pe Trip.com.", "packagesBtn": "Caută sejururi pe Trip.com →", "tabBikes": "Biciclete și scutere", "tabLuggage": "Depozitare bagaje", "luggageText": "Lasă bagajele într-un loc sigur lângă tine și vizitează liber.", "luggageBtn": "Găsește depozitare bagaje →", "ctaDelay": "Zborul meu a întârziat", "footCurio": "Ghiduri și sfaturi de călătorie:", "footWizz": "Zbor Wizz Air întârziat? Compensație până la 600 €", "popTitle": "Destinații populare", "popSub": "Unde zboară lumea acum, cu cele mai mici prețuri găsite pe Kiwi.com."}, "fr": {"navFlights": "Vols", "navHolidays": "Séjours", "navIdeas": "Idées week-end", "heroA": "Vols pas chers et séjours,", "heroB": "en une seule recherche", "heroSub": "Nous comparons des centaines de compagnies aériennes et d'agences. Vous choisissez le meilleur prix et réservez directement chez elles.", "tr1": "Des centaines de compagnies et d'agences", "tr2": "Aucuns frais de notre part", "tr3": "Vous réservez directement auprès du vendeur", "destTitle": "Où partir ce week-end ?", "destCta": "Chercher un vol →", "cBarcelona": "Barcelone", "cLondon": "Londres", "cLisbon": "Lisbonne", "cParis": "Paris", "cMilan": "Milan", "cAthens": "Athènes", "holTitle": "Séjours vol + hôtel", "hol1": "City break de 3 jours", "hol1d": "Vol et hôtel central, réservés ensemble.", "hol2": "Noël et Nouvel An", "hol2d": "Les dates les plus demandées de l'année : comparez tôt.", "hol3": "Soleil et mer", "hol3d": "Vacances à la plage pour tous les budgets.", "holCta": "Chercher vol + hôtel →", "howTitle": "Comment ça marche", "h1": "Une seule recherche", "h1d": "Des centaines de compagnies et d'agences dans une seule liste.", "h2": "Le vrai prix", "h2d": "Horaires, escales et bagages visibles avant de choisir.", "h3": "Réservation directe", "h3d": "Vous payez la compagnie ou l'agence choisie. 4travel.pro n'ajoute aucuns frais.", "langLabel": "Langue", "mapTitle": "Vols pas chers sur la carte", "mapSub": "Les prix depuis votre ville vers le monde entier. Déplacez et zoomez la carte, puis touchez une ville.", "destSub": "Les prix les plus bas trouvés vers chaque ville, depuis plusieurs aéroports de départ. Touchez un prix pour voir les vols.", "calTitle": "Quand est-ce le moins cher ?", "calSub": "Choisissez une destination et voyez le prix le plus bas pour chaque mois de l'année.", "tabFlights": "Vols", "tabHotels": "Hôtels", "tabTransfer": "Transfert aéroport", "tabCars": "Location de voiture", "tabEsim": "eSIM", "tabTours": "Visites et billets", "tabComp": "Vol retardé ?", "hotelText": "Hôtels, appartements et resorts pour tous les budgets, sur Trip.com.", "hotelBtn": "Chercher un hôtel sur Trip.com →", "altLabel": "Essayez aussi :", "disclosure": "Certains liens de cette page sont des liens d'affiliation. Si vous réservez par leur intermédiaire, nous pouvons percevoir une commission, sans coût supplémentaire pour vous.", "privacy": "Politique de confidentialité", "rights": "Tous droits réservés.", "dir": "ltr", "tabPackages": "Séjours", "packagesText": "Forfaits vol + hôtel pour city breaks, vacances à la mer et séjours d'hiver, sur Trip.com.", "packagesBtn": "Chercher un séjour sur Trip.com →", "tabBikes": "Vélos et scooters", "tabLuggage": "Consigne à bagages", "luggageText": "Déposez vos bagages dans un lieu sûr près de vous et visitez les mains libres.", "luggageBtn": "Trouver une consigne →", "ctaDelay": "Mon vol a été retardé", "footCurio": "Guides et conseils de voyage :", "footWizz": "Vol Wizz Air retardé ? Jusqu'à 600 € d'indemnisation", "popTitle": "Destinations populaires", "popSub": "Où les voyageurs partent en ce moment, avec les prix les plus bas trouvés sur Kiwi.com."}, "de": {"navFlights": "Flüge", "navHolidays": "Urlaub", "navIdeas": "Wochenend-Ideen", "heroA": "Günstige Flüge und Urlaub,", "heroB": "in einer Suche", "heroSub": "Wir vergleichen Hunderte Airlines und Reiseanbieter. Du wählst den besten Preis und buchst direkt bei ihnen.", "tr1": "Hunderte Airlines und Anbieter", "tr2": "Keine Zusatzgebühren von uns", "tr3": "Du buchst direkt beim Verkäufer", "destTitle": "Wohin am Wochenende?", "destCta": "Flüge suchen →", "cBarcelona": "Barcelona", "cLondon": "London", "cLisbon": "Lissabon", "cParis": "Paris", "cMilan": "Mailand", "cAthens": "Athen", "holTitle": "Urlaub mit Flug + Hotel", "hol1": "3 Tage Städtereise", "hol1d": "Flug und zentrales Hotel, zusammen gebucht.", "hol2": "Weihnachten und Silvester", "hol2d": "Die gefragtesten Termine des Jahres: früh vergleichen.", "hol3": "Sonne und Meer", "hol3d": "Strandurlaub für jedes Budget.", "holCta": "Flug + Hotel suchen →", "howTitle": "So funktioniert es", "h1": "Einmal suchen", "h1d": "Hunderte Airlines und Anbieter in einer Liste.", "h2": "Echten Preis vergleichen", "h2d": "Zeiten, Umstiege und Gepäck sehen, bevor du wählst.", "h3": "Direkt buchen", "h3d": "Du zahlst die gewählte Airline oder den Anbieter. 4travel.pro erhebt keine Gebühren.", "langLabel": "Sprache", "mapTitle": "Günstige Flüge auf der Karte", "mapSub": "Preise von deiner Stadt zu Zielen weltweit. Karte verschieben und zoomen, dann eine Stadt antippen.", "destSub": "Die günstigsten gefundenen Preise in jede Stadt, von verschiedenen Abflughäfen. Tippe auf einen Preis, um die Flüge zu sehen.", "calTitle": "Wann ist Fliegen am günstigsten?", "calSub": "Wähle ein Ziel und sieh den niedrigsten Preis für jeden Monat des Jahres.", "tabFlights": "Flüge", "tabHotels": "Hotels", "tabTransfer": "Flughafentransfer", "tabCars": "Mietwagen", "tabEsim": "eSIM", "tabTours": "Touren & Tickets", "tabComp": "Flug verspätet?", "hotelText": "Hotels, Apartments und Resorts für jedes Budget, bei Trip.com.", "hotelBtn": "Hotels bei Trip.com suchen →", "altLabel": "Auch interessant:", "disclosure": "Einige Links auf dieser Seite sind Affiliate-Links. Wenn du darüber buchst, erhalten wir eventuell eine Provision – ohne Mehrkosten für dich.", "privacy": "Datenschutzerklärung", "rights": "Alle Rechte vorbehalten.", "dir": "ltr", "tabPackages": "Pauschalreisen", "packagesText": "Flug + Hotel für Städtereisen, Strand- und Winterurlaub, bei Trip.com.", "packagesBtn": "Pauschalreisen bei Trip.com suchen →", "tabBikes": "Fahrräder & Roller", "tabLuggage": "Gepäckaufbewahrung", "luggageText": "Lass dein Gepäck an einem sicheren Ort in der Nähe und erkunde die Stadt ohne Ballast.", "luggageBtn": "Gepäckaufbewahrung finden →", "ctaDelay": "Mein Flug war verspätet", "footCurio": "Reiseführer & Tipps:", "footWizz": "Wizz-Air-Flug verspätet? Bis zu 600 € Entschädigung", "popTitle": "Beliebte Ziele", "popSub": "Wohin Reisende gerade fliegen, mit den günstigsten Preisen bei Kiwi.com."}, "es": {"navFlights": "Vuelos", "navHolidays": "Vacaciones", "navIdeas": "Ideas de fin de semana", "heroA": "Vuelos baratos y vacaciones,", "heroB": "en una sola búsqueda", "heroSub": "Comparamos cientos de aerolíneas y agencias. Tú eliges el mejor precio y reservas directamente con ellas.", "tr1": "Cientos de aerolíneas y agencias", "tr2": "Sin comisiones nuestras", "tr3": "Reservas directamente con el vendedor", "destTitle": "¿A dónde este fin de semana?", "destCta": "Buscar vuelos →", "cBarcelona": "Barcelona", "cLondon": "Londres", "cLisbon": "Lisboa", "cParis": "París", "cMilan": "Milán", "cAthens": "Atenas", "holTitle": "Vacaciones con vuelo + hotel", "hol1": "Escapada de 3 días", "hol1d": "Vuelo y hotel céntrico, reservados juntos.", "hol2": "Navidad y Año Nuevo", "hol2d": "Las fechas más buscadas del año: compara con tiempo.", "hol3": "Sol y playa", "hol3d": "Vacaciones de playa para cualquier presupuesto.", "holCta": "Buscar vuelo + hotel →", "howTitle": "Cómo funciona", "h1": "Buscas una vez", "h1d": "Cientos de aerolíneas y agencias en una sola lista.", "h2": "Comparas el precio real", "h2d": "Horarios, escalas y equipaje antes de elegir.", "h3": "Reservas directamente", "h3d": "Pagas a la aerolínea o agencia elegida. 4travel.pro no añade comisiones.", "langLabel": "Idioma", "mapTitle": "Vuelos baratos en el mapa", "mapSub": "Precios desde tu ciudad a destinos de todo el mundo. Mueve y amplía el mapa y toca una ciudad.", "destSub": "Los precios más bajos encontrados a cada ciudad, desde varios aeropuertos de salida. Toca un precio para ver los vuelos.", "calTitle": "¿Cuándo es más barato volar?", "calSub": "Elige un destino y mira el precio más bajo de cada mes del año.", "tabFlights": "Vuelos", "tabHotels": "Hoteles", "tabTransfer": "Traslado aeropuerto", "tabCars": "Alquiler de coche", "tabEsim": "eSIM", "tabTours": "Tours y entradas", "tabComp": "¿Vuelo retrasado?", "hotelText": "Hoteles, apartamentos y resorts para cualquier presupuesto, en Trip.com.", "hotelBtn": "Buscar hotel en Trip.com →", "altLabel": "Prueba también:", "disclosure": "Algunos enlaces de esta página son de afiliado. Si reservas a través de ellos, podemos recibir una comisión sin coste adicional para ti.", "privacy": "Política de privacidad", "rights": "Todos los derechos reservados.", "dir": "ltr", "tabPackages": "Paquetes", "packagesText": "Vuelo + hotel para escapadas, playa y viajes de invierno, en Trip.com.", "packagesBtn": "Buscar paquetes en Trip.com →", "tabBikes": "Bicis y scooters", "tabLuggage": "Consigna de equipaje", "luggageText": "Deja tu equipaje en un lugar seguro cerca de ti y explora sin cargas.", "luggageBtn": "Buscar consigna →", "ctaDelay": "Mi vuelo se retrasó", "footCurio": "Guías y consejos de viaje:", "footWizz": "¿Vuelo de Wizz Air retrasado? Hasta 600 € de compensación", "popTitle": "Destinos populares", "popSub": "A dónde vuelan los viajeros ahora, con los precios más bajos encontrados en Kiwi.com."}, "it": {"navFlights": "Voli", "navHolidays": "Vacanze", "navIdeas": "Idee per il weekend", "heroA": "Voli economici e vacanze,", "heroB": "in un'unica ricerca", "heroSub": "Confrontiamo centinaia di compagnie aeree e agenzie. Scegli il prezzo migliore e prenoti direttamente con loro.", "tr1": "Centinaia di compagnie e agenzie", "tr2": "Nessun costo aggiuntivo da parte nostra", "tr3": "Prenoti direttamente con il venditore", "destTitle": "Dove andare questo weekend?", "destCta": "Cerca voli →", "cBarcelona": "Barcellona", "cLondon": "Londra", "cLisbon": "Lisbona", "cParis": "Parigi", "cMilan": "Milano", "cAthens": "Atene", "holTitle": "Vacanze volo + hotel", "hol1": "City break di 3 giorni", "hol1d": "Volo e hotel in centro, prenotati insieme.", "hol2": "Natale e Capodanno", "hol2d": "Le date più richieste dell'anno: confronta presto.", "hol3": "Sole e mare", "hol3d": "Vacanze al mare per ogni budget.", "holCta": "Cerca volo + hotel →", "howTitle": "Come funziona", "h1": "Cerchi una volta", "h1d": "Centinaia di compagnie e agenzie in un'unica lista.", "h2": "Confronti il prezzo reale", "h2d": "Orari, scali e bagaglio prima di scegliere.", "h3": "Prenoti direttamente", "h3d": "Paghi la compagnia o l'agenzia scelta. 4travel.pro non aggiunge costi.", "langLabel": "Lingua", "mapTitle": "Voli economici sulla mappa", "mapSub": "Prezzi dalla tua città verso destinazioni in tutto il mondo. Sposta e ingrandisci la mappa, poi tocca una città.", "destSub": "I prezzi più bassi trovati verso ogni città, da diversi aeroporti di partenza. Tocca un prezzo per vedere i voli.", "calTitle": "Quando conviene volare?", "calSub": "Scegli una destinazione e vedi il prezzo più basso per ogni mese dell'anno.", "tabFlights": "Voli", "tabHotels": "Hotel", "tabTransfer": "Transfer aeroporto", "tabCars": "Noleggio auto", "tabEsim": "eSIM", "tabTours": "Tour e biglietti", "tabComp": "Volo in ritardo?", "hotelText": "Hotel, appartamenti e resort per ogni budget, su Trip.com.", "hotelBtn": "Cerca hotel su Trip.com →", "altLabel": "Prova anche:", "disclosure": "Alcuni link di questa pagina sono link di affiliazione. Se prenoti tramite essi, potremmo ricevere una commissione senza costi aggiuntivi per te.", "privacy": "Informativa sulla privacy", "rights": "Tutti i diritti riservati.", "dir": "ltr", "tabPackages": "Pacchetti", "packagesText": "Volo + hotel per city break, mare e vacanze invernali, su Trip.com.", "packagesBtn": "Cerca pacchetti su Trip.com →", "tabBikes": "Bici e scooter", "tabLuggage": "Deposito bagagli", "luggageText": "Lascia i bagagli in un posto sicuro vicino a te e visita senza pesi.", "luggageBtn": "Trova un deposito bagagli →", "ctaDelay": "Il mio volo era in ritardo", "footCurio": "Guide e consigli di viaggio:", "footWizz": "Volo Wizz Air in ritardo? Fino a 600 € di risarcimento", "popTitle": "Destinazioni popolari", "popSub": "Dove volano i viaggiatori adesso, con i prezzi più bassi trovati su Kiwi.com."}, "hu": {"navFlights": "Repülőjegyek", "navHolidays": "Nyaralás", "navIdeas": "Hétvégi ötletek", "heroA": "Olcsó repülőjegyek és nyaralások,", "heroB": "egyetlen kereséssel", "heroSub": "Több száz légitársaságot és utazási irodát hasonlítunk össze. Te választod ki a legjobb árat, és közvetlenül náluk foglalsz.", "tr1": "Több száz légitársaság és iroda", "tr2": "Tőlünk nincs extra díj", "tr3": "Közvetlenül az eladónál foglalsz", "destTitle": "Hová utazz a hétvégén?", "destCta": "Járatok keresése →", "cBarcelona": "Barcelona", "cLondon": "London", "cLisbon": "Lisszabon", "cParis": "Párizs", "cMilan": "Milánó", "cAthens": "Athén", "holTitle": "Nyaralás repülővel + szállással", "hol1": "3 napos városlátogatás", "hol1d": "Repülőjegy és belvárosi szálloda együtt foglalva.", "hol2": "Karácsony és szilveszter", "hol2d": "Az év legkeresettebb időpontjai: hasonlíts korán.", "hol3": "Nap és tenger", "hol3d": "Tengerparti nyaralás minden pénztárcához.", "holCta": "Repülő + szálloda keresése →", "howTitle": "Hogyan működik", "h1": "Egyszer keresel", "h1d": "Több száz légitársaság és iroda egy listában.", "h2": "A valódi árat látod", "h2d": "Időpontok, átszállások és poggyász a választás előtt.", "h3": "Közvetlenül foglalsz", "h3d": "A választott légitársaságnak vagy irodának fizetsz. A 4travel.pro nem számít fel díjat.", "langLabel": "Nyelv", "mapTitle": "Olcsó járatok a térképen", "mapSub": "Árak a városodból úti célokba szerte a világon. Mozgasd és nagyítsd a térképet, majd koppints egy városra.", "destSub": "A talált legolcsóbb árak minden városba, több indulási repülőtérről. Koppints egy árra a járatokért.", "calTitle": "Mikor a legolcsóbb repülni?", "calSub": "Válassz úti célt, és nézd meg a legalacsonyabb árat az év minden hónapjára.", "tabFlights": "Repülőjegyek", "tabHotels": "Szállás", "tabTransfer": "Reptéri transzfer", "tabCars": "Autóbérlés", "tabEsim": "eSIM", "tabTours": "Túrák és jegyek", "tabComp": "Késett a járat?", "hotelText": "Szállodák, apartmanok és üdülők minden pénztárcához a Trip.com-on.", "hotelBtn": "Szállás keresése a Trip.com-on →", "altLabel": "Próbáld ki ezt is:", "disclosure": "Az oldalon található linkek egy része partnerlink. Ha ezeken keresztül foglalsz, jutalékot kaphatunk, számodra többletköltség nélkül.", "privacy": "Adatvédelmi tájékoztató", "rights": "Minden jog fenntartva.", "dir": "ltr", "tabPackages": "Csomagutak", "packagesText": "Repülő + szállás városlátogatásra, tengerpartra és téli utakra a Trip.com-on.", "packagesBtn": "Csomagutak keresése a Trip.com-on →", "tabBikes": "Kerékpár és robogó", "tabLuggage": "Csomagmegőrzés", "luggageText": "Hagyd a csomagjaidat biztonságos helyen a közelben, és fedezd fel a várost kézben hordott teher nélkül.", "luggageBtn": "Csomagmegőrző keresése →", "ctaDelay": "Késett a járatom", "footCurio": "Utazási útmutatók és tippek:", "footWizz": "Késett a Wizz Air-járatod? Akár 600 € kártérítés", "popTitle": "Népszerű úti célok", "popSub": "Hová repülnek most az utazók, a Kiwi.com-on talált legolcsóbb árakkal."}, "tr": {"navFlights": "Uçuşlar", "navHolidays": "Tatiller", "navIdeas": "Hafta sonu fikirleri", "heroA": "Ucuz uçuşlar ve tatiller,", "heroB": "tek aramada", "heroSub": "Yüzlerce havayolunu ve acenteyi karşılaştırıyoruz. En iyi fiyatı sen seçer, doğrudan onlardan rezervasyon yaparsın.", "tr1": "Yüzlerce havayolu ve acente", "tr2": "Bizden ek ücret yok", "tr3": "Doğrudan satıcıdan alırsın", "destTitle": "Bu hafta sonu nereye?", "destCta": "Uçuş ara →", "cBarcelona": "Barselona", "cLondon": "Londra", "cLisbon": "Lizbon", "cParis": "Paris", "cMilan": "Milano", "cAthens": "Atina", "holTitle": "Uçuş + otel tatilleri", "hol1": "3 günlük şehir turu", "hol1d": "Uçuş ve merkezi otel birlikte.", "hol2": "Yılbaşı ve Noel", "hol2d": "Yılın en yoğun tarihleri: erkenden karşılaştır.", "hol3": "Güneş ve deniz", "hol3d": "Her bütçeye plaj tatili.", "holCta": "Uçuş + otel ara →", "howTitle": "Nasıl çalışır", "h1": "Bir kez ara", "h1d": "Yüzlerce havayolu ve acente tek listede.", "h2": "Gerçek fiyatı karşılaştır", "h2d": "Saatleri, aktarmaları ve bagajı seçmeden önce gör.", "h3": "Doğrudan rezervasyon", "h3d": "Seçtiğin havayoluna veya acenteye ödersin. 4travel.pro ücret eklemez.", "langLabel": "Dil", "mapTitle": "Haritada ucuz uçuşlar", "mapSub": "Şehrinden dünyanın dört bir yanına fiyatlar. Haritayı kaydır, yakınlaştır ve bir şehre dokun.", "destSub": "Her şehre farklı kalkış havalimanlarından bulunan en düşük fiyatlar. Uçuşları görmek için bir fiyata dokun.", "calTitle": "Ne zaman uçmak en ucuz?", "calSub": "Bir yer seç ve yılın her ayı için en düşük fiyatı gör.", "tabFlights": "Uçuşlar", "tabHotels": "Oteller", "tabTransfer": "Havalimanı transferi", "tabCars": "Araç kiralama", "tabEsim": "eSIM", "tabTours": "Turlar ve biletler", "tabComp": "Uçuş gecikti mi?", "hotelText": "Her bütçeye otel, daire ve tatil köyü, Trip.com'da.", "hotelBtn": "Trip.com'da otel ara →", "altLabel": "Şunu da dene:", "disclosure": "Bu sayfadaki bazı bağlantılar ortaklık bağlantılarıdır. Bunlar üzerinden rezervasyon yaparsan, sana ek maliyet olmadan komisyon kazanabiliriz.", "privacy": "Gizlilik politikası", "rights": "Tüm hakları saklıdır.", "dir": "ltr", "tabPackages": "Tatil paketleri", "packagesText": "Şehir turu, deniz ve kış tatili için uçuş + otel paketleri, Trip.com'da.", "packagesBtn": "Trip.com'da tatil paketi ara →", "tabBikes": "Bisiklet ve scooter", "tabLuggage": "Bagaj emanet", "luggageText": "Bagajlarını yakınındaki güvenli bir yere bırak, rahatça gez.", "luggageBtn": "Bagaj emanet bul →", "ctaDelay": "Uçuşum rötar yaptı", "footCurio": "Seyahat rehberleri ve ipuçları:", "footWizz": "Wizz Air uçuşun rötarlı mı? 600 €'ya kadar tazminat", "popTitle": "Popüler yerler", "popSub": "Gezginlerin şu an uçtuğu yerler, Kiwi.com'daki en düşük fiyatlarla."}, "ar": {"navFlights": "رحلات الطيران", "navHolidays": "العطلات", "navIdeas": "أفكار لعطلة نهاية الأسبوع", "heroA": "رحلات طيران رخيصة وعطلات،", "heroB": "في بحث واحد", "heroSub": "نقارن مئات شركات الطيران ووكالات السفر. أنت تختار أفضل سعر وتحجز مباشرة لديهم.", "tr1": "مئات شركات الطيران والوكالات", "tr2": "لا رسوم إضافية منّا", "tr3": "تحجز مباشرة لدى البائع", "destTitle": "إلى أين في عطلة نهاية الأسبوع؟", "destCta": "ابحث عن رحلات ←", "cBarcelona": "برشلونة", "cLondon": "لندن", "cLisbon": "لشبونة", "cParis": "باريس", "cMilan": "ميلانو", "cAthens": "أثينا", "holTitle": "عطلات مع الطيران + الفندق", "hol1": "عطلة مدينة لمدة 3 أيام", "hol1d": "رحلة طيران وفندق في المركز، محجوزان معًا.", "hol2": "عيد الميلاد ورأس السنة", "hol2d": "أكثر مواعيد السنة طلبًا: قارن مبكرًا.", "hol3": "شمس وبحر", "hol3d": "عطلات شاطئية لكل الميزانيات.", "holCta": "ابحث عن طيران + فندق ←", "howTitle": "كيف يعمل", "h1": "ابحث مرة واحدة", "h1d": "مئات شركات الطيران والوكالات في قائمة واحدة.", "h2": "قارن السعر الحقيقي", "h2d": "اطّلع على المواعيد والتوقفات والأمتعة قبل الاختيار.", "h3": "احجز مباشرة", "h3d": "تدفع لشركة الطيران أو الوكالة التي تختارها. لا يضيف 4travel.pro أي رسوم.", "langLabel": "اللغة", "mapTitle": "رحلات رخيصة على الخريطة", "mapSub": "الأسعار من مدينتك إلى وجهات حول العالم. حرّك الخريطة وكبّرها ثم اضغط على مدينة.", "destSub": "أقل الأسعار التي وجدناها إلى كل مدينة من مطارات مغادرة مختلفة. اضغط على سعر لرؤية الرحلات.", "calTitle": "متى يكون الطيران أرخص؟", "calSub": "اختر وجهة وشاهد أقل سعر لكل شهر من السنة.", "tabFlights": "رحلات الطيران", "tabHotels": "الفنادق", "tabTransfer": "التوصيل من المطار", "tabCars": "تأجير السيارات", "tabEsim": "شريحة eSIM", "tabTours": "جولات وتذاكر", "tabComp": "تأخرت رحلتك؟", "hotelText": "فنادق وشقق ومنتجعات لكل الميزانيات على Trip.com.", "hotelBtn": "ابحث عن فندق على Trip.com ←", "altLabel": "جرّب أيضًا:", "disclosure": "بعض الروابط في هذه الصفحة روابط تسويق بالعمولة. إذا حجزت من خلالها، قد نحصل على عمولة دون أي تكلفة إضافية عليك.", "privacy": "سياسة الخصوصية", "rights": "جميع الحقوق محفوظة.", "dir": "rtl", "tabPackages": "باقات العطلات", "packagesText": "باقات طيران + فندق لعطلات المدن والشواطئ والشتاء على Trip.com.", "packagesBtn": "ابحث عن باقات على Trip.com ←", "tabBikes": "دراجات وسكوترات", "tabLuggage": "حفظ الأمتعة", "luggageText": "اترك أمتعتك في مكان آمن قريب منك وتجوّل بحرية.", "luggageBtn": "ابحث عن مكان لحفظ الأمتعة ←", "ctaDelay": "تأخرت رحلتي", "footCurio": "أدلة ونصائح السفر:", "footWizz": "تأخرت رحلة Wizz Air؟ تعويض حتى 600 يورو", "popTitle": "وجهات شائعة", "popSub": "إلى أين يسافر المسافرون الآن، بأقل الأسعار على Kiwi.com."}};
+const WIDGET_LOCALES = {en:'en',fr:'fr',de:'de',es:'es',it:'it',tr:'tr'};
+const CURRENCY = {tr:'try',ar:'usd',hu:'eur',ro:'eur'};
+let svc = 'flights';
+const CUR_UP = l => (CURRENCY[l] || 'eur').toUpperCase();
+const SVC = {
+  transfer: l => ({currency: CUR_UP(l), trs:'502962', shmarker:'662933', locale:'en', from:'', to:'', country:'', powered_by:'true', height:'', wtype:'true', transfers_limit:'10', button_color:'#F2711C', button_hover_color:'#C2540A', campaign_id:'1', promo_id:'2949'}),
+  cars: l => ({trs:'502962', shmarker:'662933', locale:'en', powered_by:'true', border_radius:'12', plain:'true', show_logo:'true', promo_id:'4480', campaign_id:'10'}),
+  esim: l => ({trs:'502962', shmarker:'662933', locale:'en', powered_by:'true', secondary:'#FFFFFF', dark:'#0E1E3A', light:'#FFFFFF', special:'#C4C4C4', border_radius:'12', plain:'false', no_labels:'true', promo_id:'8588', campaign_id:'541'}),
+  tours: l => ({currency: CUR_UP(l), trs:'502962', shmarker:'662933', language:'en', layout:'horizontal', cards:'4', powered_by:'true', campaign_id:'89', promo_id:'3947'}),
+  comp: l => ({trs:'502962', shmarker:'662933', lang:'en', powered_by:'true', campaign_id:'120', promo_id:'8679'})
+};
+SVC.bikes = l => ({trs:'502962', shmarker:'662933', locale:'en', powered_by:'true', border_radius:'12', plain:'true', color_background:'#ffffff', color_button:'#F2711C', promo_id:'5472', campaign_id:'57'});
+const W = {
+  aviasales: null,
+  welcome: l => ({trs:'502962', shmarker:'662933', locale:'en', show_header:'true', powered_by:'true', campaign_id:'627', promo_id:'8951'}),
+  qeeq: l => ({trs:'502962', shmarker:'662933', locale:'en', powered_by:'true', campaign_id:'172', promo_id:'4850'}),
+  autoeurope: l => ({trs:'502962', shmarker:'662933', locale:'en', powered_by:'true', border_radius:'12', plain:'true', show_logo:'true', promo_id:'4362', campaign_id:'143'}),
+  getrentacar: l => ({campaign_id:'222', promo_id:'8813', shmarker:'662933', trs:'502962', _host:'tp.media'}),
+  compensair: l => ({trs:'502962', shmarker:'662933', locale:'en', border_radius:'12', plain:'true', powered_by:'true', promo_id:'3408', campaign_id:'86'})
+};
+SVC.flights = l => ({currency: CURRENCY[l] || 'eur', trs:'502962', shmarker:'662933', locale: WIDGET_LOCALES[l] || 'en', stops:'any', show_hotels:'true', powered_by:'true', border_radius:'12', plain:'true', color_button:'#F2711C', color_button_text:'#ffffff', promo_id:'3414', campaign_id:'111'});
+const ALTS = {
+  flights: [['Aviasales', 'w:aviasales']],
+  transfer: [['Welcome Pickups', 'w:welcome'], ['GetTransfer', 'https://gettransfer.tpm.lv/QP09FoWM']],
+  cars: [['QEEQ', 'w:qeeq'], ['AutoEurope', 'w:autoeurope'], ['GetRentacar', 'w:getrentacar'], ['Localrent', 'https://localrent.tpm.lv/XbdoqmvO']],
+  esim: [['Yesim', 'https://yesim.tpm.lv/39GFBAoB'], ['Drimsim', 'https://drimsim.tpm.lv/7m9Ga3CC']],
+  tours: [['Go City', 'https://gocity.tpm.lv/awdVlMRF']],
+  comp: [['Compensair', 'w:compensair'], ['AirHelp', 'https://airhelp.tpm.lv/omacG3Bs']]
+};
+function loadSvc(lang){
+  document.querySelectorAll('.svc').forEach(b => b.setAttribute('aria-selected', String(b.dataset.svc === svc)));
+  const slot = document.getElementById('tp-slot'), PANELS = {hotels:'hotel-panel', packages:'packages-panel', luggage:'luggage-panel'};
+  Object.entries(PANELS).forEach(([k, id]) => { document.getElementById(id).hidden = svc !== k; });
+  slot.hidden = svc in PANELS;
+  const alts = ALTS[svc] || [], box = document.getElementById('alt-links');
+  document.getElementById('alts').hidden = !alts.length; box.innerHTML = '';
+  alts.forEach(([n, u]) => { const a = document.createElement('a'); a.textContent = n + ' →';
+    if (!u.startsWith('w:')) { a.href = u; a.target = '_blank'; a.rel = 'sponsored noopener'; }
+    else { a.href = '#search'; a.addEventListener('click', e => { e.preventDefault(); const k = u.slice(2), lang = document.documentElement.lang;
+      box.querySelectorAll('a').forEach(x => x.classList.remove('on')); a.classList.add('on');
+      if (k === 'aviasales') loadWidget(lang); else tpScript(slot, W[k](lang)); }); }
+    box.appendChild(a); });
+  if (svc in PANELS) { slot.innerHTML = ''; return; }
+  tpScript(slot, SVC[svc](lang));
+}
+document.querySelectorAll('.svc').forEach(b => b.addEventListener('click', () => { svc = b.dataset.svc; loadSvc(document.documentElement.lang); }));
+function loadWidget(lang){
+  const slot = document.getElementById('tp-slot');
+  slot.innerHTML = '';
+  const p = new URLSearchParams({
+    currency: CURRENCY[lang] || 'eur', trs: '502962', shmarker: '662933', show_hotels: 'true', powered_by: 'true',
+    locale: WIDGET_LOCALES[lang] || 'en', searchUrl: 'www.aviasales.com/search',
+    primary_override: '#F2711C', color_button: '#F2711C', color_icons: '#F2711C', dark: '#0E1E3A', light: '#FFFFFF',
+    secondary: '#FFFFFF', special: '#C4C4C4', color_focused: '#F2711C', border_radius: '12', plain: 'true',
+    promo_id: '7879', campaign_id: '100'
+  });
+  const s = document.createElement('script');
+  s.async = true; s.charset = 'utf-8';
+  s.src = 'https://tpwidg.com/content?' + p.toString();
+  slot.appendChild(s);
+}
+const ORIGINS = {en:['LON',51.5074,-0.1278],ro:['BUH',44.4268,26.1025],fr:['PAR',48.8566,2.3522],de:['BER',52.52,13.405],es:['MAD',40.4168,-3.7038],it:['ROM',41.9028,12.4964],hu:['BUD',47.4979,19.0402],tr:['IST',41.0082,28.9784],ar:['DXB',25.2048,55.2708]};
+function tpScript(slot, params){
+  slot.innerHTML = '';
+  const s = document.createElement('script'); s.async = true; s.charset = 'utf-8';
+  const host = params._host || 'tpwidg.com'; delete params._host;
+  s.src = 'https://' + host + '/content?' + new URLSearchParams(params).toString();
+  slot.appendChild(s);
+}
+function lazy(slot, fn){
+  if (!('IntersectionObserver' in window)) { fn(); return; }
+  const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); fn(); } }, {rootMargin:'400px'});
+  io.observe(slot);
+}
+function loadRoutes(lang){
+  document.querySelectorAll('.tp-route').forEach(slot => lazy(slot, () => tpScript(slot, {
+    currency: CURRENCY[lang] || 'eur', trs: '502962', shmarker: '662933', destination: slot.dataset.dest,
+    target_host: 'www.aviasales.com/search', locale: WIDGET_LOCALES[lang] || 'en', limit: '6', powered_by: 'true',
+    primary: '#F2711C', promo_id: '4044', campaign_id: '100'
+  })));
+}
+let calDest = null;
+function loadCal(lang){
+  const o = (ORIGINS[lang] || ORIGINS.en)[0];
   const chips = [...document.querySelectorAll('.chip')];
-  const byId = Object.fromEntries(chips.map(c => [c.getAttribute('href').slice(1), c]));
-  const seen = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { chips.forEach(c => c.classList.remove('is-active')); const c = byId[e.target.id]; if (c) { c.classList.add('is-active'); c.scrollIntoView({block:'nearest', inline:'nearest'}); } } });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  document.querySelectorAll('.ticket[id]').forEach(t => seen.observe(t));
-
-  // one flight-path animation on load; skip it for people who prefer reduced motion
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const svg = document.querySelector('.route-art');
-    svg.pauseAnimations(); svg.setCurrentTime(3);
+  if (!calDest || calDest === o) calDest = (chips.find(c => c.dataset.dest !== o) || chips[0]).dataset.dest;
+  chips.forEach(c => { c.setAttribute('aria-selected', String(c.dataset.dest === calDest)); c.hidden = c.dataset.dest === o; });
+  const slot = document.getElementById('tp-cal');
+  lazy(slot, () => tpScript(slot, {
+    currency: CURRENCY[lang] || 'eur', trs: '502962', shmarker: '662933', searchUrl: 'www.aviasales.com/search',
+    locale: WIDGET_LOCALES[lang] || 'en', powered_by: 'true', one_way: 'false', only_direct: 'false', period: 'year', range: '3,7',
+    origin: o, destination: calDest,
+    primary: '#F2711C', color_background: '#ffffff', dark: '#0E1E3A', light: '#FFFFFF', achieve: '#45AD35',
+    promo_id: '4041', campaign_id: '100'
+  }));
+}
+document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { calDest = c.dataset.dest; loadCal(document.documentElement.lang); }));
+function setLang(lang){
+  const t = translations[lang]; if (!t) return;
+  document.documentElement.lang = lang; document.documentElement.dir = t.dir;
+  document.querySelectorAll('[data-key]').forEach(el => { const v = t[el.dataset.key]; if (v !== undefined) el.textContent = v; });
+  document.getElementById('lang').value = lang;
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+  loadSvc(lang);
+  loadRoutes(lang);
+  loadCal(lang);
+  const pop = document.getElementById('tp-pop');
+  lazy(pop, () => tpScript(pop, {currency: CURRENCY[lang] || 'eur', trs:'502962', shmarker:'662933', locale: WIDGET_LOCALES[lang] || 'en', powered_by:'true', limit:'6', primary_color:'F2711C', results_background_color:'FFFFFF', form_background_color:'FFFFFF', promo_id:'4563', campaign_id:'111'}));
+}
+document.getElementById('lang').addEventListener('change', e => setLang(e.target.value));
+document.getElementById('year').textContent = new Date().getFullYear();
+(function initLang(){
+  let lang = null;
+  const q = new URLSearchParams(location.search).get('lang');
+  if (q && translations[q]) lang = q;
+  if (!lang) { try { lang = localStorage.getItem('lang'); } catch (e) {} }
+  if (!lang || !translations[lang]) {
+    const nav = (navigator.languages || [navigator.language || 'en']).map(l => l.slice(0, 2).toLowerCase());
+    lang = nav.find(l => translations[l]) || 'en';
   }
+  setLang(lang);
+})();
 </script>
 <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
   (function () {

@@ -1,5 +1,5 @@
 """Builds index.html for 4travel.pro (v2 design, Oct 22 2026). Run: python3 build_index.py"""
-import json
+import json, os
 from extra_i18n import EXTRA
 
 KEEP = json.load(open('/tmp/keep.json')) if __import__('os').path.exists('/tmp/keep.json') else json.load(open('i18n_keep.json'))
@@ -95,7 +95,19 @@ TR = {}
 for lang, vals in T.items():
     assert len(vals) == len(K), (lang, len(vals))
     d = dict(zip(K, vals)); d.update(KEEP[lang]); d.update(EXTRA[lang]); TR[lang] = d
-en = TR["en"]
+PAGE = os.environ.get("PAGE_LANG", "en")  # en -> /index.html, ro -> /ro/index.html
+en = TR[PAGE]  # strings used in the static HTML (page language)
+BASE = "https://www.4travel.pro/"
+URL = BASE if PAGE == "en" else f"{BASE}{PAGE}/"
+META = {
+ "en": ("4travel.pro – Cheap flights and holidays in one search",
+        "Compare cheap flights and flight + hotel holidays from hundreds of airlines and travel agencies, then book directly with them. Free, no extra fees.",
+        "Compare hundreds of airlines and agencies, then book directly. Free, no extra fees."),
+ "ro": ("Zboruri ieftine și vacanțe într-o singură căutare | 4travel.pro",
+        "Compară zboruri ieftine, cazări și sejururi zbor + hotel de la sute de companii aeriene și agenții, apoi rezervi direct la ele. Gratuit, fără taxe în plus.",
+        "Compară sute de companii aeriene și agenții, apoi rezervi direct. Gratuit, fără taxe în plus."),
+}
+M_TITLE, M_DESC, M_OG = META[PAGE]
 def t(k): return f'<span data-key="{k}">{en[k]}</span>'
 
 ICONS = {"packages": "M3 12h18M12 3v18M5 5l14 14", "bikes": "M5 18a3 3 0 100-6 3 3 0 000 6zM19 18a3 3 0 100-6 3 3 0 000 6zM5 15l4-7h5l3 7M9 8l3 7M14 5h3", "luggage": "M6 7h12v13H6zM9 7V4h6v3M10 11v5M14 11v5", "flights": "M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z", "hotels": "M3 21V7l9-4 9 4v14M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01", "transfer": "M5 17h14M6 17l1.5-6h9L18 17M7 17v2M17 17v2M9 7h6l1 4H8z", "cars": "M3 13l2-6h14l2 6v5H3zM7 18v2M17 18v2M6.5 14.5h.01M17.5 14.5h.01", "esim": "M7 3h7l5 5v13H7zM10 12h6v6h-6z", "tours": "M4 7h16v4a2 2 0 000 4v4H4v-4a2 2 0 000-4zM12 7v12", "comp": "M12 8v4l3 2M12 21a9 9 0 100-18 9 9 0 000 18z"}
@@ -112,17 +124,21 @@ LANGS = [("en","English"),("ro","Română"),("fr","Français"),("de","Deutsch"),
 opts = "".join(f'<option value="{c}">{n}</option>' for c,n in LANGS)
 
 html = f'''<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="{PAGE}" dir="{en['dir']}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>4travel.pro – Cheap flights and holidays in one search</title>
-<meta name="description" content="Compare cheap flights and flight + hotel holidays from hundreds of airlines and travel agencies, then book directly with them. Free, no extra fees.">
-<link rel="canonical" href="https://www.4travel.pro/">
+<title>{M_TITLE}</title>
+<meta name="description" content="{M_DESC}">
+<link rel="canonical" href="{URL}">
+<link rel="alternate" hreflang="en" href="https://www.4travel.pro/">
+<link rel="alternate" hreflang="ro" href="https://www.4travel.pro/ro/">
+<link rel="alternate" hreflang="x-default" href="https://www.4travel.pro/">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.4travel.pro/">
-<meta property="og:title" content="4travel.pro – Cheap flights and holidays in one search">
-<meta property="og:description" content="Compare hundreds of airlines and agencies, then book directly. Free, no extra fees.">
+<meta property="og:url" content="{URL}">
+<meta property="og:title" content="{M_TITLE}">
+<meta property="og:description" content="{M_OG}">
+<meta property="og:locale" content="{"ro_RO" if PAGE == "ro" else "en_US"}">
 <meta property="og:image" content="https://www.4travel.pro/img/hero.jpg">
 <meta name="theme-color" content="#0E1E3A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230E1E3A'/%3E%3Cpath transform='translate(3.2 3.2) scale(.73)' fill='%23F2711C' d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/%3E%3C/svg%3E">
@@ -228,7 +244,7 @@ footer p{{margin:0;max-width:70ch}}
 <a class="skip" href="#search">Skip to search</a>
 <div class="top">
   <div class="wrap bar">
-    <a class="logo" href="/"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2711C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg><span>4travel<b>.pro</b></span></a>
+    <a class="logo" href="{"/" if PAGE == "en" else f"/{PAGE}/"}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2711C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg><span>4travel<b>.pro</b></span></a>
     <nav class="nav" aria-label="Menu">
       <a href="#search">{t("navFlights")}</a>
       <a href="#holidays">{t("navHolidays")}</a>
@@ -422,12 +438,20 @@ function setLang(lang){{
   const pop = document.getElementById('tp-pop');
   lazy(pop, () => tpScript(pop, {{currency: CURRENCY[lang] || 'eur', trs:'502962', shmarker:'662933', locale: WIDGET_LOCALES[lang] || 'en', powered_by:'true', limit:'6', primary_color:'F2711C', results_background_color:'FFFFFF', form_background_color:'FFFFFF', promo_id:'4563', campaign_id:'111'}}));
 }}
-document.getElementById('lang').addEventListener('change', e => setLang(e.target.value));
+const PAGE_LANG = '{PAGE}';
+document.getElementById('lang').addEventListener('change', e => {{
+  const v = e.target.value;
+  try {{ localStorage.setItem('lang', v); }} catch (err) {{}}
+  if (v === 'ro' && PAGE_LANG !== 'ro') {{ location.href = '/ro/'; return; }}
+  if (PAGE_LANG === 'ro' && v !== 'ro') {{ location.href = '/?lang=' + v; return; }}
+  setLang(v);
+}});
 document.getElementById('year').textContent = new Date().getFullYear();
 (function initLang(){{
   let lang = null;
   const q = new URLSearchParams(location.search).get('lang');
   if (q && translations[q]) lang = q;
+  if (!lang && PAGE_LANG !== 'en') lang = PAGE_LANG;
   if (!lang) {{ try {{ lang = localStorage.getItem('lang'); }} catch (e) {{}} }}
   if (!lang || !translations[lang]) {{
     const nav = (navigator.languages || [navigator.language || 'en']).map(l => l.slice(0, 2).toLowerCase());
@@ -447,5 +471,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 </body>
 </html>
 '''
-open("index.html", "w", encoding="utf-8").write(html)
+out = "index.html" if PAGE == "en" else f"{PAGE}/index.html"
+os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+open(out, "w", encoding="utf-8").write(html)
 print("ok", len(html))

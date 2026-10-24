@@ -6,10 +6,14 @@
 <title>4travel.pro – Cheap flights and holidays in one search</title>
 <meta name="description" content="Compare cheap flights and flight + hotel holidays from hundreds of airlines and travel agencies, then book directly with them. Free, no extra fees.">
 <link rel="canonical" href="https://www.4travel.pro/">
+<link rel="alternate" hreflang="en" href="https://www.4travel.pro/">
+<link rel="alternate" hreflang="ro" href="https://www.4travel.pro/ro/">
+<link rel="alternate" hreflang="x-default" href="https://www.4travel.pro/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.4travel.pro/">
 <meta property="og:title" content="4travel.pro – Cheap flights and holidays in one search">
 <meta property="og:description" content="Compare hundreds of airlines and agencies, then book directly. Free, no extra fees.">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.4travel.pro/img/hero.jpg">
 <meta name="theme-color" content="#0E1E3A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230E1E3A'/%3E%3Cpath transform='translate(3.2 3.2) scale(.73)' fill='%23F2711C' d='M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z'/%3E%3C/svg%3E">
@@ -316,12 +320,20 @@ function setLang(lang){
   const pop = document.getElementById('tp-pop');
   lazy(pop, () => tpScript(pop, {currency: CURRENCY[lang] || 'eur', trs:'502962', shmarker:'662933', locale: WIDGET_LOCALES[lang] || 'en', powered_by:'true', limit:'6', primary_color:'F2711C', results_background_color:'FFFFFF', form_background_color:'FFFFFF', promo_id:'4563', campaign_id:'111'}));
 }
-document.getElementById('lang').addEventListener('change', e => setLang(e.target.value));
+const PAGE_LANG = 'en';
+document.getElementById('lang').addEventListener('change', e => {
+  const v = e.target.value;
+  try { localStorage.setItem('lang', v); } catch (err) {}
+  if (v === 'ro' && PAGE_LANG !== 'ro') { location.href = '/ro/'; return; }
+  if (PAGE_LANG === 'ro' && v !== 'ro') { location.href = '/?lang=' + v; return; }
+  setLang(v);
+});
 document.getElementById('year').textContent = new Date().getFullYear();
 (function initLang(){
   let lang = null;
   const q = new URLSearchParams(location.search).get('lang');
   if (q && translations[q]) lang = q;
+  if (!lang && PAGE_LANG !== 'en') lang = PAGE_LANG;
   if (!lang) { try { lang = localStorage.getItem('lang'); } catch (e) {} }
   if (!lang || !translations[lang]) {
     const nav = (navigator.languages || [navigator.language || 'en']).map(l => l.slice(0, 2).toLowerCase());

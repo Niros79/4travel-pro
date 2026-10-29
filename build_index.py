@@ -108,6 +108,8 @@ META = {
         "Compară sute de companii aeriene și agenții, apoi rezervi direct. Gratuit, fără taxe în plus."),
 }
 M_TITLE, M_DESC, M_OG = META[PAGE]
+VCITIES = ["Paris","Rome","Barcelona","London","Lisbon","Istanbul","Dubai","New York","Athens","Bangkok"]
+vchips = "".join(f'<button type="button" class="chip" data-city="{c}" aria-selected="{str(c=="Paris").lower()}">{c}</button>' for c in VCITIES)
 def t(k): return f'<span data-key="{k}">{en[k]}</span>'
 
 ICONS = {"packages": "M3 12h18M12 3v18M5 5l14 14", "bikes": "M5 18a3 3 0 100-6 3 3 0 000 6zM19 18a3 3 0 100-6 3 3 0 000 6zM5 15l4-7h5l3 7M9 8l3 7M14 5h3", "luggage": "M6 7h12v13H6zM9 7V4h6v3M10 11v5M14 11v5", "flights": "M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z", "hotels": "M3 21V7l9-4 9 4v14M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01", "transfer": "M5 17h14M6 17l1.5-6h9L18 17M7 17v2M17 17v2M9 7h6l1 4H8z", "cars": "M3 13l2-6h14l2 6v5H3zM7 18v2M17 18v2M6.5 14.5h.01M17.5 14.5h.01", "esim": "M7 3h7l5 5v13H7zM10 12h6v6h-6z", "tours": "M4 7h16v4a2 2 0 000 4v4H4v-4a2 2 0 000-4zM12 7v12", "comp": "M12 8v4l3 2M12 21a9 9 0 100-18 9 9 0 000 18z", "insurance": "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"}
@@ -293,7 +295,8 @@ footer p{{margin:0;max-width:70ch}}
   <section id="experiences" class="wrap sec">
     <h2 data-key="vTitle">{en["vTitle"]}</h2>
     <p class="sec-sub" data-key="vSub">{en["vSub"]}</p>
-    <div class="map-card" id="viator-slot"><div data-vi-partner-id="P00328028" data-vi-widget-ref="W-4c8b41ad-84ab-458a-99b2-e1102d619a18"></div></div>
+    <div class="chips" id="vchips" role="tablist">{vchips}</div>
+    <div class="map-card" id="viator-slot"><iframe id="viator-frame" title="Viator tours" style="width:100%;height:560px;border:0;display:block"></iframe></div>
   </section>
 
   <section id="popular" class="wrap sec">
@@ -410,7 +413,16 @@ function extScript(id, src){{
   if (document.getElementById('x-' + id)) return;
   const s = document.createElement('script'); s.id = 'x-' + id; s.async = true; s.src = src; document.body.appendChild(s);
 }}
-lazy(document.getElementById('viator-slot'), () => extScript('viator', 'https://www.viator.com/orion/partner/widget.js'));
+function showTours(city){{
+  document.querySelectorAll('#vchips .chip').forEach(c => c.setAttribute('aria-selected', String(c.dataset.city === city)));
+  const f = document.getElementById('viator-frame');
+  f.srcdoc = '<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_blank"><style>body{{margin:0;font-family:system-ui,sans-serif}}</style>'
+    + '<div data-vi-partner-id="P00328028" data-vi-widget-ref="W-14b249a7-ab36-49dc-9f79-503658edd3af" data-vi-search-term="' + city + '"></div>'
+    + '<script async src="https://www.viator.com/orion/partner/widget.js"><' + '/script>';
+}}
+setInterval(() => {{ const f = document.getElementById('viator-frame'); try {{ const h = f.contentDocument.documentElement.scrollHeight; if (h > 200) f.style.height = (h + 4) + 'px'; }} catch (e) {{}} }}, 800);
+document.querySelectorAll('#vchips .chip').forEach(c => c.addEventListener('click', () => showTours(c.dataset.city)));
+lazy(document.getElementById('viator-slot'), () => showTours('Paris'));
 function lazy(slot, fn){{
   if (!('IntersectionObserver' in window)) {{ fn(); return; }}
   const io = new IntersectionObserver(es => {{ if (es.some(e => e.isIntersecting)) {{ io.disconnect(); fn(); }} }}, {{rootMargin:'400px'}});
@@ -426,7 +438,7 @@ function loadRoutes(lang){{
 let calDest = null;
 function loadCal(lang){{
   const o = (ORIGINS[lang] || ORIGINS.en)[0];
-  const chips = [...document.querySelectorAll('.chip')];
+  const chips = [...document.querySelectorAll('.chip[data-dest]')];
   if (!calDest || calDest === o) calDest = (chips.find(c => c.dataset.dest !== o) || chips[0]).dataset.dest;
   chips.forEach(c => {{ c.setAttribute('aria-selected', String(c.dataset.dest === calDest)); c.hidden = c.dataset.dest === o; }});
   const slot = document.getElementById('tp-cal');
@@ -438,7 +450,7 @@ function loadCal(lang){{
     promo_id: '4041', campaign_id: '100'
   }}));
 }}
-document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {{ calDest = c.dataset.dest; loadCal(document.documentElement.lang); }}));
+document.querySelectorAll('.chip[data-dest]').forEach(c => c.addEventListener('click', () => {{ calDest = c.dataset.dest; loadCal(document.documentElement.lang); }}));
 function setLang(lang){{
   const t = translations[lang]; if (!t) return;
   document.documentElement.lang = lang; document.documentElement.dir = t.dir;

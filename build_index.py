@@ -110,8 +110,8 @@ META = {
 M_TITLE, M_DESC, M_OG = META[PAGE]
 def t(k): return f'<span data-key="{k}">{en[k]}</span>'
 
-ICONS = {"packages": "M3 12h18M12 3v18M5 5l14 14", "bikes": "M5 18a3 3 0 100-6 3 3 0 000 6zM19 18a3 3 0 100-6 3 3 0 000 6zM5 15l4-7h5l3 7M9 8l3 7M14 5h3", "luggage": "M6 7h12v13H6zM9 7V4h6v3M10 11v5M14 11v5", "flights": "M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z", "hotels": "M3 21V7l9-4 9 4v14M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01", "transfer": "M5 17h14M6 17l1.5-6h9L18 17M7 17v2M17 17v2M9 7h6l1 4H8z", "cars": "M3 13l2-6h14l2 6v5H3zM7 18v2M17 18v2M6.5 14.5h.01M17.5 14.5h.01", "esim": "M7 3h7l5 5v13H7zM10 12h6v6h-6z", "tours": "M4 7h16v4a2 2 0 000 4v4H4v-4a2 2 0 000-4zM12 7v12", "comp": "M12 8v4l3 2M12 21a9 9 0 100-18 9 9 0 000 18z"}
-TABDEF = [('flights', 'tabFlights'), ('hotels', 'tabHotels'), ('packages', 'tabPackages'), ('transfer', 'tabTransfer'), ('cars', 'tabCars'), ('bikes', 'tabBikes'), ('esim', 'tabEsim'), ('tours', 'tabTours'), ('luggage', 'tabLuggage'), ('comp', 'tabComp')]
+ICONS = {"packages": "M3 12h18M12 3v18M5 5l14 14", "bikes": "M5 18a3 3 0 100-6 3 3 0 000 6zM19 18a3 3 0 100-6 3 3 0 000 6zM5 15l4-7h5l3 7M9 8l3 7M14 5h3", "luggage": "M6 7h12v13H6zM9 7V4h6v3M10 11v5M14 11v5", "flights": "M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z", "hotels": "M3 21V7l9-4 9 4v14M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01", "transfer": "M5 17h14M6 17l1.5-6h9L18 17M7 17v2M17 17v2M9 7h6l1 4H8z", "cars": "M3 13l2-6h14l2 6v5H3zM7 18v2M17 18v2M6.5 14.5h.01M17.5 14.5h.01", "esim": "M7 3h7l5 5v13H7zM10 12h6v6h-6z", "tours": "M4 7h16v4a2 2 0 000 4v4H4v-4a2 2 0 000-4zM12 7v12", "comp": "M12 8v4l3 2M12 21a9 9 0 100-18 9 9 0 000 18z", "insurance": "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"}
+TABDEF = [('flights', 'tabFlights'), ('hotels', 'tabHotels'), ('packages', 'tabPackages'), ('transfer', 'tabTransfer'), ('cars', 'tabCars'), ('bikes', 'tabBikes'), ('esim', 'tabEsim'), ('insurance', 'tabInsurance'), ('tours', 'tabTours'), ('luggage', 'tabLuggage'), ('comp', 'tabComp')]
 DEST = [("barcelona","cBarcelona"),("london","cLondon"),("lisbon","cLisbon"),("paris","cParis"),("milan","cMilan"),("athens","cAthens")]
 IATA = {"barcelona":"BCN","london":"LON","lisbon":"LIS","paris":"PAR","milan":"MIL","athens":"ATH"}
 tabs = "".join(f'''<button type="button" class="svc" role="tab" data-svc="{k}" aria-selected="{'true' if k=='flights' else 'false'}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{ICONS[k]}"/></svg><span data-key="{lk}">{en[lk]}</span></button>''' for k,lk in TABDEF)
@@ -271,6 +271,7 @@ footer p{{margin:0;max-width:70ch}}
       <div class="hotel-panel" id="hotel-panel" hidden><p data-key="hotelText">{en["hotelText"]}</p><a class="big-btn" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fhotels%2F&amp;sid=4travel-hotels" target="_blank" rel="sponsored noopener" data-key="hotelBtn">{en["hotelBtn"]}</a></div>
       <div class="hotel-panel" id="packages-panel" hidden><p data-key="packagesText">{en["packagesText"]}</p><a class="big-btn" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fpackages%2F&amp;sid=4travel-packages" target="_blank" rel="sponsored noopener" data-key="packagesBtn">{en["packagesBtn"]}</a></div>
       <div class="hotel-panel" id="luggage-panel" hidden><p data-key="luggageText">{en["luggageText"]}</p><a class="big-btn" href="https://radicalstorage.tpm.lv/UYVbS50q" target="_blank" rel="sponsored noopener" data-key="luggageBtn">{en["luggageBtn"]}</a></div>
+      <div class="hotel-panel" id="insurance-panel" hidden><p data-key="insText">{en["insText"]}</p><div class="sw-box" style="max-width:520px;margin:.8rem auto 0"><div class="safetywing-price-widget" data-safetywingaffiliateid="26624480"></div></div><p class="sec-sub" style="font-size:.85rem;margin-top:.6rem" data-key="insNote">{en["insNote"]}</p></div>
       <p class="alts" id="alts" hidden><span data-key="altLabel">{en["altLabel"]}</span> <span id="alt-links"></span></p>
       <ul class="trust">
         <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>{t("tr1")}</li>
@@ -288,6 +289,12 @@ footer p{{margin:0;max-width:70ch}}
     </ul>
   </section>
 
+
+  <section id="experiences" class="wrap sec">
+    <h2 data-key="vTitle">{en["vTitle"]}</h2>
+    <p class="sec-sub" data-key="vSub">{en["vSub"]}</p>
+    <div class="map-card" id="viator-slot"><div data-vi-partner-id="P00328028" data-vi-widget-ref="W-4c8b41ad-84ab-458a-99b2-e1102d619a18"></div></div>
+  </section>
 
   <section id="popular" class="wrap sec">
     <h2 data-key="popTitle">{en["popTitle"]}</h2>
@@ -360,7 +367,7 @@ const ALTS = {{
 }};
 function loadSvc(lang){{
   document.querySelectorAll('.svc').forEach(b => b.setAttribute('aria-selected', String(b.dataset.svc === svc)));
-  const slot = document.getElementById('tp-slot'), PANELS = {{hotels:'hotel-panel', packages:'packages-panel', luggage:'luggage-panel'}};
+  const slot = document.getElementById('tp-slot'), PANELS = {{hotels:'hotel-panel', packages:'packages-panel', luggage:'luggage-panel', insurance:'insurance-panel'}};
   Object.entries(PANELS).forEach(([k, id]) => {{ document.getElementById(id).hidden = svc !== k; }});
   slot.hidden = svc in PANELS;
   const alts = ALTS[svc] || [], box = document.getElementById('alt-links');
@@ -371,6 +378,7 @@ function loadSvc(lang){{
       box.querySelectorAll('a').forEach(x => x.classList.remove('on')); a.classList.add('on');
       if (k === 'aviasales') loadWidget(lang); else tpScript(slot, W[k](lang)); }}); }}
     box.appendChild(a); }});
+  if (svc === 'insurance') extScript('sw', 'https://storage.googleapis.com/safetywing-static/widget/safetywing-price-widget-v2.js');
   if (svc in PANELS) {{ slot.innerHTML = ''; return; }}
   tpScript(slot, SVC[svc](lang));
 }}
@@ -398,6 +406,11 @@ function tpScript(slot, params){{
   s.src = 'https://' + host + '/content?' + new URLSearchParams(params).toString();
   slot.appendChild(s);
 }}
+function extScript(id, src){{
+  if (document.getElementById('x-' + id)) return;
+  const s = document.createElement('script'); s.id = 'x-' + id; s.async = true; s.src = src; document.body.appendChild(s);
+}}
+lazy(document.getElementById('viator-slot'), () => extScript('viator', 'https://www.viator.com/orion/partner/widget.js'));
 function lazy(slot, fn){{
   if (!('IntersectionObserver' in window)) {{ fn(); return; }}
   const io = new IntersectionObserver(es => {{ if (es.some(e => e.isIntersecting)) {{ io.disconnect(); fn(); }} }}, {{rootMargin:'400px'}});

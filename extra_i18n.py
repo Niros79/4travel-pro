@@ -24,3 +24,14 @@ EXTRA2 = {
 }
 for _l, _d in EXTRA2.items():
     EXTRA[_l].update(_d)
+
+# v3.5 (Oct 29 2026): footer link to Bulgaria all-inclusive guide
+EXTRA['en']['footBg'] = 'All-inclusive holidays in Bulgaria (RO)'
+EXTRA['ro']['footBg'] = 'Sejur all inclusive în Bulgaria: ghid 2027'
+EXTRA['fr']['footBg'] = 'Séjour tout compris en Bulgarie (RO)'
+EXTRA['de']['footBg'] = 'All-inclusive-Urlaub in Bulgarien (RO)'
+EXTRA['es']['footBg'] = 'Todo incluido en Bulgaria (RO)'
+EXTRA['it']['footBg'] = 'All inclusive in Bulgaria (RO)'
+EXTRA['hu']['footBg'] = 'All inclusive nyaralás Bulgáriában (RO)'
+EXTRA['tr']['footBg'] = "Bulgaristan'da her şey dahil tatil (RO)"
+EXTRA['ar']['footBg'] = 'عطلات شاملة كليًا في بلغاريا (RO)'

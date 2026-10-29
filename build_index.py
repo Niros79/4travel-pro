@@ -335,7 +335,7 @@ footer p{{margin:0;max-width:70ch}}
 <footer>
   <div class="wrap">
     <p><span data-key="disclosure">{en["disclosure"]}</span></p>
-    <p><span data-key="footCurio">{en["footCurio"]}</span> <a href="https://curioandcove.com/travel/">Curio &amp; Cove</a> · <a href="/wizz-air/" data-key="footWizz">{en["footWizz"]}</a></p>
+    <p><span data-key="footCurio">{en["footCurio"]}</span> <a href="https://curioandcove.com/travel/">Curio &amp; Cove</a> · <a href="/wizz-air/" data-key="footWizz">{en["footWizz"]}</a> · <a href="/bulgaria-all-inclusive/" data-key="footBg">{en["footBg"]}</a></p>
     <p>&copy; <span id="year">2026</span> 4travel.pro · <span data-key="rights">{en["rights"]}</span> · <a href="/privacy.html" data-key="privacy">{en["privacy"]}</a></p>
   </div>
 </footer>

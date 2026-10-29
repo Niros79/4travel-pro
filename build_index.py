@@ -116,6 +116,9 @@ ICONS = {"packages": "M3 12h18M12 3v18M5 5l14 14", "bikes": "M5 18a3 3 0 100-6 3
 TABDEF = [('flights', 'tabFlights'), ('hotels', 'tabHotels'), ('packages', 'tabPackages'), ('transfer', 'tabTransfer'), ('cars', 'tabCars'), ('bikes', 'tabBikes'), ('esim', 'tabEsim'), ('insurance', 'tabInsurance'), ('tours', 'tabTours'), ('luggage', 'tabLuggage'), ('comp', 'tabComp')]
 DEST = [("barcelona","cBarcelona"),("london","cLondon"),("lisbon","cLisbon"),("paris","cParis"),("milan","cMilan"),("athens","cAthens")]
 IATA = {"barcelona":"BCN","london":"LON","lisbon":"LIS","paris":"PAR","milan":"MIL","athens":"ATH"}
+GUIDES = [("sejur-all-inclusive","Sejur all inclusive 2027","Ghid complet, toate destinațiile"),("bulgaria-all-inclusive","Bulgaria all inclusive","Stațiuni, prețuri, drum"),("turcia-all-inclusive","Turcia all inclusive","Antalya, Side, Belek, Bodrum"),("egipt-all-inclusive","Egipt iarna","Hurghada, Sharm, viză"),("grecia-cu-masina","Grecia cu mașina","Thassos, Halkidiki, costuri")]
+guides = "\n".join(f'      <li><a class="guide" href="/{g}/"><img src="/img/{g}.jpg" alt="" width="1200" height="630" loading="lazy"><span>{t1}<small>{t2}</small></span></a></li>' for g,t1,t2 in GUIDES)
+wchips = "".join(f'<button type="button" class="chip" data-wdest="{IATA[f]}" aria-selected="{str(i==0).lower()}"><img src="/img/{f}.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="{k}">{en[k]}</span></button>' for i,(f,k) in enumerate(DEST))
 tabs = "".join(f'''<button type="button" class="svc" role="tab" data-svc="{k}" aria-selected="{'true' if k=='flights' else 'false'}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{ICONS[k]}"/></svg><span data-key="{lk}">{en[lk]}</span></button>''' for k,lk in TABDEF)
 dest = "\n".join(f'''      <li class="w-card"><div class="tp-route" data-dest="{IATA[f]}"></div></li>''' for f,k in DEST)
 chips = "".join(f'''<button type="button" class="chip" data-dest="{IATA[f]}"><img src="/img/{f}.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="{k}">{en[k]}</span></button>''' for f,k in DEST)
@@ -161,7 +164,7 @@ a{{color:inherit}}
 .sr,.skip{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}.skip:focus{{width:auto;height:auto;clip:auto;top:1rem;inset-inline-start:1rem;background:#fff;color:var(--navy);padding:.5rem 1rem;z-index:30}}
 .wrap{{max-width:var(--wrap);margin:0 auto;padding:0 clamp(1rem,4vw,1.5rem)}}
 /* top */
-.top{{background:var(--navy);color:#fff;padding-bottom:7rem}}
+.top{{background:linear-gradient(90deg,var(--navy) 0%,var(--navy) 42%,rgba(14,30,58,.55) 75%,rgba(14,30,58,.25) 100%),url(/img/hero.jpg) right center/cover no-repeat;color:#fff;padding-bottom:5.2rem}}
 .bar{{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.8rem;padding-top:1.1rem;padding-bottom:1.1rem}}
 .logo{{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:800;font-size:1.55rem;letter-spacing:-.01em}}
 .logo b{{color:var(--orange);font-weight:800}}
@@ -169,23 +172,24 @@ a{{color:inherit}}
 .nav a{{text-decoration:none;color:#fff;opacity:.92}}.nav a:hover{{opacity:1;color:var(--orange)}}
 .nav select{{height:42px;border-radius:10px;border:1px solid #3A4C6E;background:var(--navy-2);color:#fff;padding:0 .6rem;font:inherit;font-size:.9rem}}
 @media (max-width:640px){{.nav a{{display:none}}}}
-.hero{{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:2rem;align-items:center;padding-top:2.2rem}}
-.hero h1{{margin:0 0 .9rem;font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,5.6vw,3.9rem);line-height:1.02;letter-spacing:-.02em}}
+.hero{{padding-top:1rem;max-width:var(--wrap)}}
+.hero h1{{margin:0 0 .6rem;font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.05;letter-spacing:-.02em;max-width:18ch}}
 .hero h1 em{{font-style:normal;color:var(--orange);display:block}}
-.hero p{{margin:0;font-size:1.15rem;color:#C9D3E6;max-width:46ch}}
-.hero img{{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px}}
-@media (max-width:860px){{.hero{{grid-template-columns:1fr}}.hero img{{display:none}}.top{{padding-bottom:6rem}}}}
+.hero p{{margin:0;font-size:1.02rem;color:#DCE3F0;max-width:46ch}}
+.hero-row{{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem}}
+
+@media (max-width:860px){{.top{{background:var(--navy);padding-bottom:4.6rem}}}}
 /* search */
-.search{{margin-top:-5.5rem;position:relative;z-index:2}}
+.search{{margin-top:-3.8rem;position:relative;z-index:2}}
 .search-card{{background:var(--card);border-radius:22px;padding:clamp(.8rem,2.5vw,1.6rem);box-shadow:0 22px 50px rgba(14,30,58,.18)}}
 .widget-slot{{min-height:190px}}
-.svcs{{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1rem}}
-@media (max-width:640px){{.svcs{{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.3rem;scrollbar-width:thin}}}}
-.svc{{flex:0 0 auto;display:flex;align-items:center;gap:.45rem;border:0;background:#EEF2F8;color:var(--navy);border-radius:999px;padding:.6rem 1rem;font:600 .95rem inherit;font-family:inherit;cursor:pointer;white-space:nowrap}}
+.svcs{{display:grid;grid-template-columns:repeat(auto-fit,minmax(86px,1fr));gap:.35rem;margin:0 0 1rem}}
+@media (max-width:760px){{.svcs{{display:flex;overflow-x:auto;padding-bottom:.4rem;scroll-snap-type:x proximity;scrollbar-width:thin}}.svc{{scroll-snap-align:start;min-width:84px}}}}
+.svc{{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;border:0;background:#EEF2F8;color:var(--navy);border-radius:14px;padding:.6rem .35rem;font:600 .78rem/1.15 var(--body);cursor:pointer;text-align:center;min-height:68px}}
 .svc:hover{{background:#E2E8F2}}
 .svc[aria-selected="true"]{{background:#F2711C;color:#fff}}
 [hidden]{{display:none!important}}
-.delay-btn{{display:inline-block;margin-top:1.1rem;border:2px solid #F2711C;color:#FFC9A3;font-weight:700;border-radius:12px;padding:.65rem 1.1rem;text-decoration:none}}
+.delay-btn{{display:inline-block;margin-top:.9rem;border:2px solid #F2711C;color:#FFC9A3;font-weight:700;border-radius:12px;padding:.65rem 1.1rem;text-decoration:none}}
 .delay-btn:hover{{background:#F2711C;color:#fff}}
 .hotel-panel{{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;background:#EEF2F8;border-radius:16px;padding:1.4rem 1.6rem}}
 .hotel-panel p{{margin:0;font-size:1.05rem;font-weight:600;max-width:46ch}}
@@ -201,8 +205,8 @@ a{{color:inherit}}
 .trust li{{display:flex;align-items:center;gap:.45rem}}
 .trust svg{{flex:none;color:var(--orange-ink)}}
 /* sections */
-.sec{{padding-top:3rem}}
-.sec h2{{margin:0 0 1.2rem;font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,3.2vw,2.3rem);letter-spacing:-.01em}}
+.sec{{padding-top:2.4rem}}
+.sec h2{{margin:0 0 .9rem;font-family:var(--display);font-weight:800;font-size:clamp(1.45rem,2.6vw,1.9rem);letter-spacing:-.01em}}
 .grid{{list-style:none;margin:0;padding:0;display:grid;gap:1rem}}
 .dests{{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media (max-width:1100px){{.dests{{grid-template-columns:repeat(3,minmax(0,1fr))}}}}
@@ -213,12 +217,12 @@ a{{color:inherit}}
 .dest-label{{position:absolute;left:.6rem;right:.6rem;bottom:.6rem;background:rgba(14,30,58,.86);border-radius:14px;padding:.6rem .8rem;display:flex;flex-direction:column}}
 .dest-name{{font-family:var(--display);font-weight:800;font-size:1.3rem;line-height:1.15}}
 .dest-cta{{font-size:.82rem;font-weight:600;color:#FFC9A3}}
-.hols{{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.3rem}}
-@media (max-width:860px){{.hols{{grid-template-columns:1fr}}}}
+.hols{{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}}
+@media (max-width:760px){{.hols{{grid-template-columns:1fr}}}}
 .hol{{display:flex;flex-direction:column;height:100%;background:var(--card);border-radius:22px;overflow:hidden;text-decoration:none;box-shadow:0 2px 8px rgba(14,30,58,.06)}}
-.hol img{{width:100%;aspect-ratio:3/2;object-fit:cover}}
-.hol-body{{display:flex;flex-direction:column;gap:.35rem;padding:1.1rem 1.3rem 1.4rem}}
-.hol-title{{font-family:var(--display);font-weight:800;font-size:1.35rem}}
+.hol img{{width:100%;aspect-ratio:16/8;object-fit:cover}}
+.hol-body{{display:flex;flex-direction:column;gap:.25rem;padding:.8rem 1rem 1rem}}
+.hol-title{{font-family:var(--display);font-weight:800;font-size:1.12rem}}
 .hol-desc{{color:var(--soft);font-size:.97rem}}
 .hol-cta{{color:var(--orange-ink);font-weight:700;font-size:.95rem;margin-top:.2rem}}
 .hol:hover .hol-title{{color:var(--orange-ink)}}
@@ -230,7 +234,24 @@ a{{color:inherit}}
 .chip img{{width:36px;height:36px;border-radius:50%;object-fit:cover}}
 .chip[aria-selected="true"]{{border-color:#F2711C;color:#C2540A}}
 .cal-card{{min-height:420px}}
-.sec-sub{{margin:-.6rem 0 1.2rem;color:var(--soft);max-width:60ch}}
+/* guides */
+.guides{{list-style:none;margin:0;padding:0 0 .4rem;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:.9rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}}
+.guides li{{scroll-snap-align:start}}
+.guide{{position:relative;display:block;height:200px;border-radius:18px;overflow:hidden;color:#fff;text-decoration:none;background:var(--navy)}}
+.guide img{{width:100%;height:100%;object-fit:cover}}
+.guide span{{position:absolute;inset:auto 0 0 0;padding:2.4rem .9rem .8rem;background:linear-gradient(transparent,rgba(14,30,58,.92));font-family:var(--display);font-weight:800;font-size:1.08rem;line-height:1.2}}
+.guide small{{display:block;font-family:var(--body);font-weight:500;font-size:.8rem;color:#FFD2B3;margin-top:.15rem}}
+.guide:hover span{{color:#FFD2B3}}
+.guide.main{{grid-column:span 1}}
+/* inspiration tabs */
+.itabs{{display:flex;gap:.3rem;overflow-x:auto;border-bottom:2px solid var(--line);margin:0 0 1rem;scrollbar-width:none}}
+.itab{{flex:0 0 auto;border:0;background:none;padding:.7rem 1rem;font:600 .97rem var(--body);color:var(--soft);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}}
+.itab[aria-selected="true"]{{color:var(--navy);border-bottom-color:var(--orange)}}
+.ipanel .chips{{margin-bottom:.8rem}}
+.ipanel .sec-sub{{margin:0 0 .8rem}}
+.ipanel .map-card{{min-height:260px}}
+@media (max-width:760px){{.ipanel .chips{{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.3rem;scrollbar-width:none}}.ipanel .chip{{flex:0 0 auto}}.hol img{{aspect-ratio:2/1}}}}
+.sec-sub{{margin:-.4rem 0 1rem;color:var(--soft);max-width:60ch;font-size:.97rem}}
 .map-card{{background:var(--card);border-radius:24px;overflow:hidden;padding:.6rem;box-shadow:0 2px 8px rgba(14,30,58,.06);min-height:300px}}
 #tp-map{{border-radius:18px;overflow:hidden}}
 .how{{background:var(--card);border-radius:24px;padding:clamp(1.4rem,4vw,2.4rem);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem;list-style:none;margin:0}}
@@ -239,7 +260,7 @@ a{{color:inherit}}
 .num{{width:44px;height:44px;border-radius:12px;background:var(--peach);color:var(--orange-ink);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:1.25rem}}
 .how strong{{font-family:var(--display);font-weight:800;font-size:1.25rem}}
 .how span{{color:var(--soft);font-size:.97rem}}
-footer{{margin-top:3.5rem;background:var(--navy);color:#C9D3E6;font-size:.9rem}}
+footer{{margin-top:2.8rem;background:var(--navy);color:#C9D3E6;font-size:.9rem}}
 footer .wrap{{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem 2rem;padding-top:1.8rem;padding-bottom:2.2rem}}
 footer a{{color:#fff}}
 footer p{{margin:0;max-width:70ch}}
@@ -252,8 +273,9 @@ footer p{{margin:0;max-width:70ch}}
     <a class="logo" href="{"/" if PAGE == "en" else f"/{PAGE}/"}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2711C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg><span>4travel<b>.pro</b></span></a>
     <nav class="nav" aria-label="Menu">
       <a href="#search">{t("navFlights")}</a>
-      <a href="#holidays">{t("navHolidays")}</a>
+      <a href="#guides" data-ro-only>{t("navGuides")}</a>
       <a href="#ideas">{t("navIdeas")}</a>
+      <a href="#holidays">{t("navHolidays")}</a>
       <label for="lang" class="sr" data-key="langLabel">{en["langLabel"]}</label>
       <select id="lang">{opts}</select>
     </nav>
@@ -262,9 +284,8 @@ footer p{{margin:0;max-width:70ch}}
     <div>
       <h1><span data-key="heroA">{en["heroA"]}</span> <em data-key="heroB">{en["heroB"]}</em></h1>
       <p data-key="heroSub">{en["heroSub"]}</p>
-      <a class="delay-btn" href="https://airhelp.tpm.lv/omacG3Bs" target="_blank" rel="sponsored noopener"><span data-key="ctaDelay">{en["ctaDelay"]}</span> →</a>
+      <a class="delay-btn" href="https://airhelp.tpm.lv/omacG3Bs" target="_blank" rel="sponsored noopener"><span data-key="ctaDelay">{en["ctaDelay"]}</span></a>
     </div>
-    <img src="/img/hero.jpg" alt="" width="1600" height="1000" fetchpriority="high">
   </div>
 </div>
 
@@ -286,33 +307,40 @@ footer p{{margin:0;max-width:70ch}}
     </div>
   </section>
 
-  <section id="ideas" class="wrap sec">
-    <h2 data-key="destTitle">{en["destTitle"]}</h2>
-    <p class="sec-sub" data-key="destSub">{en["destSub"]}</p>
-    <ul class="grid routes">
-{dest}
+  <section id="guides" class="wrap sec" data-ro-only>
+    <h2 data-key="guidesTitle">{en["guidesTitle"]}</h2>
+    <ul class="guides">
+{guides}
     </ul>
   </section>
 
-
-  <section id="experiences" class="wrap sec">
-    <h2 data-key="vTitle">{en["vTitle"]}</h2>
-    <p class="sec-sub" data-key="vSub">{en["vSub"]}</p>
-    <div class="chips" id="vchips" role="tablist">{vchips}</div>
-    <div class="map-card" id="viator-slot"><iframe id="viator-frame" title="Viator tours" style="width:100%;height:560px;border:0;display:block"></iframe></div>
-  </section>
-
-  <section id="popular" class="wrap sec">
-    <h2 data-key="popTitle">{en["popTitle"]}</h2>
-    <p class="sec-sub" data-key="popSub">{en["popSub"]}</p>
-    <div class="map-card"><div id="tp-pop"></div></div>
-  </section>
-
-  <section id="calendar" class="wrap sec">
-    <h2 data-key="calTitle">{en["calTitle"]}</h2>
-    <p class="sec-sub" data-key="calSub">{en["calSub"]}</p>
-    <div class="chips" role="tablist">{chips}</div>
-    <div class="map-card cal-card"><div id="tp-cal"></div></div>
+  <section id="ideas" class="wrap sec">
+    <h2 data-key="ideasTitle">{en["ideasTitle"]}</h2>
+    <div class="itabs" role="tablist">
+      <button type="button" class="itab" role="tab" data-ip="week" aria-selected="true" data-key="tWeek">{en["tWeek"]}</button>
+      <button type="button" class="itab" role="tab" data-ip="cal" aria-selected="false" data-key="tCal">{en["tCal"]}</button>
+      <button type="button" class="itab" role="tab" data-ip="tours" aria-selected="false" data-key="tTours">{en["tTours"]}</button>
+      <button type="button" class="itab" role="tab" data-ip="pop" aria-selected="false" data-key="tPop">{en["tPop"]}</button>
+    </div>
+    <div class="ipanel" id="ip-week">
+      <p class="sec-sub" data-key="destSub">{en["destSub"]}</p>
+      <div class="chips" id="wchips" role="tablist">{wchips}</div>
+      <div class="map-card"><div id="tp-week"></div></div>
+    </div>
+    <div class="ipanel" id="ip-cal" hidden>
+      <p class="sec-sub" data-key="calSub">{en["calSub"]}</p>
+      <div class="chips" role="tablist">{chips}</div>
+      <div class="map-card cal-card"><div id="tp-cal"></div></div>
+    </div>
+    <div class="ipanel" id="ip-tours" hidden>
+      <p class="sec-sub" data-key="vSub">{en["vSub"]}</p>
+      <div class="chips" id="vchips" role="tablist">{vchips}</div>
+      <div class="map-card" id="viator-slot"><iframe id="viator-frame" title="Viator tours" style="width:100%;height:560px;border:0;display:block"></iframe></div>
+    </div>
+    <div class="ipanel" id="ip-pop" hidden>
+      <p class="sec-sub" data-key="popSub">{en["popSub"]}</p>
+      <div class="map-card"><div id="tp-pop"></div></div>
+    </div>
   </section>
 
   <section id="holidays" class="wrap sec">
@@ -322,14 +350,6 @@ footer p{{margin:0;max-width:70ch}}
     </ul>
   </section>
 
-  <section class="wrap sec">
-    <h2 data-key="howTitle">{en["howTitle"]}</h2>
-    <ol class="how">
-      <li><span class="num">1</span><strong data-key="h1">{en["h1"]}</strong><span data-key="h1d">{en["h1d"]}</span></li>
-      <li><span class="num">2</span><strong data-key="h2">{en["h2"]}</strong><span data-key="h2d">{en["h2d"]}</span></li>
-      <li><span class="num">3</span><strong data-key="h3">{en["h3"]}</strong><span data-key="h3d">{en["h3d"]}</span></li>
-    </ol>
-  </section>
 </main>
 
 <footer>
@@ -431,13 +451,23 @@ function lazy(slot, fn){{
   const io = new IntersectionObserver(es => {{ if (es.some(e => e.isIntersecting)) {{ io.disconnect(); fn(); }} }}, {{rootMargin:'400px'}});
   io.observe(slot);
 }}
+let weekDest = null;
 function loadRoutes(lang){{
-  document.querySelectorAll('.tp-route').forEach(slot => lazy(slot, () => tpScript(slot, {{
-    currency: CURRENCY[lang] || 'eur', trs: '502962', shmarker: '662933', destination: slot.dataset.dest,
+  const chips = [...document.querySelectorAll('#wchips .chip')];
+  if (!weekDest) weekDest = chips[0].dataset.wdest;
+  chips.forEach(c => c.setAttribute('aria-selected', String(c.dataset.wdest === weekDest)));
+  const slot = document.getElementById('tp-week');
+  lazy(slot, () => tpScript(slot, {{
+    currency: CURRENCY[lang] || 'eur', trs: '502962', shmarker: '662933', destination: weekDest,
     target_host: 'www.aviasales.com/search', locale: WIDGET_LOCALES[lang] || 'en', limit: '6', powered_by: 'true',
     primary: '#F2711C', promo_id: '4044', campaign_id: '100'
-  }})));
+  }}));
 }}
+document.querySelectorAll('#wchips .chip').forEach(c => c.addEventListener('click', () => {{ weekDest = c.dataset.wdest; loadRoutes(document.documentElement.lang); }}));
+document.querySelectorAll('.itab').forEach(b => b.addEventListener('click', () => {{
+  document.querySelectorAll('.itab').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+  document.querySelectorAll('.ipanel').forEach(p => {{ p.hidden = p.id !== 'ip-' + b.dataset.ip; }});
+}}));
 let calDest = null;
 function loadCal(lang){{
   const o = (ORIGINS[lang] || ORIGINS.en)[0];
@@ -462,6 +492,7 @@ function setLang(lang){{
   try {{ localStorage.setItem('lang', lang); }} catch (e) {{}}
   loadSvc(lang);
   loadRoutes(lang);
+  document.querySelectorAll('[data-ro-only]').forEach(el => {{ el.hidden = lang !== 'ro'; }});
   loadCal(lang);
   const pop = document.getElementById('tp-pop');
   lazy(pop, () => tpScript(pop, {{currency: CURRENCY[lang] || 'eur', trs:'502962', shmarker:'662933', locale: WIDGET_LOCALES[lang] || 'en', powered_by:'true', limit:'6', primary_color:'F2711C', results_background_color:'FFFFFF', form_background_color:'FFFFFF', promo_id:'4563', campaign_id:'111'}}));

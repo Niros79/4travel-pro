@@ -35,3 +35,17 @@ EXTRA['it']['footBg'] = 'Guida all inclusive 2027 (RO)'
 EXTRA['hu']['footBg'] = 'All inclusive útmutató 2027 (RO)'
 EXTRA['tr']['footBg'] = 'Her şey dahil tatil rehberi 2027 (RO)'
 EXTRA['ar']['footBg'] = 'دليل العطلات الشاملة كليًا 2027 (RO)'
+# v3.6 (Oct 29 2026): compact layout – guides row + inspiration tabs
+_V36 = {
+"en": ("Guides","Holiday guides (in Romanian)","Travel ideas","Weekend flights","Price calendar","Tours","Popular"),
+"ro": ("Ghiduri","Ghiduri de vacanță","Idei de călătorie","Zboruri de weekend","Calendar prețuri","Tururi","Populare"),
+"fr": ("Guides","Guides de vacances (en roumain)","Idées de voyage","Vols du week-end","Calendrier des prix","Visites","Populaires"),
+"de": ("Ratgeber","Urlaubsratgeber (auf Rumänisch)","Reiseideen","Wochenendflüge","Preiskalender","Touren","Beliebt"),
+"es": ("Guías","Guías de vacaciones (en rumano)","Ideas de viaje","Vuelos de fin de semana","Calendario de precios","Tours","Populares"),
+"it": ("Guide","Guide per le vacanze (in rumeno)","Idee di viaggio","Voli del weekend","Calendario prezzi","Tour","Popolari"),
+"hu": ("Útmutatók","Nyaralási útmutatók (románul)","Utazási ötletek","Hétvégi járatok","Árnaptár","Túrák","Népszerű"),
+"tr": ("Rehberler","Tatil rehberleri (Rumence)","Seyahat fikirleri","Hafta sonu uçuşları","Fiyat takvimi","Turlar","Popüler"),
+"ar": ("أدلة","أدلة العطلات (بالرومانية)","أفكار للسفر","رحلات نهاية الأسبوع","تقويم الأسعار","جولات","الأكثر شعبية"),
+}
+for _l, _v in _V36.items():
+    EXTRA[_l].update(dict(zip(["navGuides","guidesTitle","ideasTitle","tWeek","tCal","tTours","tPop"], _v)))

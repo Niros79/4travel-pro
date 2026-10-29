@@ -220,7 +220,7 @@ a{{color:inherit}}
 .dest-name{{font-family:var(--display);font-weight:800;font-size:1.3rem;line-height:1.15}}
 .dest-cta{{font-size:.82rem;font-weight:600;color:#FFC9A3}}
 .hols{{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}}
-@media (max-width:760px){{.hols{{grid-template-columns:1fr}}}}
+@media (max-width:760px){{.hols{{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.4rem;scrollbar-width:thin}}.hols li{{scroll-snap-align:start}}.guides{{grid-auto-columns:78%}}footer p{{line-height:2}}.alts a{{display:inline-block;padding:.35rem 0}}}}
 .hol{{display:flex;flex-direction:column;height:100%;background:var(--card);border-radius:22px;overflow:hidden;text-decoration:none;box-shadow:0 2px 8px rgba(14,30,58,.06)}}
 .hol img{{width:100%;aspect-ratio:16/8;object-fit:cover}}
 .hol-body{{display:flex;flex-direction:column;gap:.25rem;padding:.8rem 1rem 1rem}}
@@ -252,6 +252,7 @@ a{{color:inherit}}
 .ipanel .chips{{margin-bottom:.8rem}}
 .ipanel .sec-sub{{margin:0 0 .8rem}}
 .ipanel .map-card{{min-height:260px}}
+@media (max-width:760px){{.itabs{{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;border-bottom:0}}.itab{{border:1.5px solid var(--line);border-radius:12px;margin:0;padding:.6rem .4rem;text-align:center;background:#fff;font-size:.92rem}}.itab[aria-selected="true"]{{border-color:var(--orange);color:var(--orange-ink)}}}}
 @media (max-width:760px){{.ipanel .chips{{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.3rem;scrollbar-width:none}}.ipanel .chip{{flex:0 0 auto}}.hol img{{aspect-ratio:2/1}}}}
 .sec-sub{{margin:-.4rem 0 1rem;color:var(--soft);max-width:60ch;font-size:.97rem}}
 .map-card{{background:var(--card);border-radius:24px;overflow:hidden;padding:.6rem;box-shadow:0 2px 8px rgba(14,30,58,.06);min-height:300px}}

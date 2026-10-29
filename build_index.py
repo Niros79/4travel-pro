@@ -198,6 +198,8 @@ a{{color:inherit}}
 #insurance-panel p.sec-sub{{font-weight:400;max-width:none}}
 .big-btn{{display:inline-block;background:#F2711C;color:#fff;font-weight:700;border-radius:12px;padding:.9rem 1.4rem;text-decoration:none}}
 .big-btn:hover{{background:#C2540A;color:#fff}}
+.btns{{display:flex;flex-wrap:wrap;gap:.6rem}}
+.big-btn.alt-btn{{background:#fff;color:var(--orange-ink);border:2px solid var(--orange)}}.big-btn.alt-btn:hover{{background:var(--peach);color:var(--orange-ink)}}
 .alts{{margin:.7rem 0 0;font-size:.95rem;color:var(--soft)}}
 .alts a{{font-weight:700;color:#C2540A;margin-inline-end:.8rem}}
 .alts a.on{{text-decoration:none;background:#FDE7D7;border-radius:8px;padding:.1rem .45rem}}
@@ -217,7 +219,7 @@ a{{color:inherit}}
 .dest-label{{position:absolute;left:.6rem;right:.6rem;bottom:.6rem;background:rgba(14,30,58,.86);border-radius:14px;padding:.6rem .8rem;display:flex;flex-direction:column}}
 .dest-name{{font-family:var(--display);font-weight:800;font-size:1.3rem;line-height:1.15}}
 .dest-cta{{font-size:.82rem;font-weight:600;color:#FFC9A3}}
-.hols{{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}}
+.hols{{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem}}
 @media (max-width:760px){{.hols{{grid-template-columns:1fr}}}}
 .hol{{display:flex;flex-direction:column;height:100%;background:var(--card);border-radius:22px;overflow:hidden;text-decoration:none;box-shadow:0 2px 8px rgba(14,30,58,.06)}}
 .hol img{{width:100%;aspect-ratio:16/8;object-fit:cover}}
@@ -295,7 +297,7 @@ footer p{{margin:0;max-width:70ch}}
       <div class="svcs" role="tablist">{tabs}</div>
       <div class="widget-slot" id="tp-slot"></div>
       <div class="hotel-panel" id="hotel-panel" hidden><p data-key="hotelText">{en["hotelText"]}</p><a class="big-btn" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fhotels%2F&amp;sid=4travel-hotels" target="_blank" rel="sponsored noopener" data-key="hotelBtn">{en["hotelBtn"]}</a></div>
-      <div class="hotel-panel" id="packages-panel" hidden><p data-key="packagesText">{en["packagesText"]}</p><a class="big-btn" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fpackages%2F&amp;sid=4travel-packages" target="_blank" rel="sponsored noopener" data-key="packagesBtn">{en["packagesBtn"]}</a></div>
+      <div class="hotel-panel" id="packages-panel" hidden><p data-key="packagesText">{en["packagesText"]}</p><span class="btns"><a class="big-btn" href="https://www.tkqlhce.com/click-101697384-11947208?url=https%3A%2F%2Fwww.trip.com%2Fpackages%2F&amp;sid=4travel-packages" target="_blank" rel="sponsored noopener" data-key="packagesBtn">{en["packagesBtn"]}</a><a class="big-btn alt-btn" href="/sejur-all-inclusive/" data-ro-only>Ghid all inclusive 2027</a></span></div>
       <div class="hotel-panel" id="luggage-panel" hidden><p data-key="luggageText">{en["luggageText"]}</p><a class="big-btn" href="https://radicalstorage.tpm.lv/UYVbS50q" target="_blank" rel="sponsored noopener" data-key="luggageBtn">{en["luggageBtn"]}</a></div>
       <div class="hotel-panel" id="insurance-panel" hidden><p data-key="insText">{en["insText"]}</p><div class="sw-box" style="max-width:520px;margin:.8rem auto 0"><div class="safetywing-price-widget" data-safetywingaffiliateid="26624480"></div></div><p class="sec-sub" style="font-size:.85rem;margin-top:.6rem" data-key="insNote">{en["insNote"]}</p></div>
       <p class="alts" id="alts" hidden><span data-key="altLabel">{en["altLabel"]}</span> <span id="alt-links"></span></p>
@@ -347,6 +349,7 @@ footer p{{margin:0;max-width:70ch}}
     <h2 data-key="holTitle">{en["holTitle"]}</h2>
     <ul class="grid hols">
 {hol}
+      <li data-ro-only><a class="hol" href="/sejur-all-inclusive/"><img src="/img/sejur-all-inclusive.jpg" alt="" width="1200" height="630" loading="lazy"><span class="hol-body"><span class="hol-title">All inclusive 2027</span><span class="hol-desc">Bulgaria, Turcia, Egipt, Grecia și exotic: prețuri și când rezervi.</span><span class="hol-cta">Citește ghidul</span></span></a></li>
     </ul>
   </section>
 

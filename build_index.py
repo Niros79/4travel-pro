@@ -117,7 +117,16 @@ TABDEF = [('flights', 'tabFlights'), ('hotels', 'tabHotels'), ('packages', 'tabP
 DEST = [("barcelona","cBarcelona"),("london","cLondon"),("lisbon","cLisbon"),("paris","cParis"),("milan","cMilan"),("athens","cAthens")]
 IATA = {"barcelona":"BCN","london":"LON","lisbon":"LIS","paris":"PAR","milan":"MIL","athens":"ATH"}
 GUIDES = [("sejur-all-inclusive","Sejur all inclusive 2027","Ghid complet, toate destinațiile"),("bulgaria-all-inclusive","Bulgaria all inclusive","Stațiuni, prețuri, drum"),("turcia-all-inclusive","Turcia all inclusive","Antalya, Side, Belek, Bodrum"),("egipt-all-inclusive","Egipt iarna","Hurghada, Sharm, viză"),("grecia-cu-masina","Grecia cu mașina","Thassos, Halkidiki, costuri")]
-guides = "\n".join(f'      <li><a class="guide" href="/{g}/"><img src="/img/{g}.jpg" alt="" width="1200" height="630" loading="lazy"><span>{t1}<small>{t2}</small></span></a></li>' for g,t1,t2 in GUIDES)
+CJ = "https://www.tkqlhce.com/click-101916040-11947208?url="
+GLINK = {  # Trip.com country hotel lists via CJ (4travel PID); all-inclusive filter where Trip.com has it
+    "turcia-all-inclusive": "https%3A%2F%2Fwww.trip.com%2Fhotels%2Flist%3FcityId%3D-1%26countryId%3D89%26destName%3DTurkey%26checkin%3D2027-07-03%26checkout%3D2027-07-10%26adult%3D2%26crn%3D1%26listFilters%3D146~5*146*5",
+    "egipt-all-inclusive": "https%3A%2F%2Fwww.trip.com%2Fhotels%2Flist%3FcityId%3D-1%26countryId%3D10%26destName%3DEgypt%26listFilters%3D146~5*146*5",
+    "bulgaria-all-inclusive": "https%3A%2F%2Fwww.trip.com%2Fhotels%2Flist%3FcityId%3D-1%26countryId%3D20%26destName%3DBulgaria%26checkin%3D2027-07-03%26checkout%3D2027-07-10%26adult%3D2%26crn%3D1%26listFilters%3D146~5*146*5",
+    "grecia-cu-masina": "https%3A%2F%2Fwww.trip.com%2Fhotels%2Flist%3FcityId%3D-1%26countryId%3D96%26destName%3DGreece%26checkin%3D2027-07-03%26checkout%3D2027-07-10%26adult%3D2%26crn%3D1",
+}
+GLINK["sejur-all-inclusive"] = GLINK["turcia-all-inclusive"]  # general all-inclusive card -> Turkey, the largest offer
+gsid = {"sejur-all-inclusive": "hub", "turcia-all-inclusive": "turcia", "egipt-all-inclusive": "egipt", "bulgaria-all-inclusive": "bulgaria", "grecia-cu-masina": "grecia"}
+guides = "\n".join(f'      <li><a class="guide" href="{CJ}{GLINK[g]}&amp;sid=4travel-card-{gsid[g]}" target="_blank" rel="sponsored noopener"><img src="/img/{g}.jpg" alt="" width="1200" height="630" loading="lazy"><span>{t1}<small>{t2}</small></span></a></li>' for g,t1,t2 in GUIDES)
 wchips = "".join(f'<button type="button" class="chip" data-wdest="{IATA[f]}" aria-selected="{str(i==0).lower()}"><img src="/img/{f}.jpg" alt="" width="64" height="64" loading="lazy"><span data-key="{k}">{en[k]}</span></button>' for i,(f,k) in enumerate(DEST))
 tabs = "".join(f'''<button type="button" class="svc" role="tab" data-svc="{k}" aria-selected="{'true' if k=='flights' else 'false'}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{ICONS[k]}"/></svg><span data-key="{lk}">{en[lk]}</span></button>''' for k,lk in TABDEF)
 dest = "\n".join(f'''      <li class="w-card"><div class="tp-route" data-dest="{IATA[f]}"></div></li>''' for f,k in DEST)
